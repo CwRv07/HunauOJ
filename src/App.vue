@@ -1,12 +1,20 @@
+<!--
+ * @Author: Rv_Jiang
+ * @Date: 2022-04-27 15:56:16
+ * @LastEditors: Rv_Jiang
+ * @LastEditTime: 2022-04-27 16:58:08
+ * @Description: 
+ * @Email: Rv_Jiang@outlook.com
+-->
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
+// 处理一个Vuter报错，需要首行import/export
+import {} from "vue";
+
+const count = ref(0);
 </script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <el-button type="primary" @click="count++">count is: {{ count }}</el-button>
 </template>
 
 <style>
