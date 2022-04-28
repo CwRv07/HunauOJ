@@ -6,14 +6,14 @@
  * @Description:
  * @Email: Rv_Jiang@outlook.com
  */
-import { createRouter, createWebHistory } from 'vue-router'
-const routerHistory = createWebHistory()
+import { createRouter, createWebHistory } from 'vue-router';
+const routerHistory = createWebHistory();
 // createWebHashHistory hash 路由
 // createWebHistory history 路由
 // createMemoryHistory 带缓存 history 路由
 const router = createRouter({
-  history: routerHistory,
-  routes: [],
-})
+    history: routerHistory,
+    routes: [],
+});
 
-export default router
+export default router;

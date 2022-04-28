@@ -7,9 +7,9 @@
  * @Email: Rv_Jiang@outlook.com
 -->
 <template>
-  <div>
-    <h1>index</h1>
-  </div>
+    <div>
+        <h1>index</h1>
+    </div>
 </template>
 
 <script lang="ts" setup></script>

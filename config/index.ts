@@ -1,11 +1,11 @@
 /*
  * @Author: Rv_Jiang
  * @Date: 2022-04-27 17:02:06
- * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-04-27 17:41:08
- * @Description: 
+ * @LastEditors: ND_LJQ
+ * @LastEditTime: 2022-04-28 14:46:44
+ * @Description:
  * @Email: Rv_Jiang@outlook.com
  */
-import { createVitePlugins } from './plugins'
-import { createViteBuild } from './build'
-export { createVitePlugins, createViteBuild }
+import { createVitePlugins } from './plugins';
+import { createViteBuild } from './build';
+export { createVitePlugins, createViteBuild };
