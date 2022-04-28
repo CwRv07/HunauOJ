@@ -1,0 +1,16 @@
+@forward 'element-plus/theme-chalk/src/common/var.scss' with (
+  $colors: (
+    'primary': (
+      'base': #41b882,
+    ),
+    
+  ),
+  $text-color: (
+    'primary': #253138,
+    'regular': #181c51,
+    'strong':#59e3a7,
+  ),
+  $font-family: (
+    '':"'Metropolis Regular', sans-serif"
+  )
+);

@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-04-27 15:56:16
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-04-28 18:53:44
+ * @LastEditTime: 2022-04-28 22:47:40
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -13,16 +13,19 @@ const count = ref(0);
 </script>
 
 <template>
-  <el-button type="primary" @click="count++">count is: {{ count }}</el-button>
+  <div>
+    <el-page-header content="detail" />
+    <el-button type="primary" @click="count++">count is: {{ count }}</el-button>
+    <el-button type="success">Danger</el-button>
+    <el-button type="info">asd</el-button>
+  </div>
 </template>
 
-<style>
+<style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  * {
+    box-sizing: border-box;
+    font-family: 'Metropolis Regular', sans-serif;
+  }
 }
 </style>
