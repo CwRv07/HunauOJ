@@ -6,9 +6,9 @@
         "dev": "vite",
         "build": "vue-tsc --noEmit && vite build",
         "preview": "vite preview",
-        "prepare": "husky install",
         "lint:eslint": "eslint {library,src}/**/*.{vue,ts,tsx} --fix",
-        "lint:prettier": "prettier {src,mock}/**/*.{html,vue,css,sass,scss,ts,md} --write"
+        "lint:prettier": "prettier {src,mock}/**/*.{html,vue,css,sass,scss,ts,md} --write",
+        "prepare": "husky install"
     },
     "dependencies": {
         "element-plus": "^2.1.11",
@@ -29,7 +29,6 @@
         "eslint-config-prettier": "^8.5.0",
         "eslint-plugin-prettier": "^4.0.0",
         "eslint-plugin-vue": "^8.7.1",
-        "husky": "^7.0.0",
         "lint-staged": "^12.4.1",
         "prettier": "^2.6.2",
         "typescript": "^4.5.4",
@@ -44,23 +43,23 @@
         "vite-plugin-vue-setup-extend": "^0.4.0",
         "vue-eslint-parser": "^8.3.0",
         "vue-global-api": "^0.4.1",
-        "vue-tsc": "^0.34.7"
+        "vue-tsc": "^0.34.7",
+        "husky": "^7.0.0"
     },
     "husky": {
         "hooks": {
             "pre-commit": "lint-staged"
         }
     },
-    "lint-staged": {
-        "*.{js,json,scss}": [
-            "prettier --config .prettierrc --write",
-            "eslint --fix",
-            "git add"
-        ]
-    },
     "config": {
         "commitizen": {
             "path": "./node_modules/cz-conventional-changelog"
         }
+    },
+    "lint-staged": {
+        "src/**/*.{js,ts,tsx,jsx}": [
+            "eslint --fix",
+            "prettier --write"
+        ]
     }
 }

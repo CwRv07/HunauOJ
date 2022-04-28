@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-04-28 08:57:10
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-04-28 14:51:49
+ * @LastEditTime: 2022-04-28 16:59:25
  * @Description:
  * @Email: Rv_Jiang@outlook.com
  */
@@ -69,7 +69,7 @@ module.exports = {
         '@typescript-eslint/no-explicit-any': ['off'],
         'vue/multi-word-component-names': 'off',
         '@typescript-eslint/no-var-requires': 'off',
-        indent: ['error', 4],
+        // indent: ['error', 2],
     },
 
     // eslint-disable-next-line prettier/prettier

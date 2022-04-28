@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-04-28 10:19:32
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-04-28 10:21:57
+ * @LastEditTime: 2022-04-28 16:30:58
  * @Description:
  * @Email: Rv_Jiang@outlook.com
  */
@@ -12,8 +12,8 @@ const routerHistory = createWebHistory();
 // createWebHistory history 路由
 // createMemoryHistory 带缓存 history 路由
 const router = createRouter({
-    history: routerHistory,
-    routes: [],
+  history: routerHistory,
+  routes: [],
 });
 
 export default router;

@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-04-28 09:12:39
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-04-28 15:19:46
+ * @LastEditTime: 2022-04-28 17:00:35
  * @Description: prettier配置文件
  * @Email: Rv_Jiang@outlook.com
  */

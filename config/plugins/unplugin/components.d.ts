@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-04-28 14:42:47
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-04-28 14:59:40
+ * @LastEditTime: 2022-04-28 17:03:58
  * @Description:
  * @Email: ndliujunqi@outlook.com
  */
@@ -12,10 +12,10 @@
 import '@vue/runtime-core';
 
 declare module '@vue/runtime-core' {
-    export interface GlobalComponents {
-        RouterLink: typeof import('vue-router')['RouterLink'];
-        RouterView: typeof import('vue-router')['RouterView'];
-    }
+  export interface GlobalComponents {
+    RouterLink: typeof import('vue-router')['RouterLink'];
+    RouterView: typeof import('vue-router')['RouterView'];
+  }
 }
 
 export {};
