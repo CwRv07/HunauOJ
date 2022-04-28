@@ -1,8 +1,8 @@
 /*
  * @Author: Rv_Jiang
  * @Date: 2022-04-27 15:56:16
- * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-04-28 15:38:57
+ * @LastEditors: Rv_Jiang
+ * @LastEditTime: 2022-04-28 19:16:53
  * @Description:
  * @Email: Rv_Jiang@outlook.com
  */
@@ -12,15 +12,22 @@ import { createVitePlugins, createViteBuild } from './config';
 const path = require('path');
 // https://vitejs.dev/config/
 export default ({ command }: ConfigEnv): UserConfig => {
-    const isBuild = command === 'build';
-    return {
-        plugins: createVitePlugins(isBuild),
-        build: createViteBuild(isBuild),
-        resolve: {
-            // 配置路径别名
-            alias: {
-                '@': path.resolve(__dirname, './src'),
-            },
+  const isBuild = command === 'build';
+  return {
+    plugins: createVitePlugins(isBuild),
+    build: createViteBuild(isBuild),
+    resolve: {
+      // 配置路径别名
+      alias: {
+        '@': path.resolve(__dirname, './src'),
+      },
+    },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@import "@/assets/styles/public.scss";',
         },
-    };
+      },
+    },
+  };
 };
