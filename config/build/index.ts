@@ -2,15 +2,14 @@
  * @Author: Rv_Jiang
  * @Date: 2022-04-27 17:40:20
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-04-27 18:12:19
- * @Description: 
+ * @LastEditTime: 2022-04-28 09:47:08
+ * @Description:
  * @Email: Rv_Jiang@outlook.com
  */
-
-import { Terser } from "vite"
+import { BuildOptions } from 'vite'
 
 // https://vitejs.cn/config/#build-target
-export function createViteBuild(isBuild: boolean) {
+export function createViteBuild(isBuild: boolean): BuildOptions {
   return {
     /**
      * 类型： string | string[]
