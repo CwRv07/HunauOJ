@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-04-27 15:56:16
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-04-28 22:47:40
+ * @LastEditTime: 2022-04-28 22:55:05
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -22,10 +22,4 @@ const count = ref(0);
 </template>
 
 <style lang="scss">
-#app {
-  * {
-    box-sizing: border-box;
-    font-family: 'Metropolis Regular', sans-serif;
-  }
-}
 </style>
