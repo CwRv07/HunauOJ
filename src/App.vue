@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-04-27 15:56:16
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-04-28 22:55:05
+ * @LastEditTime: 2022-04-28 22:57:55
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -21,5 +21,4 @@ const count = ref(0);
   </div>
 </template>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-04-27 15:56:16
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-04-28 21:02:43
+ * @LastEditTime: 2022-04-28 23:17:15
  * @Description:
  * @Email: Rv_Jiang@outlook.com
  */
@@ -14,5 +14,13 @@ import 'vue-global-api';
 import router from '@/router';
 // vuex@4
 import store from '@/store';
+//ElementPlus Icon
+import * as Elicons from '@element-plus/icons-vue';
 
-createApp(App).use(router).use(store).mount('#app');
+const app = createApp(App);
+//全局注册elementplus icon
+const _Elicons: any = Elicons;
+Object.keys(Elicons).forEach(key => {
+  app.component(key, _Elicons[key]);
+});
+app.use(router).use(store).mount('#app');
