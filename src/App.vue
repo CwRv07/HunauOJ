@@ -2,22 +2,32 @@
  * @Author: Rv_Jiang
  * @Date: 2022-04-27 15:56:16
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-04-28 22:57:55
+ * @LastEditTime: 2022-05-01 17:52:49
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
 <script setup lang="ts">
 // 处理一个Vuter报错，需要首行import/export
 import {} from 'vue';
-const count = ref(0);
+
+/* Rv_Jiang测试代码-start */
+import { useStore } from 'vuex';
+import storage from './utils/storage';
+
+const store = useStore();
+console.log(store.getters);
+
+storage.set('name', '卷心菜汪');
+console.log(storage.get('name'));
+storage.remove('name');
+
+/* Rv_Jiang测试代码-end */
 </script>
 
 <template>
   <div>
-    <el-page-header content="detail" />
-    <el-button type="primary" @click="count++">count is: {{ count }}</el-button>
-    <el-button type="success">Danger</el-button>
-    <el-button type="info">asd</el-button>
+    <!-- Rv_Jiang测试代码-start -->
+    <!-- Rv_Jiang测试代码-end -->
   </div>
 </template>
 
