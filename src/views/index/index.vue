@@ -1,25 +1,29 @@
 <!--
  * @Author: ND_LJQ
  * @Date: 2022-05-01 17:00:11
- * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-05-01 19:42:14
+ * @LastEditors: Rv_Jiang
+ * @LastEditTime: 2022-05-02 09:19:37
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
-<!--
- * @Author: Rv_Jiang
- * @Date: 2022-04-28 09:09:19
- * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-05-01 16:46:56
- * @Description: 
- * @Email: Rv_Jiang@outlook.com
--->
 <template>
   <div>
-    <olp-header-menu />
+    <h1>index</h1>
+    <div>
+      <router-link to="/notFound">404</router-link>
+    </div>
+    <button @click="changeToken">修改token</button>
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { useStore } from 'vuex';
+const store = useStore();
+const changeToken = () => {
+  store.dispatch('userStore/setToken', '123');
+
+  // store.state['userStore/token'] = '123';
+};
+</script>
 
 <style scoped></style>

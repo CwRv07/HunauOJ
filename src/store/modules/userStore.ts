@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-01 15:13:32
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-01 17:30:16
+ * @LastEditTime: 2022-05-02 08:18:41
  * @Description: 用户Store模块
  * @Email: Rv_Jiang@outlook.com
  */
@@ -10,7 +10,7 @@ import { USER_ROLE } from '@/utils/constants';
 import storage from '@/utils/storage';
 import { Module } from 'vuex';
 
-export const user: Module<unknown, unknown> = {
+export const userStore: Module<unknown, unknown> = {
   namespaced: true,
   state: {
     userInfo: storage.get('userInfo'),
@@ -69,7 +69,11 @@ export const user: Module<unknown, unknown> = {
     },
     /* 权限判断-end */
   },
-  mutations: {},
+  mutations: {
+    setToken(state: any, token) {
+      state.token = token;
+    },
+  },
   actions: {
     /* 用户信息修改-start */
     // 修改用户信息
@@ -80,8 +84,11 @@ export const user: Module<unknown, unknown> = {
     clearUserInfoAndToken({ commit }): void {
       commit('clearUserInfoAndToken');
     },
+    setToken({ commit }, token): void {
+      commit('setToken', token);
+    },
     /* 用户信息修改-end */
   },
 };
 
-export default user;
+export default userStore;
