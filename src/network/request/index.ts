@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-05-02 07:58:08
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-05-02 09:14:56
+ * @LastEditTime: 2022-05-02 11:04:09
  * @Description:对axios进行二次封装
  * @Email: ndliujunqi@outlook.com
  */
@@ -20,9 +20,9 @@ class Request {
 
   //类拦截器
   // 拦截器的执行顺序为实例请求→类请求→实例响应→类响应
-  constructor(config: AxiosRequestConfig) {
+  constructor(config: RequestConfig) {
     this.instance = axios.create(config);
-
+    this.interceptorsObj = config.interceptors;
     // 实例请求拦截器
     this.instance.interceptors.request.use(this.interceptorsObj?.requestInterceptors, this.interceptorsObj?.requestInterceptorsCatch);
 
