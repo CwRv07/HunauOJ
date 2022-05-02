@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-04-27 15:56:16
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-04-28 23:17:15
+ * @LastEditTime: 2022-05-02 11:22:19
  * @Description:
  * @Email: Rv_Jiang@outlook.com
  */
@@ -16,6 +16,8 @@ import router from '@/router';
 import store from '@/store';
 //ElementPlus Icon
 import * as Elicons from '@element-plus/icons-vue';
+// 全局样式表
+import './assets/styles/public.scss';
 
 const app = createApp(App);
 //全局注册elementplus icon

@@ -1,8 +1,8 @@
 <!--
  * @Author: Rv_Jiang
  * @Date: 2022-04-27 15:56:16
- * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-05-02 09:29:42
+ * @LastEditors: Rv_Jiang
+ * @LastEditTime: 2022-05-02 10:03:56
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -19,13 +19,6 @@ import {} from 'vue';
 </script>
 
 <template>
-  <div>
-    <router-view />
-
-    <!-- Rv_Jiang测试代码-start -->
-    <!-- Rv_Jiang测试代码-end -->
-  </div>
-
   <!-- Rv_Jiang测试代码-start -->
   <router-view />
   <!-- Rv_Jiang测试代码-end -->
