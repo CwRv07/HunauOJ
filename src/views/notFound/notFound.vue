@@ -1,8 +1,8 @@
 <!--
  * @Author: Rv_Jiang
  * @Date: 2022-05-01 22:30:23
- * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-01 22:34:06
+ * @LastEditors: ND_LJQ
+ * @LastEditTime: 2022-05-02 15:55:09
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -13,6 +13,6 @@
   </div>
 </template>
 
-<script setup></script>
+<script lang="ts" setup></script>
 
 <style lang="scss" scoped></style>

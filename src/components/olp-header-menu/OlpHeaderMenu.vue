@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-04-30 18:36:59
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-05-02 07:45:11
+ * @LastEditTime: 2022-05-02 22:12:45
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -111,5 +111,8 @@ const handleSelect = (key: string, keyPath: string[]) => {
   justify-content: flex-end;
   //字体无法被简单的鼠标拖动复制
   user-select: none;
+}
+ul {
+  border-bottom: 0;
 }
 </style>

@@ -2,14 +2,32 @@
  * @Author: ND_LJQ
  * @Date: 2022-05-01 19:52:22
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-05-02 07:25:41
+ * @LastEditTime: 2022-05-02 23:21:56
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
 <template>
   <el-button-group class="ml-4 header-button">
-    <el-button type="primary">登录</el-button>
-    <el-button type="primary">注册</el-button>
+    <el-button type="primary" style="border: 0">注册</el-button>
+    <el-button type="primary" class="login-button" style="margin-left: 1px; margin-right: 1px; border: 1px solid !important; border-radius: var(--el-border-radius-base)">登录</el-button>
+    <el-button type="primary" style="border: 0">
+      <svg
+        style="fill: currentColor; color: var(--el-color-primary)"
+        t="1651504676133"
+        class="icon"
+        viewBox="0 0 1024 1024"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        p-id="2647"
+        width="20"
+        height="20"
+      >
+        <path
+          d="M213.333333 640v85.333333a85.333333 85.333333 0 0 0 78.933334 85.12L298.666667 810.666667h128v85.333333H298.666667a170.666667 170.666667 0 0 1-170.666667-170.666667v-85.333333h85.333333z m554.666667-213.333333l187.733333 469.333333h-91.946666l-51.242667-128h-174.506667l-51.157333 128h-91.904L682.666667 426.666667h85.333333z m-42.666667 123.093333L672.128 682.666667h106.325333L725.333333 549.76zM341.333333 85.333333v85.333334h170.666667v298.666666H341.333333v128H256v-128H85.333333V170.666667h170.666667V85.333333h85.333333z m384 42.666667a170.666667 170.666667 0 0 1 170.666667 170.666667v85.333333h-85.333333V298.666667a85.333333 85.333333 0 0 0-85.333334-85.333334h-128V128h128zM256 256H170.666667v128h85.333333V256z m170.666667 0H341.333333v128h85.333334V256z"
+          p-id="2648"
+        />
+      </svg>
+    </el-button>
   </el-button-group>
 </template>
 
@@ -23,5 +41,20 @@
 
 .el-button-group {
   margin-right: 10px;
+}
+
+.el-button--primary {
+  color: var(--el-color-primary);
+  background-color: #fff;
+  font-weight: 700;
+}
+
+.login-button {
+  transition: all 0.3s;
+}
+
+.login-button:hover {
+  color: #fff;
+  background-color: var(--el-color-primary);
 }
 </style>

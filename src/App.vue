@@ -1,8 +1,8 @@
 <!--
  * @Author: Rv_Jiang
  * @Date: 2022-04-27 15:56:16
- * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-02 10:03:56
+ * @LastEditors: ND_LJQ
+ * @LastEditTime: 2022-05-02 23:15:45
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -10,7 +10,7 @@
 // 处理一个Vuter报错，需要首行import/export
 
 import {} from 'vue';
-
+import {} from '../node_modules/@element-plus/icons-vue';
 /* Rv_Jiang测试代码-start */
 // import { mapGetters, useStore } from 'vuex';
 // import storage from './utils/storage';
