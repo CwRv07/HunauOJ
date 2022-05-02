@@ -1,10 +1,10 @@
 <!--
- * @Author: Rv_Jiang
- * @Date: 2022-04-28 09:09:19
+ * @Author: ND_LJQ
+ * @Date: 2022-05-01 17:00:11
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-01 23:16:32
+ * @LastEditTime: 2022-05-02 09:19:37
  * @Description: 
- * @Email: Rv_Jiang@outlook.com
+ * @Email: ndliujunqi@outlook.com
 -->
 <template>
   <div>
@@ -26,4 +26,4 @@ const changeToken = () => {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>
