@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-04-27 15:56:16
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-02 10:03:56
+ * @LastEditTime: 2022-05-02 19:20:53
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -24,4 +24,8 @@ import {} from 'vue';
   <!-- Rv_Jiang测试代码-end -->
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+#app {
+  color: var(--el-text-color-primary);
+}
+</style>
