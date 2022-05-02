@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-04-30 18:37:50
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-05-02 07:40:36
+ * @LastEditTime: 2022-05-02 13:54:57
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -13,7 +13,7 @@
     <el-sub-menu :key="index" :index="String(item.sort)" v-if="item.children.length > 0">
       <template #title>
         <el-icon>
-          <component :is="item.icon" />
+          <component :is="item.icon" v-if="item.icon" />
         </el-icon>
         {{ item.name }}
       </template>
@@ -22,7 +22,7 @@
     <!-- 情况二：没子集的情况 -->
     <el-menu-item v-else :key="index + 0" :index="String(item.sort)">
       <el-icon>
-        <component :is="item.icon" />
+        <component :is="item.icon" v-if="item.icon" />
       </el-icon>
       {{ item.name }}
     </el-menu-item>
@@ -36,8 +36,6 @@ const props = defineProps({
     default: () => [{}],
   },
 });
-
-console.log(props.itemArr);
 </script>
 
 <style lang="scss" scoped></style>
