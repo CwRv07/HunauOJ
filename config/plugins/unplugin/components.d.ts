@@ -5,7 +5,6 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-<<<<<<< HEAD
     ElButton: typeof import('element-plus/es')['ElButton']
     ElButtonGroup: typeof import('element-plus/es')['ElButtonGroup']
     ElIcon: typeof import('element-plus/es')['ElIcon']
@@ -13,9 +12,8 @@ declare module '@vue/runtime-core' {
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     OlpHeaderMenu: typeof import('./../../../src/components/olp-header-menu/OlpHeaderMenu.vue')['default']
+    OlpMenuButton: typeof import('./../../../src/components/olp-header-menu/olp-menu-button/OlpMenuButton.vue')['default']
     OlpMenuItem: typeof import('./../../../src/components/olp-header-menu/olp-menu-item/OlpMenuItem.vue')['default']
-=======
->>>>>>> 46498019a687dd4bc9a89e1935e827e18ceb51b2
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

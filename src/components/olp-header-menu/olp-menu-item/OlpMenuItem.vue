@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-04-30 18:37:50
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-05-01 19:30:23
+ * @LastEditTime: 2022-05-02 07:40:36
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -10,7 +10,7 @@
   <template v-for="(item, index) in props.itemArr">
     <!-- 因为有子集和无子集渲染html标签不一样，所以要分为两种情况
            情况一：有子集的情况：                         -->
-    <el-sub-menu :key="index" :index="String(item.path)" v-if="item.children.length > 0">
+    <el-sub-menu :key="index" :index="String(item.sort)" v-if="item.children.length > 0">
       <template #title>
         <el-icon>
           <component :is="item.icon" />
@@ -20,7 +20,7 @@
       <olp-menu-item :item-arr="item.children" />
     </el-sub-menu>
     <!-- 情况二：没子集的情况 -->
-    <el-menu-item v-else :key="index + 0" :index="String(item.path)">
+    <el-menu-item v-else :key="index + 0" :index="String(item.sort)">
       <el-icon>
         <component :is="item.icon" />
       </el-icon>
