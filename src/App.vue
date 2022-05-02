@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-04-27 15:56:16
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-01 17:52:49
+ * @LastEditTime: 2022-05-02 09:06:24
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -11,24 +11,16 @@
 import {} from 'vue';
 
 /* Rv_Jiang测试代码-start */
-import { useStore } from 'vuex';
-import storage from './utils/storage';
-
-const store = useStore();
-console.log(store.getters);
-
-storage.set('name', '卷心菜汪');
-console.log(storage.get('name'));
-storage.remove('name');
+// import { mapGetters, useStore } from 'vuex';
+// import storage from './utils/storage';
 
 /* Rv_Jiang测试代码-end */
 </script>
 
 <template>
-  <div>
-    <!-- Rv_Jiang测试代码-start -->
-    <!-- Rv_Jiang测试代码-end -->
-  </div>
+  <!-- Rv_Jiang测试代码-start -->
+  <router-view />
+  <!-- Rv_Jiang测试代码-end -->
 </template>
 
 <style lang="scss"></style>
