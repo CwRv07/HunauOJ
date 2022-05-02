@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-05-02 08:31:42
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-05-02 09:02:59
+ * @LastEditTime: 2022-05-02 11:15:51
  * @Description:实例拦截器类的定义
  * @Email: ndliujunqi@outlook.com
  */
@@ -20,4 +20,9 @@ export interface RequestInterceptors {
 // 自定义传入的参数
 export interface RequestConfig extends AxiosRequestConfig {
   interceptors?: RequestInterceptors;
+}
+
+//取消请求
+export interface CancelRequestSource {
+  [index: string]: () => void;
 }
