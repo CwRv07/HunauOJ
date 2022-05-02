@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-04-27 15:56:16
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-05-02 23:15:45
+ * @LastEditTime: 2022-05-02 23:28:26
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -24,4 +24,8 @@ import {} from '../node_modules/@element-plus/icons-vue';
   <!-- Rv_Jiang测试代码-end -->
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+#app {
+  color: var(--el-text-color-primary);
+}
+</style>

@@ -2,11 +2,11 @@
  * @Author: Rv_Jiang
  * @Date: 2022-04-28 10:19:32
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-02 09:53:19
+ * @LastEditTime: 2022-05-02 22:22:45
  * @Description:
  * @Email: Rv_Jiang@outlook.com
  */
-import { createRouter, createWebHistory, RouteLocationNormalized } from 'vue-router';
+import { createRouter, createWebHashHistory, RouteLocationNormalized } from 'vue-router';
 import { useGetters } from '@/utils/useMapper';
 import stateRouter from './stateRouter';
 import { USER_ROLE } from '@/utils/constants';
@@ -16,7 +16,7 @@ createWebHashHistory hash 路由
 createWebHistory history 路由
 createMemoryHistory 带缓存 history 路由
 */
-const routerHistory = createWebHistory();
+const routerHistory = createWebHashHistory();
 const routes = [...stateRouter];
 
 const router = createRouter({
