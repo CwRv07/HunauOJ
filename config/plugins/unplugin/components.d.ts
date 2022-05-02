@@ -5,6 +5,8 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    ElEmpty: typeof import('element-plus/es')['ElEmpty']
+    ElMenu: typeof import('element-plus/es')['ElMenu']
     OlpHeaderMenu: typeof import('./../../../src/components/olp-header-menu/OlpHeaderMenu.vue')['default']
     OlpMenuButton: typeof import('./../../../src/components/olp-header-menu/olp-menu-button/OlpMenuButton.vue')['default']
     OlpMenuItem: typeof import('./../../../src/components/olp-header-menu/olp-menu-item/OlpMenuItem.vue')['default']
