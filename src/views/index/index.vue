@@ -2,12 +2,13 @@
  * @Author: ND_LJQ
  * @Date: 2022-05-01 17:00:11
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-02 09:19:37
+ * @LastEditTime: 2022-05-02 11:23:05
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
 <template>
   <div>
+    <olp-header-menu />
     <h1>index</h1>
     <div>
       <router-link to="/notFound">404</router-link>

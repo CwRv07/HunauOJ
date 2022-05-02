@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-01 18:56:23
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-02 09:04:13
+ * @LastEditTime: 2022-05-02 09:56:06
  * @Description: 公开路由表
  * @Email: Rv_Jiang@outlook.com
  */
@@ -17,6 +17,11 @@ const stateRouter: RouteRecordRaw[] = [
     name: 'index',
     component: () => import('@/views/index/index.vue'),
     meta: { title: 'index' },
+  },
+  /* notFound匹配路由 */
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: '/notFound',
   },
   {
     path: '/notFound',

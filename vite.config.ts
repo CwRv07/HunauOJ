@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-04-27 15:56:16
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-04-28 22:51:30
+ * @LastEditTime: 2022-05-02 11:16:37
  * @Description:
  * @Email: Rv_Jiang@outlook.com
  */
@@ -25,10 +25,11 @@ export default ({ command }: ConfigEnv): UserConfig => {
     css: {
       preprocessorOptions: {
         scss: {
+          // additionalData: `
+          //   @use "@/assets/styles/element/index.scss" as *;
+          // `,
           additionalData: `
             @use "@/assets/styles/element/index.scss" as *;
-            @use "@/assets/styles/public.scss";
-            @use "@/assets/styles/reset/index.scss";
           `,
         },
       },

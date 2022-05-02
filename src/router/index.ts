@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-04-28 10:19:32
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-02 09:20:42
+ * @LastEditTime: 2022-05-02 09:53:19
  * @Description:
  * @Email: Rv_Jiang@outlook.com
  */
@@ -55,6 +55,8 @@ const elMessageToRollBack = () => {
  * @return {*}
  */
 router.beforeEach((to: RouteLocationNormalized /* from: RouteLocationNormalized */) => {
+  console.log(to);
+
   // 判断路由匹配里是否需要权限
   if (to.matched.some(oldRouter => oldRouter.meta.roles)) {
     // 当前路由需要权限情况
