@@ -3,7 +3,7 @@
  * @Date: 2022-04-30 18:37:50
 <<<<<<< HEAD
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-05-02 23:23:40
+ * @LastEditTime: 2022-05-03 08:43:08
 =======
  * @LastEditors: Rv_Jiang
  * @LastEditTime: 2022-05-02 14:25:38
@@ -25,7 +25,7 @@
       <olp-menu-item :item-arr="item.children" />
     </el-sub-menu>
     <!-- 情况二：没子集的情况 -->
-    <el-menu-item v-else :key="index + 0" :index="String(item.sort)">
+    <el-menu-item v-else :key="index + 0" :index="String(item.path)">
       <el-icon>
         <component :is="item.icon" v-if="item.icon" />
       </el-icon>

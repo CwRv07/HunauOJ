@@ -3,7 +3,7 @@
  * @Date: 2022-04-30 18:36:59
 <<<<<<< HEAD
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-05-02 22:12:45
+ * @LastEditTime: 2022-05-03 08:54:14
 =======
  * @LastEditors: Rv_Jiang
  * @LastEditTime: 2022-05-02 13:51:15
@@ -12,7 +12,7 @@
  * @Email: ndliujunqi@outlook.com
 -->
 <template>
-  <el-menu :default-active="activeIndex2" class="el-menu-header" mode="horizontal" text-color="black" @select="handleSelect" active-text-color="#47b686">
+  <el-menu :default-active="activeIndex" class="el-menu-header" mode="horizontal" router text-color="black" @select="handleSelect" active-text-color="#47b686">
     <!-- 递归动态菜单 -->
     <olp-menu-item :item-arr="itemArr" />
     <olp-menu-button />
@@ -20,6 +20,7 @@
 </template>
 
 <script lang="ts" setup>
+import router from '@/router';
 import OlpMenuItem from './olp-menu-item/OlpMenuItem.vue';
 const itemArr = reactive([
   {
@@ -27,12 +28,14 @@ const itemArr = reactive([
     name: '首页',
     sort: 1,
     icon: 'house',
+    path: '/index',
     children: [],
   },
   {
     name: '题目',
     sort: 2,
     icon: 'hot-water',
+    path: '/notFound',
     children: [],
   },
   {
@@ -104,8 +107,16 @@ const itemArr = reactive([
     ],
   },
 ]);
+let activeIndex = '';
+watch(
+  () => router.currentRoute.value.path,
+  toPath => {
+    activeIndex = toPath;
+  },
+  { immediate: true, deep: true }
+);
+console.log(activeIndex);
 
-const activeIndex2 = ref('1');
 const handleSelect = (key: string, keyPath: string[]) => {
   console.log(key, keyPath);
 };
