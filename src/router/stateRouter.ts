@@ -1,8 +1,8 @@
 /*
  * @Author: Rv_Jiang
  * @Date: 2022-05-01 18:56:23
- * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-02 13:30:43
+ * @LastEditors: ND_LJQ
+ * @LastEditTime: 2022-05-10 20:27:46
  * @Description: 公开路由表
  * @Email: Rv_Jiang@outlook.com
  */
@@ -31,6 +31,11 @@ const stateRouter: RouteRecordRaw[] = [
     name: 'notFound',
     component: () => import('@/views/notFound/notFound.vue'),
     meta: { title: 'notFound' },
+  },
+  {
+    path: '/markdownTest',
+    name: 'markdown',
+    component: () => import('@/views/markdownTest/markdownTest.vue'),
   },
 ];
 

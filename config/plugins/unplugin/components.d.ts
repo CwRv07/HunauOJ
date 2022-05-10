@@ -7,12 +7,12 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     ElButton: typeof import('element-plus/es')['ElButton']
     ElButtonGroup: typeof import('element-plus/es')['ElButtonGroup']
-    ElEmpty: typeof import('element-plus/es')['ElEmpty']
     ElIcon: typeof import('element-plus/es')['ElIcon']
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     OlpHeaderMenu: typeof import('./../../../src/components/olp-header-menu/OlpHeaderMenu.vue')['default']
+    OlpMarkdownEdit: typeof import('./../../../src/components/OlpMarkdownEdit/OlpMarkdownEdit.vue')['default']
     OlpMenuButton: typeof import('./../../../src/components/olp-header-menu/olp-menu-button/OlpMenuButton.vue')['default']
     OlpMenuItem: typeof import('./../../../src/components/olp-header-menu/olp-menu-item/OlpMenuItem.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

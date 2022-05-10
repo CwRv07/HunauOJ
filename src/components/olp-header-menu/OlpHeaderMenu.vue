@@ -3,7 +3,7 @@
  * @Date: 2022-04-30 18:36:59
 <<<<<<< HEAD
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-05-03 08:54:14
+ * @LastEditTime: 2022-05-10 20:10:35
 =======
  * @LastEditors: Rv_Jiang
  * @LastEditTime: 2022-05-02 13:51:15
@@ -28,6 +28,7 @@ const itemArr = reactive([
     name: '首页',
     sort: 1,
     icon: 'house',
+
     path: '/index',
     children: [],
   },
@@ -35,7 +36,7 @@ const itemArr = reactive([
     name: '题目',
     sort: 2,
     icon: 'hot-water',
-    path: '/notFound',
+    path: '',
     children: [],
   },
   {
