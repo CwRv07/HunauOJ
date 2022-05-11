@@ -1,13 +1,8 @@
 <!--
  * @Author: ND_LJQ
  * @Date: 2022-04-30 18:37:50
-<<<<<<< HEAD
- * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-10 16:11:05
-=======
- * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-02 14:25:38
->>>>>>> 3118442584281ca86eadb764950cf02a24236516
+ * @LastEditors: ND_LJQ
+ * @LastEditTime: 2022-05-10 20:12:01
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -25,7 +20,7 @@
       <olp-menu-item :item-arr="item.children" />
     </el-sub-menu>
     <!-- 情况二：没子集的情况 -->
-    <el-menu-item v-else :key="index + 0" :index="String(item.sort)">
+    <el-menu-item v-else :key="index + 0" :index="String(item.path)">
       <el-icon>
         <component :is="item.icon" v-if="item.icon" />
       </el-icon>

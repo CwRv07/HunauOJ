@@ -16,6 +16,7 @@ declare module '@vue/runtime-core' {
     ElSelect: typeof import('element-plus/es')['ElSelect']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     OlpHeaderMenu: typeof import('./../../../src/components/olp-header-menu/OlpHeaderMenu.vue')['default']
+    OlpMarkdownEdit: typeof import('./../../../src/components/OlpMarkdownEdit/OlpMarkdownEdit.vue')['default']
     OlpMenuButton: typeof import('./../../../src/components/olp-header-menu/olp-menu-button/OlpMenuButton.vue')['default']
     OlpMenuItem: typeof import('./../../../src/components/olp-header-menu/olp-menu-item/OlpMenuItem.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
