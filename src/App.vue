@@ -1,8 +1,8 @@
 <!--
  * @Author: Rv_Jiang
  * @Date: 2022-04-27 15:56:16
- * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-05-02 23:28:26
+ * @LastEditors: Rv_Jiang
+ * @LastEditTime: 2022-05-10 16:57:46
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -27,5 +27,8 @@ import {} from '../node_modules/@element-plus/icons-vue';
 <style lang="scss">
 #app {
   color: var(--el-text-color-primary);
+}
+body {
+  overflow-x: hidden;
 }
 </style>

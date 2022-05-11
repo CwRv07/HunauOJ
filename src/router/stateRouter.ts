@@ -2,12 +2,13 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-01 18:56:23
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-02 13:30:43
+ * @LastEditTime: 2022-05-03 08:15:23
  * @Description: 公开路由表
  * @Email: Rv_Jiang@outlook.com
  */
 import { RouteRecordRaw } from 'vue-router';
 const stateRouter: RouteRecordRaw[] = [
+  /* 首页-start */
   {
     path: '/',
     redirect: '/index',
@@ -18,20 +19,31 @@ const stateRouter: RouteRecordRaw[] = [
     component: () => import('@/views/index/index.vue'),
     meta: { title: 'index' },
   },
-  /* notFound匹配路由 */
-  // {
-  //   path: '/:pathMatch(.*)*',
-  //   props: {
-  //     cause: 404,
-  //   },
-  //   redirect: '/notFound',
-  // },
+  /* 首页-end */
+  /* notFound匹配路由-start */
+  {
+    path: '/:pathMatch(.*)*',
+    props: {
+      cause: 404,
+    },
+    redirect: '/notFound',
+  },
   {
     path: '/notFound',
     name: 'notFound',
     component: () => import('@/views/notFound/notFound.vue'),
     meta: { title: 'notFound' },
   },
+  /* notFound匹配路由-end */
+  /* problems-start */
+  {
+    path: '/problems',
+    name: 'problems',
+    component: () => import('@/views/problems/problems.vue'),
+    meta: { title: 'problems' },
+    children: [],
+  },
+  /* problems-end */
 ];
 
 export default stateRouter;
