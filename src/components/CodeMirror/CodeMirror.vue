@@ -2,13 +2,13 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-10 17:16:07
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-11 16:50:47
+ * @LastEditTime: 2022-05-12 15:57:49
  * @Description: CodeMirror二次封装
  * @Email: Rv_Jiang@outlook.com
 -->
 <template>
   <div id="RvCodeMirror">
-    <!-- 设置-start -->
+    <!-- header:设置-start -->
     <section class="setting">
       <!-- 语言选择 -->
       <div class="mode-select">
@@ -30,63 +30,117 @@
         </el-popover>
       </div>
     </section>
-    <!-- 设置-end -->
-    <!-- codemirror -->
-    <codemirror class="code-mirror" :options="cmOptions" @ready="initCodeMirror" />
+    <!-- header:设置-end -->
+
+    <!-- main:codemirror-start -->
+    <codemirror class="code-mirror" v-model:value="code" :options="cmOptions" @ready="initCodeMirror" />
+    <!-- main:codemirror-end -->
+
+    <!-- footer:submission-start -->
+    <section class="submission">
+      <!-- 测试案例操作 -->
+      <!-- 按钮组 -->
+      <div class="button-group">
+        <el-button type="primary" @click="submitCodeMirror" :loading="isSubmitting">提交</el-button>
+      </div>
+    </section>
+    <!-- footer:submission-end -->
+
+    <!-- codemirror的设置模态框-start -->
+    <section class="code-mirror-setting-modal">
+      <el-dialog title="编辑器设置" v-model="settingModal.isShow" width="600px">
+        <template #default>
+          <main class="code-mirror-setting-modal-main">
+            <ul class="setting-list" v-if="settingModal.settingList.length">
+              <li class="setting-item" v-for="item in settingModal.settingList" :key="item.title">
+                <aside class="description">
+                  <p class="description-title">{{ item.title }}</p>
+                  <span class="description-sub-title">{{ item.subTitle }}</span>
+                </aside>
+                <aside class="selection">
+                  <template v-if="item.mode === settingMode.SELECT">
+                    <el-select v-model="item.selectValue" @change="item.changCallBack">
+                      <el-option v-for="option in item.option" :key="option.value" :label="option.label" :value="option.value" />
+                    </el-select>
+                  </template>
+                  <template v-else-if="item.mode === settingMode.NUMBER">
+                    <el-input-number v-model="item.selectValue" v-bind="item.bindProp" @change="item.changCallBack" />
+                  </template>
+                </aside>
+              </li>
+            </ul>
+          </main>
+        </template>
+      </el-dialog>
+    </section>
+    <!-- codemirror的设置模态框-end -->
   </div>
 </template>
 <script lang="ts" setup name="code-mirror">
 import codemirror from 'codemirror-editor-vue3';
-// 核心样式
+// 核心设置文件
 import './settings';
 
-/* setting-start */
-
+/* Setting-start */
+// value
+const code = ref('');
 // modeOption
-const mode = ref('text/x-java');
+const mode = ref('text/x-c++src');
 const modeOption = reactive([
   { label: 'C++', value: 'text/x-c++src' },
   { label: 'Java', value: 'text/x-java' },
   { label: 'Python', value: 'text/x-python' },
 ]);
+// 缓存
+const modeCache: { [key: string]: string } = {};
 const changeMode = (val: string) => {
+  // 缓存
+  modeCache[mode.value] = code.value;
+  // 修改mode
   coderMirror.value.setOption('mode', val);
+  // 读取缓存
+  code.value = modeCache[val] || '';
 };
 
-// themeOption
-// const theme = ref('');
-// const themeOption = reactive([
-//   { label: 'solarized', value: 'solarized', default: true },
-//   { label: 'material', value: 'material' },
-//   { label: 'material-ocean', value: 'material-ocean' },
-// ]);
-// const changeTheme = (val: string) => {
-//   coderMirror.value.setOption('theme', val);
-// };
-
-// toolOption
+// toolOption-start
 const refreshCode = () => {
-  console.log('refreshCode');
+  ElMessageBox.confirm('您将放弃当前代码并还原至默认代码模板', '警告', {
+    confirmButtonText: '确认',
+    cancelButtonText: '取消',
+    type: 'warning',
+  }).then(() => {
+    code.value = '';
+    modeCache[mode.value] = code.value;
+    ElMessage({
+      type: 'success',
+      message: '重置代码成功',
+      showClose: true,
+    });
+  });
 };
 const displayKeyMap = () => {
-  console.log('displayKeyMap');
+  ElMessage({
+    type: 'info',
+    message: '快捷键功能暂未完善',
+    showClose: true,
+  });
 };
 const settingCodeMirror = () => {
-  console.log('settingCodeMirror');
+  settingModal.isShow = true;
 };
 const toolOption = reactive([
   { title: '重置代码', content: '还原到默认代码模板', icon: 'Refresh', callback: refreshCode },
   { title: '快捷键帮助', content: '显示所有编辑快捷键', icon: 'InfoFilled', callback: displayKeyMap },
   { title: '编辑器设置', content: '代码编辑器设置', icon: 'Setting', callback: settingCodeMirror },
 ]);
-
-/* setting-end */
+// toolOption-end
+/* Setting-end */
 
 /* CodeMirror-start */
 const cmOptions = {
   // codemirror options
   tabSize: 4,
-  mode: 'text/x-java',
+  mode: 'text/x-c++src',
   /*
    C:text/x-csrc  C++:text/x-c++src  Java:text/x-java C#:text/x-csharp  Python:text/x-python
   */
@@ -115,10 +169,9 @@ const cmOptions = {
   // 自动整理
   autoRefresh: true,
 };
-/* coderMirror instance */
+// instance
 const coderMirror: any = ref({});
-
-/* coderMirror initFunc */
+// initFunc
 const initCodeMirror = (cm: any) => {
   // 初始化实例
   coderMirror.value = cm;
@@ -138,14 +191,94 @@ const initCodeMirror = (cm: any) => {
     },
   });
 };
+/* CodeMirror-end */
+
+/* Submission-start */
+const isSubmitting = ref(false);
+const submitCodeMirror = () => {
+  if (!isSubmitting.value) {
+    isSubmitting.value = true;
+    // 模拟提交
+    setTimeout(() => {
+      isSubmitting.value = false;
+      ElMessage({
+        type: 'success',
+        message: '提交成功',
+        showClose: true,
+      });
+    }, 2000);
+  }
+};
+/* Submission-end */
+
+/* CodeMirrorSettingModal-start */
+// 设置模式
+enum settingMode {
+  NUMBER, // 输入框
+  SELECT, // 选择器
+}
+// 主题设置
+const theme = ref('solarized');
+const changeThemeCallBack = (val: string) => {
+  coderMirror.value.setOption('theme', val);
+};
+// 字体设置
+const fontSizeNumber = ref(14);
+const fontSize = computed(() => fontSizeNumber.value + 'px');
+// Tab长度
+const tabSize = ref(4);
+const changeTabSizeCallBack = (val: number) => {
+  coderMirror.value.setOption('tabSize', val);
+};
+// 模态框
+const settingModal: any = reactive({
+  isShow: false,
+  settingList: [
+    {
+      title: '主题设置',
+      subTitle: '切换不同的代码编辑器主题',
+      selectValue: theme,
+      changCallBack: changeThemeCallBack,
+      mode: settingMode.SELECT,
+      option: [
+        { label: 'solarized', value: 'solarized' },
+        { label: 'material', value: 'material' },
+        { label: 'material-ocean', value: 'material-ocean' },
+      ],
+    },
+    {
+      title: '字体设置',
+      subTitle: '自定义调节适宜的字体大小',
+      selectValue: fontSizeNumber,
+      changCallBack: undefined,
+      mode: settingMode.NUMBER,
+      bindProp: {
+        min: 10,
+        max: 20,
+      },
+    },
+    {
+      title: 'Tab长度',
+      subTitle: '选择你想要的Tab长度',
+      selectValue: tabSize,
+      changCallBack: changeTabSizeCallBack,
+      mode: settingMode.NUMBER,
+      bindProp: {
+        min: 1,
+        max: 10,
+      },
+    },
+  ],
+});
+/* CodeMirrorSettingModal-end */
 </script>
 
 <style lang="scss" scoped>
 #RvCodeMirror {
   // 组件局部变量
-  $cm-box-min-height: 620px;
+  $cm-box-min-height: calc(100vh - 42px - 42px - 2px);
 
-  // 设置栏
+  /* 设置-start */
   .setting {
     padding: 5px;
     display: flex;
@@ -170,14 +303,58 @@ const initCodeMirror = (cm: any) => {
       }
     }
   }
+  /* 设置-end */
 
-  // CodeMirror
+  /* CodeMirror-start */
   .code-mirror {
     height: $cm-box-min-height;
     // 代码样式
-    font-size: 14px;
+    font-size: v-bind(fontSize);
     line-height: 1.5;
     font-family: Consolas, Menlo, Courier, monospace;
   }
+  /* CodeMirror-end */
+
+  /* Submission-start */
+  .submission {
+    padding: 5px;
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+  }
+  /* Submission-end */
+
+  /* CodeMirror-SettingModal-start */
+  .code-mirror-setting-modal {
+    line-height: 1.5;
+    :deep(.el-dialog__body) {
+      padding: 15px;
+      border-top: 1px solid var(--el-border-color);
+    }
+
+    .code-mirror-setting-modal-main {
+      .setting-list {
+        .setting-item {
+          margin-bottom: 15px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          .description {
+            .description-title {
+            }
+            .description-sub-title {
+              color: var(--el-text-color-secondary);
+              font-size: var(--el-font-size-small);
+            }
+          }
+          .selection {
+            width: 150px;
+          }
+        }
+      }
+    }
+  }
+  /* CodeMirror-SettingModal-end */
 }
 </style>

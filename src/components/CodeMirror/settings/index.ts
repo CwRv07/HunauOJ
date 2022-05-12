@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-03 08:42:17
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-10 11:22:13
+ * @LastEditTime: 2022-05-12 15:03:33
  * @Description:
  * @Email: Rv_Jiang@outlook.com
  */
@@ -25,8 +25,8 @@ import 'codemirror/addon/search/search.js';
 import 'codemirror/addon/search/match-highlighter.js';
 
 // mode
-import 'codemirror/mode/clike/clike.js';
-import 'codemirror/mode/python/python.js';
+import 'codemirror/mode/clike/clike.js'; //C,C++,C#
+import 'codemirror/mode/python/python.js'; // python
 // import 'codemirror/mode/pascal/pascal.js'; //pascal
 // import 'codemirror/mode/go/go.js'; //go
 // import 'codemirror/mode/d/d.js'; //d

@@ -8,7 +8,10 @@ declare module '@vue/runtime-core' {
     CodeMirror: typeof import('./../../../src/components/CodeMirror/CodeMirror.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElButtonGroup: typeof import('element-plus/es')['ElButtonGroup']
+    ElDialog: typeof import('element-plus/es')['ElDialog']
     ElIcon: typeof import('element-plus/es')['ElIcon']
+    ElInput: typeof import('element-plus/es')['ElInput']
+    ElInputNumber: typeof import('element-plus/es')['ElInputNumber']
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElOption: typeof import('element-plus/es')['ElOption']
@@ -21,6 +24,7 @@ declare module '@vue/runtime-core' {
     OlpMenuItem: typeof import('./../../../src/components/olp-header-menu/olp-menu-item/OlpMenuItem.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TeleportToBody: typeof import('./../../../src/components/TeleportToBody/TeleportToBody.vue')['default']
   }
 }
 
