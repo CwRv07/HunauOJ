@@ -83,10 +83,11 @@ video {
   padding: 0;
   box-sizing: border-box;
   vertical-align: baseline;
-  font-family: 'Metropolis Regular', sans-serif;
+  
 }
 /* HTML5 display-role reset for older browsers */
 body {
+  font-family: 'Metropolis Regular', sans-serif;
   line-height: 1;
 }
 ol,
