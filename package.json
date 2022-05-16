@@ -8,6 +8,7 @@
         "preview": "vite preview",
         "lint:eslint": "eslint {library,src}/**/*.{vue,ts,tsx} --fix",
         "lint:prettier": "prettier {src,mock}/**/*.{html,vue,css,sass,scss,ts,md} --write",
+        "commit": "cz",
         "prepare": "husky install"
     },
     "dependencies": {
