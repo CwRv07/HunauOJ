@@ -1,8 +1,8 @@
 <!--
  * @Author: ND_LJQ
  * @Date: 2022-04-30 18:36:59
- * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-11 17:00:52
+ * @LastEditors: ND_LJQ
+ * @LastEditTime: 2022-05-19 08:48:03
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -16,7 +16,7 @@
 
 <script lang="ts" setup>
 import router from '@/router';
-import OlpMenuItem from './olp-menu-item/OlpMenuItem.vue';
+import OlpMenuItem from './components/OlpMenuItem/OlpMenuItem.vue';
 const itemArr = reactive([
   {
     // 注意！注意！有children的菜单项，path不会使用的，所以path为什么都无所谓；没children的，即children的length等于0的，才会使用path属性做路由跳转
