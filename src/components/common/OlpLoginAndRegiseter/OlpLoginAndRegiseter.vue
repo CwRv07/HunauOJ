@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-05-19 09:33:22
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-05-19 17:03:16
+ * @LastEditTime: 2022-05-19 17:52:04
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -37,7 +37,7 @@
             </el-form>
             <el-button type="primary" @click="submitForm(ruleFormRef)">注册</el-button>
             <div class="other-operating">
-              <div class="registerBtn">登录</div>
+              <div class="loginBtn">登录</div>
               <div>联系管理员</div>
             </div>
           </div>
@@ -79,6 +79,26 @@
 import type { FormInstance } from 'element-plus';
 onMounted(() => {
   console.log('Modal正在挂载.....');
+  let login = <HTMLElement>document.querySelector('.login');
+  let register = <HTMLElement>document.querySelector('.register');
+  let loginBtn = <HTMLElement>document.querySelector('.loginBtn');
+  let registerBtn = <HTMLElement>document.querySelector('.registerBtn');
+  console.log(login);
+  console.log(register);
+  loginBtn?.addEventListener('click', () => {
+    console.log('我被点击了!');
+    if (register != null) {
+      register.style.transform = 'rotateY(180deg)';
+      login.style.transform = 'rotateY(0)';
+    }
+  });
+  registerBtn?.addEventListener('click', () => {
+    console.log('我被点击了!');
+    if (login != null) {
+      login.style.transform = 'rotateY(-180deg)';
+      register.style.transform = 'rotateY(0)';
+    }
+  });
 });
 
 //
@@ -219,7 +239,7 @@ const submitForm = (formEl: FormInstance | undefined) => {
       // height: 480px;
       background-color: white;
       border-radius: 3%;
-
+      transition: all 0.6s ease;
       /* opacity: 0; */
 
       > .form-content {
@@ -260,6 +280,10 @@ const submitForm = (formEl: FormInstance | undefined) => {
             margin-right: auto;
             cursor: pointer;
           }
+          > .loginBtn {
+            margin-right: auto;
+            cursor: pointer;
+          }
         }
       }
     }
@@ -267,7 +291,26 @@ const submitForm = (formEl: FormInstance | undefined) => {
 }
 
 .login {
-  // transform: rotateY(180deg);
+  backface-visibility: hidden;
+  > .el-form {
+    transform-style: preserve-3d;
+    transform: translate3d(0, 0, 1px);
+  }
+  > .header-title {
+    transform-style: preserve-3d;
+    > span {
+      > h2 {
+        transform: translate3d(0, 0, 1px);
+      }
+    }
+  }
+  > .logo-img {
+    transform-style: preserve-3d;
+  }
+}
+
+.register {
+  transform: rotateY(180deg);
   backface-visibility: hidden;
   > .el-form {
     transform-style: preserve-3d;
