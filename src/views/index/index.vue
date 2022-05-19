@@ -1,8 +1,8 @@
 <!--
  * @Author: ND_LJQ
  * @Date: 2022-05-01 17:00:11
- * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-12 10:12:05
+ * @LastEditors: ND_LJQ
+ * @LastEditTime: 2022-05-19 10:06:26
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -16,6 +16,7 @@
       <router-link :to="{ name: 'notFound', params: { cause: 500 } }"> 500 </router-link>
       <router-link to="/markdownTest">markdownTest</router-link>
     </div>
+    <olp-login-and-regiseter />
   </div>
 </template>
 

@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-05-10 17:12:04
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-05-12 12:53:11
+ * @LastEditTime: 2022-05-19 09:30:59
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -27,6 +27,7 @@
 import axios from 'axios';
 import { defineComponent, ref } from 'vue';
 import MdEditor from 'md-editor-v3';
+import { ElMessage } from 'element-plus/es';
 import 'md-editor-v3/lib/style.css';
 import '../../utils/storage/index.ts';
 // 使用 sanitizeHtml 处理不安全的 html 防范xss攻击
