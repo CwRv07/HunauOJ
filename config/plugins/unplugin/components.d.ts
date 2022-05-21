@@ -6,16 +6,31 @@ import '@vue/runtime-core'
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     CodeMirror: typeof import('./../../../src/components/base/CodeMirror/CodeMirror.vue')['default']
+    ElAutocomplete: typeof import('element-plus/es')['ElAutocomplete']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElButtonGroup: typeof import('element-plus/es')['ElButtonGroup']
+    ElCol: typeof import('element-plus/es')['ElCol']
+    ElEmpty: typeof import('element-plus/es')['ElEmpty']
     ElForm: typeof import('element-plus/es')['ElForm']
     ElFormItem: typeof import('element-plus/es')['ElFormItem']
     ElIcon: typeof import('element-plus/es')['ElIcon']
     ElInput: typeof import('element-plus/es')['ElInput']
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
+<<<<<<< HEAD
     ElProgress: typeof import('element-plus/es')['ElProgress']
+=======
+    ElOption: typeof import('element-plus/es')['ElOption']
+    ElPagination: typeof import('element-plus/es')['ElPagination']
+    ElProgress: typeof import('element-plus/es')['ElProgress']
+    ElRadioButton: typeof import('element-plus/es')['ElRadioButton']
+    ElRadioGroup: typeof import('element-plus/es')['ElRadioGroup']
+    ElRow: typeof import('element-plus/es')['ElRow']
+    ElSelect: typeof import('element-plus/es')['ElSelect']
+>>>>>>> c2cd847356dc2a2eab08b5f8ab6bcc5189f57d78
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
+    ElTable: typeof import('element-plus/es')['ElTable']
+    ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     OlpHeaderMenu: typeof import('./../../../src/components/common/OlpHeaderMenu/OlpHeaderMenu.vue')['default']
     OlpLoginAndRegiseter: typeof import('./../../../src/components/common/OlpLoginAndRegiseter/OlpLoginAndRegiseter.vue')['default']
     OlpMarkdownEdit: typeof import('./../../../src/components/base/OlpMarkdownEdit/OlpMarkdownEdit.vue')['default']

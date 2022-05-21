@@ -5,7 +5,6 @@
  * @Email: Rv_Jiang@outlook.coms
 -->
 <template>
-  <olp-header-menu />
   <div id="notFound">
     <el-empty>
       <template #description>

@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-04-27 15:56:16
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-10 16:57:46
+ * @LastEditTime: 2022-05-20 09:18:48
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -20,6 +20,7 @@ import {} from '../node_modules/@element-plus/icons-vue';
 
 <template>
   <!-- Rv_Jiang测试代码-start -->
+  <olp-header-menu />
   <router-view />
   <!-- Rv_Jiang测试代码-end -->
 </template>

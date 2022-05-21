@@ -1,14 +1,18 @@
 <!--
  * @Author: ND_LJQ
  * @Date: 2022-05-01 17:00:11
+<<<<<<< HEAD
  * @LastEditors: ND_LJQ
  * @LastEditTime: 2022-05-21 21:46:25
+=======
+ * @LastEditors: Rv_Jiang
+ * @LastEditTime: 2022-05-19 17:10:27
+>>>>>>> c2cd847356dc2a2eab08b5f8ab6bcc5189f57d78
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
 <template>
   <div>
-    <olp-header-menu />
     <!-- <h1 v-loading.fullscreen.lock="true" :element-loading-spinner="svg" element-loading-svg-view-box="0, 0, 1024, 1024" element-loading-background="rgba(122, 122, 122, 0.8)">index</h1> -->
     <div>
       <router-link :to="{ name: 'notFound', params: { cause: 404 } }"> 404 </router-link>
