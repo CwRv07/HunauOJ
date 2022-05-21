@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-05-19 09:33:22
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-05-19 17:52:04
+ * @LastEditTime: 2022-05-19 20:52:51
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -22,14 +22,14 @@
               <span><h2>注册</h2></span>
             </div>
             <el-form ref="ruleFormRef" :model="ruleForm" status-icon :rules="rules" label-width="120px" class="demo-ruleForm" size="large">
-              <el-form-item prop="account" label-width="0">
-                <el-input v-model="ruleForm.account" type="text" autocomplete="off" style="height: 38px" placeholder="手机号/邮箱" />
+              <el-form-item prop="re_account" label-width="0">
+                <el-input v-model="ruleForm.re_account" type="text" autocomplete="off" style="height: 38px" placeholder="手机号/邮箱" />
               </el-form-item>
-              <el-form-item prop="email" label-width="0">
-                <el-input v-model="ruleForm.email" type="email" autocomplete="off" style="height: 38px" placeholder="手机号/邮箱" />
+              <el-form-item prop="re_email" label-width="0">
+                <el-input v-model="ruleForm.re_email" type="email" autocomplete="off" style="height: 38px" placeholder="手机号/邮箱" />
               </el-form-item>
-              <el-form-item prop="pass" label-width="0">
-                <el-input v-model="ruleForm.pass" type="password" autocomplete="off" style="height: 38px" placeholder="密码" />
+              <el-form-item prop="re_pass" label-width="0">
+                <el-input v-model="ruleForm.re_pass" type="password" autocomplete="off" style="height: 38px" placeholder="密码" />
               </el-form-item>
               <el-form-item prop="checkPass" label-width="0">
                 <el-input v-model="ruleForm.checkPass" type="password" autocomplete="off" style="height: 38px" placeholder="确认您的密码" />
@@ -62,6 +62,7 @@
               </el-form-item>
             </el-form>
             <el-button type="primary" @click="submitForm(ruleFormRef)">登录</el-button>
+
             <div class="other-operating">
               <div class="registerBtn">注册</div>
               <div>找回密码</div>
@@ -83,8 +84,7 @@ onMounted(() => {
   let register = <HTMLElement>document.querySelector('.register');
   let loginBtn = <HTMLElement>document.querySelector('.loginBtn');
   let registerBtn = <HTMLElement>document.querySelector('.registerBtn');
-  console.log(login);
-  console.log(register);
+
   loginBtn?.addEventListener('click', () => {
     console.log('我被点击了!');
     if (register != null) {
@@ -143,6 +143,11 @@ const ruleFormRef = ref<FormInstance>();
 //     }
 //   }, 1000);
 // };
+
+// 正则表达式
+//手机号或者座机号
+const reg_tel_phone = /(^((\+86)|(86))?(1[3-9])\d{9}$)|(^(0\d{2,3})-?(\d{7,8})$)/;
+
 const validateAccount = (rule: any, value: any, callback: any) => {
   if (value === '') {
     console.log('已进入');
@@ -154,9 +159,9 @@ const validatePass = (rule: any, value: any, callback: any) => {
   if (value === '') {
     callback(new Error('请输入密码'));
   } else {
-    if (ruleForm.checkPass !== '') {
-      if (!ruleFormRef.value) return;
-      ruleFormRef.value.validateField('checkPass', () => null);
+    const pass = /^(?=.*[a-zA-Z])(?=.*\d).{1,9}$/.test(value);
+    if (!pass) {
+      callback(new Error('密码至少包含字母、数字，1-9位'));
     }
     callback();
   }
@@ -175,6 +180,12 @@ const validateEmail = (rule: any, value: any, callback: any) => {
   if (value === '') {
     console.log('已进入');
     callback(new Error('请输入邮箱'));
+  } else {
+    const pass = /^([a-zA-Z\d][\w-]{2,})@(\w{2,})\.([a-z]{2,})(\.[a-z]{2,})?$/.test(value);
+    if (!pass) {
+      callback(new Error('邮箱格式不正确!'));
+    }
+    callback();
   }
 };
 
@@ -183,6 +194,9 @@ const ruleForm = reactive({
   checkPass: '',
   account: '',
   email: '',
+  re_pass: '',
+  re_email: '',
+  re_account: '',
 });
 
 const rules = reactive({
@@ -190,6 +204,9 @@ const rules = reactive({
   checkPass: [{ validator: validatePass2, trigger: 'blur' }],
   account: [{ validator: validateAccount, trigger: 'blur' }],
   email: [{ validator: validateEmail, trigger: 'blur' }],
+  re_account: [{ validator: validateAccount, trigger: 'blur' }],
+  re_pass: [{ validator: validatePass, trigger: 'blur' }],
+  re_email: [{ validator: validateEmail, trigger: 'blur' }],
 });
 
 const resetForm = (formEl: FormInstance | undefined) => {
@@ -239,7 +256,8 @@ const submitForm = (formEl: FormInstance | undefined) => {
       // height: 480px;
       background-color: white;
       border-radius: 3%;
-      transition: all 0.6s ease;
+      // transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
       /* opacity: 0; */
 
       > .form-content {
@@ -259,7 +277,10 @@ const submitForm = (formEl: FormInstance | undefined) => {
           display: flex;
           -webkit-box-pack: center;
           justify-content: center;
+          -webkit-user-drag: none;
           user-select: none;
+          cursor: default;
+          pointer-events: none;
           > img {
             vertical-align: middle;
             border-style: none;
