@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-05-19 09:33:22
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-05-21 23:00:17
+ * @LastEditTime: 2022-05-21 23:16:47
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -253,6 +253,7 @@ const submitForm = (formEl: FormInstance | undefined) => {
   backdrop-filter: blur(3px);
   background-color: rgba(142, 142, 142, 0.2);
   perspective: 800px;
+  z-index: 100;
   > .turn-body {
     position: absolute;
     top: 50%;
