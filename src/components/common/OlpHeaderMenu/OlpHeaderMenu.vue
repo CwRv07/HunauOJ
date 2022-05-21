@@ -1,8 +1,8 @@
 <!--
  * @Author: ND_LJQ
  * @Date: 2022-04-30 18:36:59
- * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-05-19 08:48:03
+ * @LastEditors: Rv_Jiang
+ * @LastEditTime: 2022-05-21 10:08:57
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -31,7 +31,7 @@ const itemArr = reactive([
     name: '题目',
     sort: 2,
     icon: 'hot-water',
-    path: '',
+    path: '/problems',
     children: [],
   },
   {
