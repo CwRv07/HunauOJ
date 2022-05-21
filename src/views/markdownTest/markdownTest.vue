@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-05-10 20:19:33
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-05-19 09:03:10
+ * @LastEditTime: 2022-05-21 23:06:42
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import markdownEdit from '../../components/OlpMarkdownEdit/OlpMarkdownEdit.vue';
+import markdownEdit from '../../components/base/OlpMarkdownEdit/OlpMarkdownEdit.vue';
 </script>
 
 <style lang="scss" scoped></style>

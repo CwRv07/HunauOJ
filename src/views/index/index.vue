@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-05-01 17:00:11
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-05-19 10:06:26
+ * @LastEditTime: 2022-05-21 21:46:25
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -16,7 +16,6 @@
       <router-link :to="{ name: 'notFound', params: { cause: 500 } }"> 500 </router-link>
       <router-link to="/markdownTest">markdownTest</router-link>
     </div>
-    <olp-login-and-regiseter />
   </div>
 </template>
 

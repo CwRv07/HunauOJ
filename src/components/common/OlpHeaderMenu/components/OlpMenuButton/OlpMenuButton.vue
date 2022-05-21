@@ -2,14 +2,19 @@
  * @Author: ND_LJQ
  * @Date: 2022-05-01 19:52:22
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-05-02 23:21:56
+ * @LastEditTime: 2022-05-21 23:04:01
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
 <template>
   <el-button-group class="ml-4 header-button">
-    <el-button type="primary" style="border: 0">注册</el-button>
-    <el-button type="primary" class="login-button" style="margin-left: 1px; margin-right: 1px; border: 1px solid !important; border-radius: var(--el-border-radius-base)">登录</el-button>
+    <el-button
+      @click="loginHandler"
+      type="primary"
+      class="login-button"
+      style="margin-left: 1px; margin-right: 1px; border: 1px solid !important; border-radius: var(--el-border-radius-base); z-index: 0"
+      >登录</el-button
+    >
     <el-button type="primary" style="border: 0">
       <svg
         style="fill: currentColor; color: var(--el-color-primary)"
@@ -29,9 +34,21 @@
       </svg>
     </el-button>
   </el-button-group>
+
+  <olp-login-and-regiseter :model-value="modelVisible" @handle-check="handleCheck" />
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const modelVisible = ref(false);
+const loginHandler = () => {
+  modelVisible.value = true;
+  console.log(modelVisible.value);
+};
+
+const handleCheck = (param: any) => {
+  modelVisible.value = param;
+};
+</script>
 
 <style lang="scss" scoped>
 .header-button {

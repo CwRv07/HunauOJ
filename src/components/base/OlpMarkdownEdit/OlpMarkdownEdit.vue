@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-05-10 17:12:04
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-05-19 09:30:59
+ * @LastEditTime: 2022-05-21 23:07:15
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -29,7 +29,7 @@ import { defineComponent, ref } from 'vue';
 import MdEditor from 'md-editor-v3';
 import { ElMessage } from 'element-plus/es';
 import 'md-editor-v3/lib/style.css';
-import '../../utils/storage/index.ts';
+// import '../../utils/storage/index.ts';
 // 使用 sanitizeHtml 处理不安全的 html 防范xss攻击
 //使用后会导致代码提示不高亮;
 // import sanitizeHtml from 'sanitize-html';

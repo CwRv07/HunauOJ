@@ -2,19 +2,21 @@
  * @Author: ND_LJQ
  * @Date: 2022-05-19 09:33:22
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-05-19 20:52:51
+ * @LastEditTime: 2022-05-21 23:00:17
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
 <template>
   <div>
-    <h1>登录注册</h1>
-    <div class="modal" v-if="props.modelValue">
+    <div class="modal" v-show="modelVisible">
       <!-- 旋转体-start -->
       <div class="turn-body">
         <!-- 注册-start -->
         <div class="modal-content register">
           <div class="form-content">
+            <div class="turn-off" @click="onCancel">
+              <el-icon><Close /></el-icon>
+            </div>
             <div class="logo-img">
               <img src="../../../assets/logo.png" />
             </div>
@@ -47,6 +49,9 @@
         <!-- 登录-start -->
         <div class="modal-content login">
           <div class="form-content">
+            <div class="turn-off" @click="onCancel">
+              <el-icon><Close /></el-icon>
+            </div>
             <div class="logo-img">
               <img src="../../../assets/logo.png" style="" />
             </div>
@@ -85,6 +90,10 @@ onMounted(() => {
   let loginBtn = <HTMLElement>document.querySelector('.loginBtn');
   let registerBtn = <HTMLElement>document.querySelector('.registerBtn');
 
+  console.log(loginBtn);
+  console.log(registerBtn);
+  console.log(modelVisible);
+
   loginBtn?.addEventListener('click', () => {
     console.log('我被点击了!');
     if (register != null) {
@@ -93,7 +102,7 @@ onMounted(() => {
     }
   });
   registerBtn?.addEventListener('click', () => {
-    console.log('我被点击了!');
+    // console.log('我被点击了!');
     if (login != null) {
       login.style.transform = 'rotateY(-180deg)';
       register.style.transform = 'rotateY(0)';
@@ -107,23 +116,29 @@ const props = defineProps({
   modelValue: {
     type: Boolean,
     modelType: String,
-    default: true,
+    default: false,
   },
-  title: String,
-  content: String,
 });
 
-// 声明自定义事件
-const emit = defineEmits(['update:modelValue', 'handleCheck', 'userInfoHandel']);
+const emit = defineEmits(['handleCheck']);
+const modelVisible = ref(props.modelValue);
 
 const onCancel = () => {
-  emit('update:modelValue', false);
+  // console.log('我被点击了!');
+  modelVisible.value = false;
+  emit('handleCheck', false);
 };
 
-const userInfoHandel = (user: any) => {
-  emit('userInfoHandel', user);
-};
-
+//监听单个对象
+watch(
+  () => props.modelValue,
+  (newVal: any, oldVal: any) => {
+    if (newVal && newVal !== oldVal) {
+      modelVisible.value = newVal;
+    }
+  },
+  { immediate: false, deep: true }
+);
 // From表单校验
 const ruleFormRef = ref<FormInstance>();
 
@@ -265,6 +280,17 @@ const submitForm = (formEl: FormInstance | undefined) => {
         max-width: 384px;
         padding: 24px 32px 32px;
 
+        .turn-off {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          font-size: 20px;
+          transform-origin: center center;
+          transition: all 1s ease;
+          &:hover {
+            transform: rotate(360deg);
+          }
+        }
         > .header-title {
           text-align: center;
           margin-top: 32px;

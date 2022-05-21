@@ -14,6 +14,7 @@ declare module '@vue/runtime-core' {
     ElInput: typeof import('element-plus/es')['ElInput']
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
+    ElProgress: typeof import('element-plus/es')['ElProgress']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     OlpHeaderMenu: typeof import('./../../../src/components/common/OlpHeaderMenu/OlpHeaderMenu.vue')['default']
     OlpLoginAndRegiseter: typeof import('./../../../src/components/common/OlpLoginAndRegiseter/OlpLoginAndRegiseter.vue')['default']
