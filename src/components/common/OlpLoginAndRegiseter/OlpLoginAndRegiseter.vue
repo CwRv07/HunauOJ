@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-05-19 09:33:22
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-06-29 10:09:35
+ * @LastEditTime: 2022-06-29 10:20:19
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -188,6 +188,8 @@ const openElmessage = (info: string, mType: any) => {
     showClose: true,
     message: info,
     type: mType,
+    // grouping: true,
+    // duration: 0,
   });
 };
 
@@ -277,13 +279,13 @@ const resetForm = (formEl: FormInstance | undefined) => {
 
 // 用户登录逻辑
 const userLogin = () => {
-  console.log("已触发");
+  // console.log("已触发");
   if (ruleForm.account == '' || ruleForm.pass == '') {
-    console.log("已触发2");
+    // console.log("已触发2");
     openElmessage('请输入完整!', 'error');
     return;
   } else if (reg_password_pass.value == true && reg_account_pass.value == true) {
-    console.log("已触发3");
+    // console.log("已触发3");
     userLoginInfo.account = ruleForm.account;
     userLoginInfo.pass = ruleForm.pass;
     const jsonString = JSON.stringify(userLoginInfo);
