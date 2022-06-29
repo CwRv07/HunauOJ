@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-05-19 09:33:22
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-05-21 23:16:47
+ * @LastEditTime: 2022-06-29 10:09:35
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -31,13 +31,13 @@
                 <el-input v-model="ruleForm.re_email" type="email" autocomplete="off" style="height: 38px" placeholder="手机号/邮箱" />
               </el-form-item>
               <el-form-item prop="re_pass" label-width="0">
-                <el-input v-model="ruleForm.re_pass" type="password" autocomplete="off" style="height: 38px" placeholder="密码" />
+                <el-input v-model="ruleForm.re_pass" type="password" autocomplete="off" show-password style="height: 38px" placeholder="密码" />
               </el-form-item>
               <el-form-item prop="checkPass" label-width="0">
-                <el-input v-model="ruleForm.checkPass" type="password" autocomplete="off" style="height: 38px" placeholder="确认您的密码" />
+                <el-input v-model="ruleForm.checkPass" type="password" autocomplete="off" show-password style="height: 38px" placeholder="确认您的密码" />
               </el-form-item>
             </el-form>
-            <el-button type="primary" @click="submitForm(ruleFormRef)">注册</el-button>
+            <el-button type="primary" @click="userRegister">注册</el-button>
             <div class="other-operating">
               <div class="loginBtn">登录</div>
               <div>联系管理员</div>
@@ -63,11 +63,11 @@
                 <el-input v-model="ruleForm.account" type="text" autocomplete="off" style="height: 38px" placeholder="手机号/邮箱" />
               </el-form-item>
               <el-form-item prop="pass" label-width="0">
-                <el-input v-model="ruleForm.pass" type="password" autocomplete="off" style="height: 38px" placeholder="密码" />
+                <el-input v-model="ruleForm.pass" type="password" autocomplete="off" show-password style="height: 38px" placeholder="密码" />
               </el-form-item>
             </el-form>
-            <el-button type="primary" @click="submitForm(ruleFormRef)">登录</el-button>
-
+            <el-button type="primary" @click="userLogin">登录</el-button>
+            <!-- <el-button @click="elMessageTest">test</el-button> -->
             <div class="other-operating">
               <div class="registerBtn">注册</div>
               <div>找回密码</div>
@@ -83,19 +83,42 @@
 
 <script lang="ts" setup>
 import type { FormInstance } from 'element-plus';
+import { BuildPropType } from 'element-plus/es/utils';
+
+const userLoginInfo = reactive({
+  account: '',
+  pass: '',
+});
+
+const userRregisterInfo = reactive({
+  re_pass: '',
+  re_email: '',
+  re_account: '',
+});
+
+const ruleForm = reactive({
+  pass: '',
+  checkPass: '',
+  account: '',
+  email: '',
+  re_account: '',
+  re_pass: '',
+  re_email: '',
+});
+
 onMounted(() => {
-  console.log('Modal正在挂载.....');
+  // console.log('Modal正在挂载.....');
   let login = <HTMLElement>document.querySelector('.login');
   let register = <HTMLElement>document.querySelector('.register');
   let loginBtn = <HTMLElement>document.querySelector('.loginBtn');
   let registerBtn = <HTMLElement>document.querySelector('.registerBtn');
 
-  console.log(loginBtn);
-  console.log(registerBtn);
-  console.log(modelVisible);
+  // console.log(loginBtn);
+  // console.log(registerBtn);
+  // console.log(modelVisible);
 
   loginBtn?.addEventListener('click', () => {
-    console.log('我被点击了!');
+    // console.log('我被点击了!');
     if (register != null) {
       register.style.transform = 'rotateY(180deg)';
       login.style.transform = 'rotateY(0)';
@@ -142,58 +165,78 @@ watch(
 // From表单校验
 const ruleFormRef = ref<FormInstance>();
 
-// const checkAge = (rule: any, value: any, callback: any) => {
-//   if (!value) {
-//     return callback(new Error('Please input the age'));
-//   }
-//   setTimeout(() => {
-//     if (!Number.isInteger(value)) {
-//       callback(new Error('Please input digits'));
-//     } else {
-//       if (value < 18) {
-//         callback(new Error('Age must be greater than 18'));
-//       } else {
-//         callback();
-//       }
-//     }
-//   }, 1000);
-// };
+const checkAge = (rule: any, value: any, callback: any) => {
+  if (!value) {
+    return callback(new Error('Please input the age'));
+  }
+  setTimeout(() => {
+    if (!Number.isInteger(value)) {
+      callback(new Error('Please input digits'));
+    } else {
+      if (value < 18) {
+        callback(new Error('Age must be greater than 18'));
+      } else {
+        callback();
+      }
+    }
+  }, 1000);
+};
+
+const openElmessage = (info: string, mType: any) => {
+  console.log(info, mType);
+  ElMessage({
+    showClose: true,
+    message: info,
+    type: mType,
+  });
+};
 
 // 正则表达式
 //手机号或者座机号
 const reg_tel_phone = /(^((\+86)|(86))?(1[3-9])\d{9}$)|(^(0\d{2,3})-?(\d{7,8})$)/;
 
+const reg_account_pass = ref(true)
 const validateAccount = (rule: any, value: any, callback: any) => {
   if (value === '') {
-    console.log('已进入');
+    // console.log('已进入');
+    reg_account_pass.value = false;
     callback(new Error('请输入账号'));
   }
 };
 
+const reg_password_pass = ref(true)
 const validatePass = (rule: any, value: any, callback: any) => {
   if (value === '') {
+    reg_password_pass.value = false
     callback(new Error('请输入密码'));
   } else {
     const pass = /^(?=.*[a-zA-Z])(?=.*\d).{1,9}$/.test(value);
     if (!pass) {
+      reg_password_pass.value = false
       callback(new Error('密码至少包含字母、数字，1-9位'));
     }
     callback();
   }
 };
+
+const reg_checkPassword_pass = ref(true);
 const validatePass2 = (rule: any, value: any, callback: any) => {
   if (value === '') {
     callback(new Error('请再次输入您的密码'));
-  } else if (value !== ruleForm.pass) {
+    reg_checkPassword_pass.value = false
+  } else if (value !== ruleForm.re_pass) {
+    reg_checkPassword_pass.value = false
     callback(new Error('两次输入的密码不一致!'));
   } else {
     callback();
   }
 };
 
+const reg_email_pass = ref(true)
 const validateEmail = (rule: any, value: any, callback: any) => {
   if (value === '') {
-    console.log('已进入');
+    // console.log('已进入');
+    reg_email_pass.value = false
     callback(new Error('请输入邮箱'));
   } else {
     const pass = /^([a-zA-Z\d][\w-]{2,})@(\w{2,})\.([a-z]{2,})(\.[a-z]{2,})?$/.test(value);
@@ -203,16 +246,6 @@ const validateEmail = (rule: any, value: any, callback: any) => {
     callback();
   }
 };
-
-const ruleForm = reactive({
-  pass: '',
-  checkPass: '',
-  account: '',
-  email: '',
-  re_pass: '',
-  re_email: '',
-  re_account: '',
-});
 
 const rules = reactive({
   pass: [{ validator: validatePass, trigger: 'blur' }],
@@ -228,19 +261,50 @@ const resetForm = (formEl: FormInstance | undefined) => {
   if (!formEl) return;
   formEl.resetFields();
 };
-const submitForm = (formEl: FormInstance | undefined) => {
-  if (!formEl) return;
-  formEl.validate(valid => {
-    if (valid) {
-      console.log('submit!');
-    } else {
-      console.log('error submit!');
+// const submitForm = (formEl: FormInstance | undefined) => {
+//   if (!formEl) return;
+//   formEl.validate(valid => {
+//     if (valid) {
+//       console.log('submit!');
+//     } else {
+//       console.log('error submit!');
 
-      return false;
-    }
-  });
-};
+//       return false;
+//     }
+//   });
+// };
 //  /From表单校验
+
+// 用户登录逻辑
+const userLogin = () => {
+  console.log("已触发");
+  if (ruleForm.account == '' || ruleForm.pass == '') {
+    console.log("已触发2");
+    openElmessage('请输入完整!', 'error');
+    return;
+  } else if (reg_password_pass.value == true && reg_account_pass.value == true) {
+    console.log("已触发3");
+    userLoginInfo.account = ruleForm.account;
+    userLoginInfo.pass = ruleForm.pass;
+    const jsonString = JSON.stringify(userLoginInfo);
+    // console.log(jsonString);
+  }
+};
+
+// 用户注册逻辑
+const userRegister = () =>{
+  if (ruleForm.re_account == '' || ruleForm.re_email == '' || ruleForm.re_pass == '') {
+    console.log('已进入1');
+    openElmessage('请将信息输入完整!', 'error');
+    return;
+  } else if (reg_password_pass.value == true && reg_account_pass.value == true && reg_checkPassword_pass.value == true && reg_email_pass.value == true) {
+    userRregisterInfo.re_account = ruleForm.re_account;
+    userRregisterInfo.re_email = ruleForm.re_email;
+    userRregisterInfo.re_pass = ruleForm.re_pass;
+    const jsonString = JSON.stringify(userRregisterInfo);
+    console.log(jsonString);
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -249,11 +313,11 @@ const submitForm = (formEl: FormInstance | undefined) => {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh);
   backdrop-filter: blur(3px);
   background-color: rgba(142, 142, 142, 0.2);
   perspective: 800px;
-  z-index: 100;
+  z-index: 2000;
   > .turn-body {
     position: absolute;
     top: 50%;
@@ -286,6 +350,7 @@ const submitForm = (formEl: FormInstance | undefined) => {
           top: 10px;
           right: 10px;
           font-size: 20px;
+          cursor: pointer;
           transform-origin: center center;
           transition: all 1s ease;
           &:hover {
