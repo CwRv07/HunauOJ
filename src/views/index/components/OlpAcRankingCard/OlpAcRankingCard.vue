@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-06-30 15:52:27
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-06-30 15:53:40
+ * @LastEditTime: 2022-06-30 16:29:42
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -104,7 +104,7 @@
             </div>
           </template>
         </el-table-column>
-        <el-table-column label="用户名">
+        <el-table-column label="用户名" show-overflow-tooltip>
           <template #default="scope">
             <el-popover effect="light" trigger="hover" placement="top" width="auto">
               <template #default>
@@ -137,7 +137,7 @@
 <script lang="ts" setup>
 const tableData = reactive([
   {
-    userName: 'Tom',
+    userName: 'Tomdianddiunawidniawndiuawdiun',
     acNumber: 1,
     avatarSrc: '',
   },
@@ -178,5 +178,6 @@ const tableData = reactive([
 .ac-ranking-card {
   margin-top: 15px;
   width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 </style>
