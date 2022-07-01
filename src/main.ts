@@ -16,6 +16,8 @@ import router from '@/router';
 import store from '@/store';
 //ElementPlus Icon
 import * as Elicons from '@element-plus/icons-vue';
+// 自定义主题
+import '@/assets/styles/element/index.scss';
 // 全局样式表
 import './assets/styles/reset/index.scss';
 
