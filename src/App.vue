@@ -1,8 +1,8 @@
 <!--
  * @Author: Rv_Jiang
  * @Date: 2022-04-27 15:56:16
- * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-06-29 14:51:29
+ * @LastEditors: Rv_Jiang
+ * @LastEditTime: 2022-07-01 09:48:37
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -28,6 +28,12 @@ import {} from '../node_modules/@element-plus/icons-vue';
 <style lang="scss">
 #app {
   color: var(--el-text-color-primary);
+  background-color: $bg-color;
+
+  /* 全局修改el-card样式 */
+  .el-card {
+    box-shadow: $box-shadow-default;
+  }
 }
 body {
   overflow-x: hidden;

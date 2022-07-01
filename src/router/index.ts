@@ -2,14 +2,14 @@
  * @Author: Rv_Jiang
  * @Date: 2022-04-28 10:19:32
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-02 22:22:45
+ * @LastEditTime: 2022-07-01 10:22:06
  * @Description:
  * @Email: Rv_Jiang@outlook.com
  */
 import { createRouter, createWebHashHistory, RouteLocationNormalized } from 'vue-router';
 import { useGetters } from '@/utils/useMapper';
 import stateRouter from './stateRouter';
-import { USER_ROLE } from '@/utils/constants';
+// import { USER_ROLE } from '@/utils/constants';
 
 /*
 createWebHashHistory hash 路由
@@ -54,64 +54,78 @@ const elMessageToRollBack = () => {
  * @param {RouteLocationNormalized} from
  * @return {*}
  */
+import { ElLoading } from 'element-plus';
+
+/* 路由导航变量 */
+const routerVariable: { [key: string]: any } = {
+  loadingInstance: null,
+};
+
 router.beforeEach((to: RouteLocationNormalized /* from: RouteLocationNormalized */) => {
   console.log(to);
 
-  // 判断路由匹配里是否需要权限
-  if (to.matched.some(oldRouter => oldRouter.meta.roles)) {
-    // 当前路由需要权限情况
+  /* 路由跳转动画 */
+  routerVariable.loadingInstance = ElLoading.service();
 
-    // 判断当前用户能否进行身份判断
-    if (userStore.isAuthenticated.value) {
-      //详细判断身份是否符合
+  // // 判断路由匹配里是否需要权限
+  // if (to.matched.some(oldRouter => oldRouter.meta.roles)) {
 
-      // 超级管理员
-      if (userStore.isSuperAdmin.value) {
-        return;
-      }
+  //   // 判断当前用户能否进行身份判断
+  //   if (userStore.isAuthenticated.value) {
+  //     //详细判断身份是否符合
 
-      // 问题管理员
-      if (userStore.isProblemAdmin.value) {
-        if ((to.meta.roles as string[]).includes(USER_ROLE.PROBLEM_ADMIN)) {
-          return;
-        } else {
-          elMessageToRollBack();
-          return false;
-        }
-      }
+  //     // 超级管理员
+  //     if (userStore.isSuperAdmin.value) {
+  //       return;
+  //     }
 
-      // 管理员
-      if (userStore.isAdmin.value) {
-        if ((to.meta.roles as string[]).includes(USER_ROLE.ADMIN)) {
-          return;
-        } else {
-          elMessageToRollBack();
-          return false;
-        }
-      }
+  //     // 问题管理员
+  //     if (userStore.isProblemAdmin.value) {
+  //       if ((to.meta.roles as string[]).includes(USER_ROLE.PROBLEM_ADMIN)) {
+  //         return;
+  //       } else {
+  //         elMessageToRollBack();
+  //         return false;
+  //       }
+  //     }
 
-      // 用户
-      if (userStore.isUser.value) {
-        if ((to.meta.roles as string[]).includes(USER_ROLE.USER)) {
-          return;
-        } else {
-          elMessageToRollBack();
-          return false;
-        }
-      }
+  //     // 管理员
+  //     if (userStore.isAdmin.value) {
+  //       if ((to.meta.roles as string[]).includes(USER_ROLE.ADMIN)) {
+  //         return;
+  //       } else {
+  //         elMessageToRollBack();
+  //         return false;
+  //       }
+  //     }
 
-      // 异常用户处理
-      elMessageToLogin();
-      return false;
-    } else {
-      // 无法进行身份判断，跳转登录页面
-      elMessageToLogin();
-      return false;
-    }
-  } else {
-    // 当前路由不需要权限情况
-    return;
-  }
+  //     // 用户
+  //     if (userStore.isUser.value) {
+  //       if ((to.meta.roles as string[]).includes(USER_ROLE.USER)) {
+  //         return;
+  //       } else {
+  //         elMessageToRollBack();
+  //         return false;
+  //       }
+  //     }
+
+  //     // 异常用户处理
+  //     elMessageToLogin();
+  //     return false;
+  //   } else {
+  //     // 无法进行身份判断，跳转登录页面
+  //     elMessageToLogin();
+  //     return false;
+  //   }
+  // } else {
+  //   // 当前路由不需要权限情况
+  //   return;
+  // }
 });
 
+router.afterEach((to: RouteLocationNormalized) => {
+  setTimeout(() => {
+    routerVariable.loadingInstance.close();
+  }, 500);
+});
 export default router;

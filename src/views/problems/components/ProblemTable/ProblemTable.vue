@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-03 08:11:33
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-21 10:04:31
+ * @LastEditTime: 2022-07-01 10:21:07
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -33,12 +33,12 @@
             <!-- /题目标签 -->
 
             <!-- 题目名称 -->
-            <el-autocomplete class="problem-title" v-model="title.active" :fetch-suggestions="title.querySearch" clearable placeholder="题目搜索" :prefix-icon="Search" />
+            <el-autocomplete class="problem-title" v-model="title.active" :fetch-suggestions="title.querySearch" clearable placeholder="题目搜索" prefix-icon="Search" />
             <!-- /题目名称 -->
           </aside>
           <aside class="right">
             <!-- 随机一题 -->
-            <el-button class="problem-random" round :icon="MagicStick" size="large">随机一题</el-button>
+            <el-button class="problem-random" round icon="MagicStick" size="large">随机一题</el-button>
             <!-- /随机一题 -->
           </aside>
         </el-col>
@@ -59,7 +59,7 @@
         <el-table-column prop="total" label="提交总数" min-width="100px" />
         <el-table-column prop="pass" label="AC通过率" min-width="150px">
           <template #default="slotProps">
-            <el-progress :text-inside="true" :stroke-width="23" :percentage="slotProps.row.pass" :color="passColorFunc" :format="passFormatFunc" />
+            <el-progress :stroke-width="15" :show-text="false" :percentage="slotProps.row.pass" :color="passColorFunc" :format="passFormatFunc" />
           </template>
         </el-table-column>
       </el-table>
@@ -82,7 +82,6 @@
 </template>
 
 <script setup lang="ts" name="problem-table">
-import { Search, MagicStick } from '@element-plus/icons-vue';
 /* 筛选栏 */
 
 // 标题语言
@@ -308,13 +307,12 @@ const pagination = reactive({
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/public.scss';
 #problemTable {
   .box-header {
-    margin: 10px 0;
+    margin-bottom: 15px;
     /* 题目语言 */
     .problem-language {
-      margin: 10px 0;
+      margin-bottom: 15px;
       :deep(.language-item) {
         .el-radio-button__inner {
           margin-right: 10px;
@@ -364,6 +362,7 @@ const pagination = reactive({
         /* 题目标签 */
         .problem-tag {
           width: 155px;
+          z-index: 100;
 
           &:hover {
             --el-border-color-extra-light: var(--el-border-color-light);
@@ -406,7 +405,7 @@ const pagination = reactive({
   }
 
   .box-footer {
-    margin: 20px 0;
+    margin-top: 20px;
     display: flex;
     justify-content: flex-end;
   }

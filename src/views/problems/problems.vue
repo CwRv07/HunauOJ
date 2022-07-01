@@ -2,18 +2,20 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-03 08:11:33
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-21 10:01:59
+ * @LastEditTime: 2022-07-01 10:19:11
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
 <template>
   <div id="problems">
     <el-row>
-      <el-col :span="18">
-        <problem-table />
+      <el-col class="problem-table-box" :sm="16">
+        <el-card>
+          <problem-table />
+        </el-card>
       </el-col>
 
-      <el-col :span="6">
+      <el-col :sm="8" class="hidden-xs-only">
         <aside class="problem-side"></aside>
       </el-col>
     </el-row>
@@ -25,10 +27,10 @@ import ProblemTable from './components/ProblemTable/ProblemTable.vue';
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/public.scss';
-
 #problems {
-  width: $global-width;
-  margin: 0 auto;
+  @include body-padding($body-padding-list);
+  margin-top: 30px;
+  .problem-table-box {
+  }
 }
 </style>
