@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-04-27 15:56:16
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-20 08:54:03
+ * @LastEditTime: 2022-07-01 09:35:34
  * @Description:
  * @Email: Rv_Jiang@outlook.com
  */
@@ -16,9 +16,11 @@ import router from '@/router';
 import store from '@/store';
 //ElementPlus Icon
 import * as Elicons from '@element-plus/icons-vue';
+// ElementPlus 响应式隐藏class
+import 'element-plus/theme-chalk/display.css';
 // 自定义主题
 import '@/assets/styles/element/index.scss';
-// 全局样式表
+// 全局重置样式
 import './assets/styles/reset/index.scss';
 
 const app = createApp(App);

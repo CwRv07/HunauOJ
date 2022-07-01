@@ -197,7 +197,7 @@ const openElmessage = (info: string, mType: any) => {
 //手机号或者座机号
 const reg_tel_phone = /(^((\+86)|(86))?(1[3-9])\d{9}$)|(^(0\d{2,3})-?(\d{7,8})$)/;
 
-const reg_account_pass = ref(true)
+const reg_account_pass = ref(true);
 const validateAccount = (rule: any, value: any, callback: any) => {
   if (value === '') {
     // console.log('已进入');
@@ -206,15 +206,15 @@ const validateAccount = (rule: any, value: any, callback: any) => {
   }
 };
 
-const reg_password_pass = ref(true)
+const reg_password_pass = ref(true);
 const validatePass = (rule: any, value: any, callback: any) => {
   if (value === '') {
-    reg_password_pass.value = false
+    reg_password_pass.value = false;
     callback(new Error('请输入密码'));
   } else {
     const pass = /^(?=.*[a-zA-Z])(?=.*\d).{1,9}$/.test(value);
     if (!pass) {
-      reg_password_pass.value = false
+      reg_password_pass.value = false;
       callback(new Error('密码至少包含字母、数字，1-9位'));
     }
     callback();
@@ -225,20 +225,20 @@ const reg_checkPassword_pass = ref(true);
 const validatePass2 = (rule: any, value: any, callback: any) => {
   if (value === '') {
     callback(new Error('请再次输入您的密码'));
-    reg_checkPassword_pass.value = false
+    reg_checkPassword_pass.value = false;
   } else if (value !== ruleForm.re_pass) {
-    reg_checkPassword_pass.value = false
+    reg_checkPassword_pass.value = false;
     callback(new Error('两次输入的密码不一致!'));
   } else {
     callback();
   }
 };
 
-const reg_email_pass = ref(true)
+const reg_email_pass = ref(true);
 const validateEmail = (rule: any, value: any, callback: any) => {
   if (value === '') {
     // console.log('已进入');
-    reg_email_pass.value = false
+    reg_email_pass.value = false;
     callback(new Error('请输入邮箱'));
   } else {
     const pass = /^([a-zA-Z\d][\w-]{2,})@(\w{2,})\.([a-z]{2,})(\.[a-z]{2,})?$/.test(value);
@@ -294,7 +294,7 @@ const userLogin = () => {
 };
 
 // 用户注册逻辑
-const userRegister = () =>{
+const userRegister = () => {
   if (ruleForm.re_account == '' || ruleForm.re_email == '' || ruleForm.re_pass == '') {
     console.log('已进入1');
     openElmessage('请将信息输入完整!', 'error');
