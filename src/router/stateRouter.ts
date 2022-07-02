@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-01 18:56:23
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-07-01 10:05:52
+ * @LastEditTime: 2022-07-02 10:26:47
  * @Description: 公开路由表
  * @Email: Rv_Jiang@outlook.com
  */
@@ -47,6 +47,12 @@ const stateRouter: RouteRecordRaw[] = [
     children: [],
   },
   /* problems-end */
+  {
+    path: '/team',
+    component: () => import('@/views/team/team.vue'),
+    meta: { title: 'team' },
+    children: [],
+  },
   {
     path: '/markdownTest',
     component: () => import('@/views/markdownTest/markdownTest.vue'),
