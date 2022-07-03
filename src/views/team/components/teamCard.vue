@@ -21,7 +21,7 @@
         </el-tag>
         <el-tag type="info" effect="plain">
           <el-icon size="1rem"><Clock /></el-icon>
-          <span>时间</span>
+          <span>22-07-02</span>
         </el-tag>
       </footer>
     </aside>
@@ -37,6 +37,14 @@
   :deep(.el-card__body) {
     display: flex;
   }
+  &:hover {
+    .team-name {
+      color: var(--el-color-primary);
+    }
+    .el-image {
+      transform: scale(1.05);
+    }
+  }
   /* 图片板块 */
   .card-image {
     width: 100px;
@@ -45,6 +53,7 @@
       height: 100px;
       border-radius: var(--el-border-radius-base);
       overflow: hidden;
+      transition: transform 0.3s;
     }
     .team-leader {
       @extend .single-line;
@@ -64,6 +73,7 @@
       @extend .single-line;
       font-size: var(--el-font-size-medium);
       font-weight: bold;
+      transition: color 0.3s;
     }
     .team-introduction {
       margin: 10px 0;
