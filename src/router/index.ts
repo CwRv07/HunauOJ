@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-04-28 10:19:32
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-07-01 10:22:06
+ * @LastEditTime: 2022-07-02 11:47:59
  * @Description:
  * @Email: Rv_Jiang@outlook.com
  */
@@ -34,20 +34,20 @@ const router = createRouter({
 
 /* 路由导航卫士 */
 // 常量定义
-const userStore = useGetters('userStore', ['isAuthenticated', 'isUser', 'isAdmin', 'isProblemAdmin', 'isSuperAdmin']);
-const elMessageToLogin = () => {
-  ElMessageBox.alert('您未进行登录操作或登录超时', '请先进行登录操作', {
-    confirmButtonText: '确认',
-    callback: () => {
-      router.push('/index');
-    },
-  });
-};
-const elMessageToRollBack = () => {
-  ElMessageBox.alert('您当前用户权限不足', '访问失败', {
-    confirmButtonText: '确认',
-  });
-};
+// const userStore = useGetters('userStore', ['isAuthenticated', 'isUser', 'isAdmin', 'isProblemAdmin', 'isSuperAdmin']);
+// const elMessageToLogin = () => {
+//   ElMessageBox.alert('您未进行登录操作或登录超时', '请先进行登录操作', {
+//     confirmButtonText: '确认',
+//     callback: () => {
+//       router.push('/index');
+//     },
+//   });
+// };
+// const elMessageToRollBack = () => {
+//   ElMessageBox.alert('您当前用户权限不足', '访问失败', {
+//     confirmButtonText: '确认',
+//   });
+// };
 /**
  * @Description: 路由导航守卫拦截
  * @param {RouteLocationNormalized} to
@@ -123,7 +123,7 @@ router.beforeEach((to: RouteLocationNormalized /* from: RouteLocationNormalized 
   // }
 });
 
-router.afterEach((to: RouteLocationNormalized) => {
+router.afterEach(() => {
   setTimeout(() => {
     routerVariable.loadingInstance.close();
   }, 500);
