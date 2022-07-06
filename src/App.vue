@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-04-27 15:56:16
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-07-01 09:48:37
+ * @LastEditTime: 2022-07-06 17:01:35
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -33,6 +33,14 @@ import {} from '../node_modules/@element-plus/icons-vue';
   /* 全局修改el-card样式 */
   .el-card {
     box-shadow: $box-shadow-default;
+  }
+
+  // icon与文本对齐
+  .el-tag {
+    .el-tag__content {
+      display: flex;
+      align-items: center;
+    }
   }
 }
 body {

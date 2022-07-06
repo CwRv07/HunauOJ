@@ -95,13 +95,6 @@
       > li {
         margin-right: 10px;
       }
-      .el-tag {
-        // icon与文本对齐
-        :deep(.el-tag__content) {
-          display: flex;
-          align-items: center;
-        }
-      }
     }
   }
 

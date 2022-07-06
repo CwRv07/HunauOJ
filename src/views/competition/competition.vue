@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-07-04 10:12:58
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-07-04 12:32:22
+ * @LastEditTime: 2022-07-06 13:00:29
  * @Description: 比赛
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -81,9 +81,10 @@ const changePage = (page: number) => {
   /* 筛选器板块 */
   .competition-select {
     .status-select {
-      margin-bottom: 10px;
+      margin: 5px 0;
     }
-    .title-select {
+    :deep(.title-select) {
+      margin: 5px 0;
       width: 100%;
     }
   }
