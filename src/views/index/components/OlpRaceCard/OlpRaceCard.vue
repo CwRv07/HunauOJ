@@ -10,7 +10,12 @@
   <el-card class="race-box" :body-style="{ width: '95%' }">
     <div class="race-box-content">
       <div class="race-content-title"><h3>近期比赛</h3></div>
-      <div class="race-item" v-for="(item, index) in raceList" :key="index" style="border-radius: 3px">
+      <div
+        class="race-item"
+        v-for="(item, index) in raceList"
+        :key="index"
+        style="border-radius: 3px"
+      >
         <div class="item-title">
           <div class="title-content">
             <div class="race-title">
@@ -35,20 +40,30 @@
 
               <el-tooltip placement="top" effect="light" v-if="item.racePermissionsLv == 1">
                 <template #content>私有赛 - 用户需要密码才可查看与提交</template>
-                <el-button type="danger" plain size="small" style="cursor: default">私有赛</el-button>
+                <el-button type="danger" plain size="small" style="cursor: default"
+                  >私有赛</el-button
+                >
               </el-tooltip>
 
               <el-tooltip placement="top" effect="light" v-if="item.racePermissionsLv == 0">
                 <template #content>公开赛 - 所有用户可查看与提交</template>
-                <el-button type="success" plain size="small" style="cursor: default">公开赛</el-button>
+                <el-button type="success" plain size="small" style="cursor: default"
+                  >公开赛</el-button
+                >
               </el-tooltip>
             </div>
           </div>
           <div class="race-info">
             <div class="info-content">
-              <el-button type="info" round size="small" icon="Calendar" style="cursor: default">{{ item.raceDate }}</el-button>
-              <el-button type="success" round size="small" icon="AlarmClock" style="cursor: default">{{ item.raceDuration }}天</el-button>
-              <el-button plain round size="small" icon="User" style="cursor: default">{{ item.raceMembers }}人</el-button>
+              <el-button type="info" round size="small" icon="Calendar" style="cursor: default">{{
+                item.raceDate
+              }}</el-button>
+              <el-button type="success" round size="small" icon="AlarmClock" style="cursor: default"
+                >{{ item.raceDuration }}天</el-button
+              >
+              <el-button plain round size="small" icon="User" style="cursor: default"
+                >{{ item.raceMembers }}人</el-button
+              >
             </div>
           </div>
         </div>

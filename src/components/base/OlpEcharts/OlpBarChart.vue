@@ -49,8 +49,22 @@ onMounted(() => {
         data: [203, 489, 34, 970, 744, 230],
         markPoint: {
           data: [
-            { type: 'max', name: 'Max', symbolRotate: 270, symbolOffset: [5, 0], symbolSize: 55, label: { position: 'inside', offset: [5, 5] } },
-            { type: 'min', name: 'Min', symbolRotate: 270, symbolOffset: [5, 0], symbolSize: 55, label: { position: 'inside', offset: [5, 5] } },
+            {
+              type: 'max',
+              name: 'Max',
+              symbolRotate: 270,
+              symbolOffset: [5, 0],
+              symbolSize: 55,
+              label: { position: 'inside', offset: [5, 5] },
+            },
+            {
+              type: 'min',
+              name: 'Min',
+              symbolRotate: 270,
+              symbolOffset: [5, 0],
+              symbolSize: 55,
+              label: { position: 'inside', offset: [5, 5] },
+            },
           ],
         },
       },

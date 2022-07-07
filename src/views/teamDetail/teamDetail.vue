@@ -31,7 +31,11 @@
           <aside class="team-introduction">
             <!-- 团队头像 -->
             <header class="team-image">
-              <el-image src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" fit="cover" :lazy="true" />
+              <el-image
+                src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+                fit="cover"
+                :lazy="true"
+              />
             </header>
             <!-- 团队信息 -->
             <main class="team-info">

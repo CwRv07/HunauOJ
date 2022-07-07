@@ -77,7 +77,9 @@ const backToIndex = () => {
     font-size: 100px;
     letter-spacing: 15px;
     font-weight: bold;
-    text-shadow: var(--el-color-primary-light-5) 1px 1px 0, var(--el-color-primary-light-7) 2px 2px 0, var(--el-color-primary-light-8) 3px 3px 0, var(--el-color-primary-light-9) 4px 4px 0;
+    text-shadow: var(--el-color-primary-light-5) 1px 1px 0,
+      var(--el-color-primary-light-7) 2px 2px 0, var(--el-color-primary-light-8) 3px 3px 0,
+      var(--el-color-primary-light-9) 4px 4px 0;
     user-select: none;
   }
 

@@ -14,31 +14,68 @@
         <el-col :span="24">
           <!-- 题目语言 -->
           <el-radio-group class="problem-language" v-model="language.active">
-            <el-radio-button class="language-item" v-for="item in language.list" :key="item" :label="item" />
+            <el-radio-button
+              class="language-item"
+              v-for="item in language.list"
+              :key="item"
+              :label="item"
+            />
           </el-radio-group>
           <!-- /题目语言 -->
         </el-col>
         <el-col :span="24" class="problem-detail-condition">
           <aside class="left">
             <!-- 题目难度 -->
-            <el-select class="problem-difficulty" clearable v-model="difficulty.active" placeholder="难度">
-              <el-option v-for="item in difficulty.list" :key="item.value" :label="item.label" :value="item.value" />
+            <el-select
+              class="problem-difficulty"
+              clearable
+              v-model="difficulty.active"
+              placeholder="难度"
+            >
+              <el-option
+                v-for="item in difficulty.list"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              />
             </el-select>
             <!-- /题目难度 -->
 
             <!-- 题目标签 -->
-            <el-select class="problem-tag" v-model="tag.active" multiple filterable collapse-tags collapse-tags-tooltip placeholder="标签">
-              <el-option v-for="item in tag.list" :key="item.value" :label="item.label" :value="item.value" />
+            <el-select
+              class="problem-tag"
+              v-model="tag.active"
+              multiple
+              filterable
+              collapse-tags
+              collapse-tags-tooltip
+              placeholder="标签"
+            >
+              <el-option
+                v-for="item in tag.list"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              />
             </el-select>
             <!-- /题目标签 -->
 
             <!-- 题目名称 -->
-            <el-autocomplete class="problem-title" v-model="title.active" :fetch-suggestions="title.querySearch" clearable placeholder="题目搜索" prefix-icon="Search" />
+            <el-autocomplete
+              class="problem-title"
+              v-model="title.active"
+              :fetch-suggestions="title.querySearch"
+              clearable
+              placeholder="题目搜索"
+              prefix-icon="Search"
+            />
             <!-- /题目名称 -->
           </aside>
           <aside class="right">
             <!-- 随机一题 -->
-            <el-button class="problem-random" round icon="MagicStick" size="large">随机一题</el-button>
+            <el-button class="problem-random" round icon="MagicStick" size="large"
+              >随机一题</el-button
+            >
             <!-- /随机一题 -->
           </aside>
         </el-col>
@@ -52,14 +89,22 @@
         <el-table-column prop="id" label="题目ID" min-width="100px" />
         <el-table-column prop="name" label="题目" min-width="200px">
           <template #default="slotProps">
-            <p class="table-problem-title" :title="slotProps.row.name">{{ slotProps.row.name }}</p>
+            <p class="table-problem-title" :title="slotProps.row.name">
+              {{ slotProps.row.name }}
+            </p>
           </template>
         </el-table-column>
         <el-table-column prop="difficulty" min-width="100px" label="难度" />
         <el-table-column prop="total" label="提交总数" min-width="100px" />
         <el-table-column prop="pass" label="AC通过率" min-width="150px">
           <template #default="slotProps">
-            <el-progress :stroke-width="15" :show-text="false" :percentage="slotProps.row.pass" :color="passColorFunc" :format="passFormatFunc" />
+            <el-progress
+              :stroke-width="15"
+              :show-text="false"
+              :percentage="slotProps.row.pass"
+              :color="passColorFunc"
+              :format="passFormatFunc"
+            />
           </template>
         </el-table-column>
       </el-table>

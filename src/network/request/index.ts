@@ -43,7 +43,10 @@ class Request {
     this.interceptorsObj = config.interceptors;
 
     // 实例请求拦截器
-    this.instance.interceptors.request.use(this.interceptorsObj?.requestInterceptors, this.interceptorsObj?.requestInterceptorsCatch);
+    this.instance.interceptors.request.use(
+      this.interceptorsObj?.requestInterceptors,
+      this.interceptorsObj?.requestInterceptorsCatch
+    );
 
     // 全局请求拦截器
     this.instance.interceptors.request.use(
@@ -55,7 +58,10 @@ class Request {
     );
 
     //使用实例响应拦截器
-    this.instance.interceptors.response.use(this.interceptorsObj?.responseInterceptors, this.interceptorsObj?.responseInterceptorsCatch);
+    this.instance.interceptors.response.use(
+      this.interceptorsObj?.responseInterceptors,
+      this.interceptorsObj?.responseInterceptorsCatch
+    );
 
     // 全局响应拦截器保证最后执行
     this.instance.interceptors.response.use(

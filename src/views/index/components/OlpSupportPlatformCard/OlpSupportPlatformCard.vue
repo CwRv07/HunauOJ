@@ -15,11 +15,30 @@
     </template>
     <div>
       <el-row :gutter="10">
-        <el-col :span="12" class="lightgreen-box" v-for="(item, index) in platformList" :key="index">
+        <el-col
+          :span="12"
+          class="lightgreen-box"
+          v-for="(item, index) in platformList"
+          :key="index"
+        >
           <el-tooltip :content="item.plaName" placement="top">
             <a :href="item.plaSrc">
-              <div style="margin-bottom: 10px; display: flex; justify-content: center; align-items: center; border-radius: 3px; border: 1px rgb(65, 184, 130) solid">
-                <el-image style="width: 8rem; height: 3rem" :src="item.plaImgSrc" :initial-index="4" fit="contain" />
+              <div
+                style="
+                  margin-bottom: 10px;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  border-radius: 3px;
+                  border: 1px rgb(65, 184, 130) solid;
+                "
+              >
+                <el-image
+                  style="width: 8rem; height: 3rem"
+                  :src="item.plaImgSrc"
+                  :initial-index="4"
+                  fit="contain"
+                />
               </div>
             </a>
           </el-tooltip>

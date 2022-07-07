@@ -2,12 +2,19 @@
  * @Author: ND_LJQ
  * @Date: 2022-04-30 18:36:59
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-21 10:08:57
+ * @LastEditTime: 2022-07-07 10:36:56
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
 <template>
-  <el-menu :default-active="activeIndex" class="el-menu-header" mode="horizontal" router text-color="black" @select="handleSelect" active-text-color="#47b686">
+  <el-menu
+    :default-active="activeIndex"
+    class="el-menu-header"
+    mode="horizontal"
+    text-color="black"
+    @select="handleSelect"
+    active-text-color="#47b686"
+  >
     <!-- 递归动态菜单 -->
     <olp-menu-item :item-arr="itemArr" />
     <olp-menu-button />
@@ -15,13 +22,16 @@
 </template>
 
 <script lang="ts" setup>
-import router from '@/router';
+import { useRouter } from 'vue-router';
 import OlpMenuItem from './components/OlpMenuItem/OlpMenuItem.vue';
+
+const router = useRouter();
+
 const itemArr = reactive([
   {
     // 注意！注意！有children的菜单项，path不会使用的，所以path为什么都无所谓；没children的，即children的length等于0的，才会使用path属性做路由跳转
     name: '首页',
-    sort: 1,
+    sort: '1',
     icon: 'house',
 
     path: '/index',
@@ -29,32 +39,33 @@ const itemArr = reactive([
   },
   {
     name: '题目',
-    sort: 2,
+    sort: '2',
     icon: 'hot-water',
-    path: '/problems',
+    path: '/problem',
     children: [],
   },
   {
     name: '训练',
-    sort: 3,
+    sort: '3',
     icon: 'tickets',
     children: [],
   },
   {
     name: '比赛',
-    sort: 4,
+    sort: '4',
     icon: 'trophy',
+    path: '/competition',
     children: [],
   },
   {
     name: '测评',
-    sort: 5,
+    sort: '5',
     icon: 'odometer',
     children: [],
   },
   {
     name: '排名',
-    sort: 6,
+    sort: '6',
     icon: 'histogram',
     children: [
       {
@@ -73,19 +84,20 @@ const itemArr = reactive([
   },
   {
     name: '讨论',
-    sort: 7,
+    sort: '7',
     icon: 'chat-dot-square',
     children: [],
   },
   {
     name: '团队',
-    sort: 8,
+    sort: '8',
     icon: 'user',
+    path: '/team',
     children: [],
   },
   {
     name: '关于',
-    sort: 9,
+    sort: '9',
     icon: 'warning',
     children: [
       {
@@ -103,18 +115,28 @@ const itemArr = reactive([
     ],
   },
 ]);
-let activeIndex = '';
+const activeIndex = ref('');
+// 动态检测当前路由修改导航栏激活项
 watch(
-  () => router.currentRoute.value.path,
-  toPath => {
-    activeIndex = toPath;
+  () => router.currentRoute.value,
+  routerInstance => {
+    let index = '';
+    let routerPath = routerInstance.meta?.title as string;
+    if (routerPath != null) {
+      itemArr.forEach(item => {
+        if (item.path?.substring(1) === routerPath) {
+          index = '/' + routerPath;
+        }
+      });
+    }
+
+    activeIndex.value = index;
   },
   { immediate: true, deep: true }
 );
-console.log(activeIndex);
 
 const handleSelect = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath);
+  router.push({ path: key });
 };
 </script>
 
