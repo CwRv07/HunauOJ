@@ -41,10 +41,7 @@
     </el-button>
   </el-button-group>
 
-  <olp-login-and-regiseter
-    :model-value="modelVisible"
-    @handle-check="handleCheck"
-  />
+  <olp-login-and-regiseter :model-value="modelVisible" @handle-check="handleCheck" />
 </template>
 
 <script lang="ts" setup>

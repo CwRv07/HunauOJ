@@ -9,10 +9,7 @@
 import useMapper from './useMapper';
 import { mapState } from 'vuex';
 
-const useState = (
-  namespace: string,
-  mapper: string[] | { [key: string]: any }
-) => {
+const useState = (namespace: string, mapper: string[] | { [key: string]: any }) => {
   return useMapper(mapState, namespace, mapper);
 };
 

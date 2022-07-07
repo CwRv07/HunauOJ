@@ -13,9 +13,7 @@
         :formatter="item.formatter"
       >
         <template #default="{ row }">
-          <slot :name="item.prop" :value="row[item.prop]">{{
-            row[item.prop]
-          }}</slot>
+          <slot :name="item.prop" :value="row[item.prop]">{{ row[item.prop] }}</slot>
         </template>
       </el-table-column>
     </el-table>

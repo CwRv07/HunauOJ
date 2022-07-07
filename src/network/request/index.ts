@@ -9,11 +9,7 @@
 
 import axios, { AxiosResponse } from 'axios';
 import type { AxiosInstance, AxiosRequestConfig } from 'axios';
-import {
-  RequestConfig,
-  RequestInterceptors,
-  CancelRequestSource,
-} from './type';
+import { RequestConfig, RequestInterceptors, CancelRequestSource } from './type';
 
 class Request {
   //axios实例
@@ -83,11 +79,9 @@ class Request {
    * @returns {number} 索引位置
    */
   private getSourceIndex(url: string): number {
-    return this.cancelRequestSourceList?.findIndex(
-      (item: CancelRequestSource) => {
-        return Object.keys(item)[0] === url;
-      }
-    ) as number;
+    return this.cancelRequestSourceList?.findIndex((item: CancelRequestSource) => {
+      return Object.keys(item)[0] === url;
+    }) as number;
   }
   /**
    * @description: 删除 requestUrlList 和 cancelRequestSourceList
@@ -99,8 +93,7 @@ class Request {
     const sourceIndex = this.getSourceIndex(url);
     // 删除url和cancel方法
     urlIndex !== -1 && this.requestUrlList?.splice(urlIndex as number, 1);
-    sourceIndex !== -1 &&
-      this.cancelRequestSourceList?.splice(sourceIndex as number, 1);
+    sourceIndex !== -1 && this.cancelRequestSourceList?.splice(sourceIndex as number, 1);
   }
 
   request<T>(config: RequestConfig): Promise<T> {

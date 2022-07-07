@@ -22,9 +22,7 @@
               <h4>{{ item.raceName }}</h4>
             </div>
             <div class="race-type">
-              <el-button icon="Sunny" size="small" type="primary"
-                >进行中</el-button
-              >
+              <el-button icon="Sunny" size="small" type="primary">进行中</el-button>
             </div>
           </div>
         </div>
@@ -34,44 +32,22 @@
             <div class="type-content">
               <el-tooltip placement="top" v-if="item.raceType == 1">
                 <template #content>比赛排名：以每题提交的最高得分计算</template>
-                <el-button type="warning" round size="small" icon="Trophy"
-                  >OI</el-button
-                >
+                <el-button type="warning" round size="small" icon="Trophy">OI</el-button>
               </el-tooltip>
               <div class="acm-box" v-if="item.raceType == 0">
-                <el-button color="#409eff" round size="small" icon="Trophy"
-                  >ACM</el-button
-                >
+                <el-button color="#409eff" round size="small" icon="Trophy">ACM</el-button>
               </div>
 
-              <el-tooltip
-                placement="top"
-                effect="light"
-                v-if="item.racePermissionsLv == 1"
-              >
-                <template #content
-                  >私有赛 - 用户需要密码才可查看与提交</template
-                >
-                <el-button
-                  type="danger"
-                  plain
-                  size="small"
-                  style="cursor: default"
+              <el-tooltip placement="top" effect="light" v-if="item.racePermissionsLv == 1">
+                <template #content>私有赛 - 用户需要密码才可查看与提交</template>
+                <el-button type="danger" plain size="small" style="cursor: default"
                   >私有赛</el-button
                 >
               </el-tooltip>
 
-              <el-tooltip
-                placement="top"
-                effect="light"
-                v-if="item.racePermissionsLv == 0"
-              >
+              <el-tooltip placement="top" effect="light" v-if="item.racePermissionsLv == 0">
                 <template #content>公开赛 - 所有用户可查看与提交</template>
-                <el-button
-                  type="success"
-                  plain
-                  size="small"
-                  style="cursor: default"
+                <el-button type="success" plain size="small" style="cursor: default"
                   >公开赛</el-button
                 >
               </el-tooltip>
@@ -79,28 +55,13 @@
           </div>
           <div class="race-info">
             <div class="info-content">
-              <el-button
-                type="info"
-                round
-                size="small"
-                icon="Calendar"
-                style="cursor: default"
-                >{{ item.raceDate }}</el-button
-              >
-              <el-button
-                type="success"
-                round
-                size="small"
-                icon="AlarmClock"
-                style="cursor: default"
+              <el-button type="info" round size="small" icon="Calendar" style="cursor: default">{{
+                item.raceDate
+              }}</el-button>
+              <el-button type="success" round size="small" icon="AlarmClock" style="cursor: default"
                 >{{ item.raceDuration }}天</el-button
               >
-              <el-button
-                plain
-                round
-                size="small"
-                icon="User"
-                style="cursor: default"
+              <el-button plain round size="small" icon="User" style="cursor: default"
                 >{{ item.raceMembers }}人</el-button
               >
             </div>

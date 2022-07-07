@@ -42,23 +42,17 @@
               <ul class="info-list">
                 <li class="info-item" v-for="p in teamInfo" :key="p.title">
                   <p class="info-title">{{ p.title }}</p>
-                  <span class="info-content" :title="p.content">{{
-                    p.content
-                  }}</span>
+                  <span class="info-content" :title="p.content">{{ p.content }}</span>
                 </li>
               </ul>
             </main>
             <!-- 团队操作 -->
             <footer>
               <template v-if="isInTeam">
-                <el-button type="primary" @click="joinTeam"
-                  >申请加入团队</el-button
-                >
+                <el-button type="primary" @click="joinTeam">申请加入团队</el-button>
               </template>
               <template v-else>
-                <el-button type="danger" @click="leaveTeam"
-                  >申请退出团队</el-button
-                >
+                <el-button type="danger" @click="leaveTeam">申请退出团队</el-button>
               </template>
             </footer>
           </aside>

@@ -65,8 +65,7 @@ export const userStore: Module<unknown, unknown> = {
       const roleList = getters.userInfo.roleList;
       if (getters.isAuthenticated && roleList) {
         return (
-          roleList.includes(USER_ROLE.PROBLEM_ADMIN) ||
-          roleList.includes(USER_ROLE.SUPER_ADMIN)
+          roleList.includes(USER_ROLE.PROBLEM_ADMIN) || roleList.includes(USER_ROLE.SUPER_ADMIN)
         );
       }
       return false;

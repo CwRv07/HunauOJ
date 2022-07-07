@@ -73,11 +73,7 @@
           </aside>
           <aside class="right">
             <!-- 随机一题 -->
-            <el-button
-              class="problem-random"
-              round
-              icon="MagicStick"
-              size="large"
+            <el-button class="problem-random" round icon="MagicStick" size="large"
               >随机一题</el-button
             >
             <!-- /随机一题 -->
@@ -89,12 +85,7 @@
 
     <!-- 题目展示栏 -->
     <main class="box-main">
-      <el-table
-        :data="tableData"
-        :highlight-current-row="false"
-        stripe
-        style="width: 100%"
-      >
+      <el-table :data="tableData" :highlight-current-row="false" stripe style="width: 100%">
         <el-table-column prop="id" label="题目ID" min-width="100px" />
         <el-table-column prop="name" label="题目" min-width="200px">
           <template #default="slotProps">

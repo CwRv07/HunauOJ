@@ -6,11 +6,7 @@
  * @Description:
  * @Email: Rv_Jiang@outlook.com
  */
-import {
-  createRouter,
-  createWebHashHistory,
-  RouteLocationNormalized,
-} from 'vue-router';
+import { createRouter, createWebHashHistory, RouteLocationNormalized } from 'vue-router';
 import { useGetters } from '@/utils/useMapper';
 import stateRouter from './stateRouter';
 // import { USER_ROLE } from '@/utils/constants';
@@ -65,69 +61,67 @@ const routerVariable: { [key: string]: any } = {
   loadingInstance: null,
 };
 
-router.beforeEach(
-  (to: RouteLocationNormalized /* from: RouteLocationNormalized */) => {
-    console.log(to);
+router.beforeEach((to: RouteLocationNormalized /* from: RouteLocationNormalized */) => {
+  console.log(to);
 
-    /* 路由跳转动画 */
-    routerVariable.loadingInstance = ElLoading.service();
+  /* 路由跳转动画 */
+  routerVariable.loadingInstance = ElLoading.service();
 
-    // // 判断路由匹配里是否需要权限
-    // if (to.matched.some(oldRouter => oldRouter.meta.roles)) {
+  // // 判断路由匹配里是否需要权限
+  // if (to.matched.some(oldRouter => oldRouter.meta.roles)) {
 
-    //   // 判断当前用户能否进行身份判断
-    //   if (userStore.isAuthenticated.value) {
-    //     //详细判断身份是否符合
+  //   // 判断当前用户能否进行身份判断
+  //   if (userStore.isAuthenticated.value) {
+  //     //详细判断身份是否符合
 
-    //     // 超级管理员
-    //     if (userStore.isSuperAdmin.value) {
-    //       return;
-    //     }
+  //     // 超级管理员
+  //     if (userStore.isSuperAdmin.value) {
+  //       return;
+  //     }
 
-    //     // 问题管理员
-    //     if (userStore.isProblemAdmin.value) {
-    //       if ((to.meta.roles as string[]).includes(USER_ROLE.PROBLEM_ADMIN)) {
-    //         return;
-    //       } else {
-    //         elMessageToRollBack();
-    //         return false;
-    //       }
-    //     }
+  //     // 问题管理员
+  //     if (userStore.isProblemAdmin.value) {
+  //       if ((to.meta.roles as string[]).includes(USER_ROLE.PROBLEM_ADMIN)) {
+  //         return;
+  //       } else {
+  //         elMessageToRollBack();
+  //         return false;
+  //       }
+  //     }
 
-    //     // 管理员
-    //     if (userStore.isAdmin.value) {
-    //       if ((to.meta.roles as string[]).includes(USER_ROLE.ADMIN)) {
-    //         return;
-    //       } else {
-    //         elMessageToRollBack();
-    //         return false;
-    //       }
-    //     }
+  //     // 管理员
+  //     if (userStore.isAdmin.value) {
+  //       if ((to.meta.roles as string[]).includes(USER_ROLE.ADMIN)) {
+  //         return;
+  //       } else {
+  //         elMessageToRollBack();
+  //         return false;
+  //       }
+  //     }
 
-    //     // 用户
-    //     if (userStore.isUser.value) {
-    //       if ((to.meta.roles as string[]).includes(USER_ROLE.USER)) {
-    //         return;
-    //       } else {
-    //         elMessageToRollBack();
-    //         return false;
-    //       }
-    //     }
+  //     // 用户
+  //     if (userStore.isUser.value) {
+  //       if ((to.meta.roles as string[]).includes(USER_ROLE.USER)) {
+  //         return;
+  //       } else {
+  //         elMessageToRollBack();
+  //         return false;
+  //       }
+  //     }
 
-    //     // 异常用户处理
-    //     elMessageToLogin();
-    //     return false;
-    //   } else {
-    //     // 无法进行身份判断，跳转登录页面
-    //     elMessageToLogin();
-    //     return false;
-    //   }
-    // } else {
-    //   // 当前路由不需要权限情况
-    //   return;
-    // }
-  }
-);
+  //     // 异常用户处理
+  //     elMessageToLogin();
+  //     return false;
+  //   } else {
+  //     // 无法进行身份判断，跳转登录页面
+  //     elMessageToLogin();
+  //     return false;
+  //   }
+  // } else {
+  //   // 当前路由不需要权限情况
+  //   return;
+  // }
+});
 
 router.afterEach(() => {
   setTimeout(() => {

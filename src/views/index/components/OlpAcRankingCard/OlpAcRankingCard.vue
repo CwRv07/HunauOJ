@@ -22,13 +22,7 @@
       >
         <el-table-column label="排名">
           <template #default="scope">
-            <div
-              style="
-                display: flex;
-                align-items: center;
-                justify-content: center;
-              "
-            >
+            <div style="display: flex; align-items: center; justify-content: center">
               <div v-if="scope.$index == 0">
                 <svg
                   t="1656572626175"
@@ -187,11 +181,7 @@
                   />
                 </svg>
               </div>
-              <div
-                v-if="
-                  scope.$index != 0 && scope.$index != 1 && scope.$index != 2
-                "
-              >
+              <div v-if="scope.$index != 0 && scope.$index != 1 && scope.$index != 2">
                 <span>{{ scope.$index + 1 }}</span>
               </div>
             </div>
@@ -199,24 +189,13 @@
         </el-table-column>
         <el-table-column label="用户名" show-overflow-tooltip>
           <template #default="scope">
-            <el-popover
-              effect="light"
-              trigger="hover"
-              placement="top"
-              width="auto"
-            >
+            <el-popover effect="light" trigger="hover" placement="top" width="auto">
               <template #default>
                 <div>{{ scope.row.userName }}</div>
               </template>
               <template #reference>
                 <div style="display: flex; align-items: center">
-                  <div
-                    style="
-                      display: flex;
-                      align-items: center;
-                      margin-right: 5px;
-                    "
-                  >
+                  <div style="display: flex; align-items: center; margin-right: 5px">
                     <!-- <el-avatar icon="UserFilled" size="small" /> -->
                     <el-avatar
                       src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"

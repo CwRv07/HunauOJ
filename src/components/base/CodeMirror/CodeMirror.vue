@@ -12,12 +12,7 @@
     <section class="setting">
       <!-- 语言选择 -->
       <div class="mode-select">
-        <el-select
-          placeholder="代码语言"
-          v-model="mode"
-          size="default"
-          @change="changeMode"
-        >
+        <el-select placeholder="代码语言" v-model="mode" size="default" @change="changeMode">
           <el-option
             v-for="item in modeOption"
             :key="item.value"
@@ -65,12 +60,7 @@
       <!-- 测试案例操作 -->
       <!-- 按钮组 -->
       <div class="button-group">
-        <el-button
-          type="primary"
-          @click="submitCodeMirror"
-          :loading="isSubmitting"
-          >提交</el-button
-        >
+        <el-button type="primary" @click="submitCodeMirror" :loading="isSubmitting">提交</el-button>
       </div>
     </section>
     <!-- footer:submission-end -->
@@ -81,21 +71,14 @@
         <template #default>
           <main class="code-mirror-setting-modal-main">
             <ul class="setting-list" v-if="settingModal.settingList.length">
-              <li
-                class="setting-item"
-                v-for="item in settingModal.settingList"
-                :key="item.title"
-              >
+              <li class="setting-item" v-for="item in settingModal.settingList" :key="item.title">
                 <aside class="description">
                   <p class="description-title">{{ item.title }}</p>
                   <span class="description-sub-title">{{ item.subTitle }}</span>
                 </aside>
                 <aside class="selection">
                   <template v-if="item.mode === settingMode.SELECT">
-                    <el-select
-                      v-model="item.selectValue"
-                      @change="item.changCallBack"
-                    >
+                    <el-select v-model="item.selectValue" @change="item.changCallBack">
                       <el-option
                         v-for="option in item.option"
                         :key="option.value"

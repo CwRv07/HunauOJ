@@ -44,9 +44,7 @@ const loadAll = () => {
 
 let timeout: NodeJS.Timeout;
 const querySearchAsync = (queryString: string, cb: (arg: any) => void) => {
-  const results = queryString
-    ? links.value.filter(createFilter(queryString))
-    : links.value;
+  const results = queryString ? links.value.filter(createFilter(queryString)) : links.value;
 
   clearTimeout(timeout);
   timeout = setTimeout(() => {
@@ -55,9 +53,7 @@ const querySearchAsync = (queryString: string, cb: (arg: any) => void) => {
 };
 const createFilter = (queryString: string) => {
   return (restaurant: LinkItem) => {
-    return (
-      restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0
-    );
+    return restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0;
   };
 };
 

@@ -14,10 +14,9 @@
       <header class="team-name">队伍名称</header>
       <main class="team-introduction">
         <span class="text"
-          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde tempore
-          quod sequi ducimus, architecto perspiciatis, fuga sit quasi ratione
-          illum sapiente laborum, ipsa mollitia. Quas accusantium consectetur
-          vitae beatae iure.</span
+          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde tempore quod sequi ducimus,
+          architecto perspiciatis, fuga sit quasi ratione illum sapiente laborum, ipsa mollitia.
+          Quas accusantium consectetur vitae beatae iure.</span
         >
       </main>
       <footer class="team-tag">
