@@ -10,7 +10,11 @@
 import { computed } from 'vue';
 import store from '@/store';
 
-export default function useMapper(mapperFn: (...args: any) => any, namespace: string, mapper: string[] | { [key: string]: any }) {
+export default function useMapper(
+  mapperFn: (...args: any) => any,
+  namespace: string,
+  mapper: string[] | { [key: string]: any }
+) {
   let storeFns: { [key: string]: any };
   if (namespace) {
     storeFns = mapperFn(namespace, mapper);

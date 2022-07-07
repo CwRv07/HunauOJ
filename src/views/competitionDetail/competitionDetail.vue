@@ -35,7 +35,13 @@
               </div>
             </el-col>
             <el-col :sm="20" :span="24">
-              <el-progress class="time-progress" :text-inside="true" :stroke-width="20" :percentage="75" status="warning">
+              <el-progress
+                class="time-progress"
+                :text-inside="true"
+                :stroke-width="20"
+                :percentage="75"
+                status="warning"
+              >
                 <span>-34:49:29</span>
               </el-progress>
             </el-col>

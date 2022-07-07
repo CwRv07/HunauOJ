@@ -9,7 +9,10 @@
 import useMapper from './useMapper';
 import { mapGetters } from 'vuex';
 
-function useGetters(namespace: string, mapper: string[] | { [key: string]: any }) {
+function useGetters(
+  namespace: string,
+  mapper: string[] | { [key: string]: any }
+) {
   return useMapper(mapGetters, namespace, mapper);
 }
 export default useGetters;

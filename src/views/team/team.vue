@@ -4,7 +4,13 @@
     <header class="team-select">
       <el-card>
         <!-- 题目名称 -->
-        <el-autocomplete class="team-name-select" v-model="teamNameSelect" clearable placeholder="团队搜索" prefix-icon="Search" />
+        <el-autocomplete
+          class="team-name-select"
+          v-model="teamNameSelect"
+          clearable
+          placeholder="团队搜索"
+          prefix-icon="Search"
+        />
         <!-- /题目名称 -->
       </el-card>
     </header>

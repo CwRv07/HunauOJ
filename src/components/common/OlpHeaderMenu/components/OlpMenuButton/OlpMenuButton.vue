@@ -12,7 +12,13 @@
       @click="loginHandler"
       type="primary"
       class="login-button"
-      style="margin-left: 1px; margin-right: 1px; border: 1px solid !important; border-radius: var(--el-border-radius-base); z-index: 0"
+      style="
+        margin-left: 1px;
+        margin-right: 1px;
+        border: 1px solid !important;
+        border-radius: var(--el-border-radius-base);
+        z-index: 0;
+      "
       >登录</el-button
     >
     <el-button type="primary" style="border: 0">
@@ -35,7 +41,10 @@
     </el-button>
   </el-button-group>
 
-  <olp-login-and-regiseter :model-value="modelVisible" @handle-check="handleCheck" />
+  <olp-login-and-regiseter
+    :model-value="modelVisible"
+    @handle-check="handleCheck"
+  />
 </template>
 
 <script lang="ts" setup>

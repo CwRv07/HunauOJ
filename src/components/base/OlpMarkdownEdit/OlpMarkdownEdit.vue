@@ -164,10 +164,14 @@ export default defineComponent({
       // @ts-ignore
       shareCodeApi({ text: data.text }).then(res => {
         if (res.data.code === 200) {
-          ElMessageBox.alert(`你的访问链接为：<br /><a style="word-break:break-all;" target='_blank' href="${url}/getCodeShare/${res.data.data}">${url}/getCodeShare/${res.data.data}</a>`, '提示', {
-            confirmButtonText: 'OK',
-            dangerouslyUseHTMLString: true,
-          });
+          ElMessageBox.alert(
+            `你的访问链接为：<br /><a style="word-break:break-all;" target='_blank' href="${url}/getCodeShare/${res.data.data}">${url}/getCodeShare/${res.data.data}</a>`,
+            '提示',
+            {
+              confirmButtonText: 'OK',
+              dangerouslyUseHTMLString: true,
+            }
+          );
           localStorage.removeItem('codeSave');
         }
       });

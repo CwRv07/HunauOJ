@@ -7,7 +7,14 @@
  * @Email: ndliujunqi@outlook.com
 -->
 <template>
-  <el-menu :default-active="activeIndex" class="el-menu-header" mode="horizontal" text-color="black" @select="handleSelect" active-text-color="#47b686">
+  <el-menu
+    :default-active="activeIndex"
+    class="el-menu-header"
+    mode="horizontal"
+    text-color="black"
+    @select="handleSelect"
+    active-text-color="#47b686"
+  >
     <!-- 递归动态菜单 -->
     <olp-menu-item :item-arr="itemArr" />
     <olp-menu-button />

@@ -12,14 +12,33 @@
     <section class="setting">
       <!-- 语言选择 -->
       <div class="mode-select">
-        <el-select placeholder="代码语言" v-model="mode" size="default" @change="changeMode">
-          <el-option v-for="item in modeOption" :key="item.value" :label="item.label" :value="item.value" />
+        <el-select
+          placeholder="代码语言"
+          v-model="mode"
+          size="default"
+          @change="changeMode"
+        >
+          <el-option
+            v-for="item in modeOption"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          />
         </el-select>
       </div>
       <!-- 工具栏 -->
       <div class="extra-tool" v-if="toolOption.length">
         <!-- Item -->
-        <el-popover v-for="item in toolOption" :key="item.title" placement="bottom" :title="item.title" :width="160" trigger="hover" :content="item.content" transition="el-zoom-in-top">
+        <el-popover
+          v-for="item in toolOption"
+          :key="item.title"
+          placement="bottom"
+          :title="item.title"
+          :width="160"
+          trigger="hover"
+          :content="item.content"
+          transition="el-zoom-in-top"
+        >
           <template #reference>
             <el-button type="text" size="default" @click="item.callback">
               <el-icon :size="20" color="var(--el-text-color-primary)">
@@ -33,7 +52,12 @@
     <!-- header:设置-end -->
 
     <!-- main:codemirror-start -->
-    <codemirror class="code-mirror" v-model:value="code" :options="cmOptions" @ready="initCodeMirror" />
+    <codemirror
+      class="code-mirror"
+      v-model:value="code"
+      :options="cmOptions"
+      @ready="initCodeMirror"
+    />
     <!-- main:codemirror-end -->
 
     <!-- footer:submission-start -->
@@ -41,7 +65,12 @@
       <!-- 测试案例操作 -->
       <!-- 按钮组 -->
       <div class="button-group">
-        <el-button type="primary" @click="submitCodeMirror" :loading="isSubmitting">提交</el-button>
+        <el-button
+          type="primary"
+          @click="submitCodeMirror"
+          :loading="isSubmitting"
+          >提交</el-button
+        >
       </div>
     </section>
     <!-- footer:submission-end -->
@@ -52,19 +81,35 @@
         <template #default>
           <main class="code-mirror-setting-modal-main">
             <ul class="setting-list" v-if="settingModal.settingList.length">
-              <li class="setting-item" v-for="item in settingModal.settingList" :key="item.title">
+              <li
+                class="setting-item"
+                v-for="item in settingModal.settingList"
+                :key="item.title"
+              >
                 <aside class="description">
                   <p class="description-title">{{ item.title }}</p>
                   <span class="description-sub-title">{{ item.subTitle }}</span>
                 </aside>
                 <aside class="selection">
                   <template v-if="item.mode === settingMode.SELECT">
-                    <el-select v-model="item.selectValue" @change="item.changCallBack">
-                      <el-option v-for="option in item.option" :key="option.value" :label="option.label" :value="option.value" />
+                    <el-select
+                      v-model="item.selectValue"
+                      @change="item.changCallBack"
+                    >
+                      <el-option
+                        v-for="option in item.option"
+                        :key="option.value"
+                        :label="option.label"
+                        :value="option.value"
+                      />
                     </el-select>
                   </template>
                   <template v-else-if="item.mode === settingMode.NUMBER">
-                    <el-input-number v-model="item.selectValue" v-bind="item.bindProp" @change="item.changCallBack" />
+                    <el-input-number
+                      v-model="item.selectValue"
+                      v-bind="item.bindProp"
+                      @change="item.changCallBack"
+                    />
                   </template>
                 </aside>
               </li>
@@ -129,9 +174,24 @@ const settingCodeMirror = () => {
   settingModal.isShow = true;
 };
 const toolOption = reactive([
-  { title: '重置代码', content: '还原到默认代码模板', icon: 'Refresh', callback: refreshCode },
-  { title: '快捷键帮助', content: '显示所有编辑快捷键', icon: 'InfoFilled', callback: displayKeyMap },
-  { title: '编辑器设置', content: '代码编辑器设置', icon: 'Setting', callback: settingCodeMirror },
+  {
+    title: '重置代码',
+    content: '还原到默认代码模板',
+    icon: 'Refresh',
+    callback: refreshCode,
+  },
+  {
+    title: '快捷键帮助',
+    content: '显示所有编辑快捷键',
+    icon: 'InfoFilled',
+    callback: displayKeyMap,
+  },
+  {
+    title: '编辑器设置',
+    content: '代码编辑器设置',
+    icon: 'Setting',
+    callback: settingCodeMirror,
+  },
 ]);
 // toolOption-end
 /* Setting-end */

@@ -23,18 +23,52 @@
             <div class="header-title">
               <span><h2>注册</h2></span>
             </div>
-            <el-form ref="ruleFormRef" :model="ruleForm" status-icon :rules="rules" label-width="120px" class="demo-ruleForm" size="large">
+            <el-form
+              ref="ruleFormRef"
+              :model="ruleForm"
+              status-icon
+              :rules="rules"
+              label-width="120px"
+              class="demo-ruleForm"
+              size="large"
+            >
               <el-form-item prop="re_account" label-width="0">
-                <el-input v-model="ruleForm.re_account" type="text" autocomplete="off" style="height: 38px" placeholder="手机号/邮箱" />
+                <el-input
+                  v-model="ruleForm.re_account"
+                  type="text"
+                  autocomplete="off"
+                  style="height: 38px"
+                  placeholder="手机号/邮箱"
+                />
               </el-form-item>
               <el-form-item prop="re_email" label-width="0">
-                <el-input v-model="ruleForm.re_email" type="email" autocomplete="off" style="height: 38px" placeholder="手机号/邮箱" />
+                <el-input
+                  v-model="ruleForm.re_email"
+                  type="email"
+                  autocomplete="off"
+                  style="height: 38px"
+                  placeholder="手机号/邮箱"
+                />
               </el-form-item>
               <el-form-item prop="re_pass" label-width="0">
-                <el-input v-model="ruleForm.re_pass" type="password" autocomplete="off" show-password style="height: 38px" placeholder="密码" />
+                <el-input
+                  v-model="ruleForm.re_pass"
+                  type="password"
+                  autocomplete="off"
+                  show-password
+                  style="height: 38px"
+                  placeholder="密码"
+                />
               </el-form-item>
               <el-form-item prop="checkPass" label-width="0">
-                <el-input v-model="ruleForm.checkPass" type="password" autocomplete="off" show-password style="height: 38px" placeholder="确认您的密码" />
+                <el-input
+                  v-model="ruleForm.checkPass"
+                  type="password"
+                  autocomplete="off"
+                  show-password
+                  style="height: 38px"
+                  placeholder="确认您的密码"
+                />
               </el-form-item>
             </el-form>
             <el-button type="primary" @click="userRegister">注册</el-button>
@@ -58,12 +92,32 @@
             <div class="header-title">
               <span><h2>登录</h2> </span>
             </div>
-            <el-form ref="ruleFormRef" :model="ruleForm" status-icon :rules="rules" label-width="120px" class="demo-ruleForm">
+            <el-form
+              ref="ruleFormRef"
+              :model="ruleForm"
+              status-icon
+              :rules="rules"
+              label-width="120px"
+              class="demo-ruleForm"
+            >
               <el-form-item prop="account" label-width="0">
-                <el-input v-model="ruleForm.account" type="text" autocomplete="off" style="height: 38px" placeholder="手机号/邮箱" />
+                <el-input
+                  v-model="ruleForm.account"
+                  type="text"
+                  autocomplete="off"
+                  style="height: 38px"
+                  placeholder="手机号/邮箱"
+                />
               </el-form-item>
               <el-form-item prop="pass" label-width="0">
-                <el-input v-model="ruleForm.pass" type="password" autocomplete="off" show-password style="height: 38px" placeholder="密码" />
+                <el-input
+                  v-model="ruleForm.pass"
+                  type="password"
+                  autocomplete="off"
+                  show-password
+                  style="height: 38px"
+                  placeholder="密码"
+                />
               </el-form-item>
             </el-form>
             <el-button type="primary" @click="userLogin">登录</el-button>
@@ -195,7 +249,8 @@ const openElmessage = (info: string, mType: any) => {
 
 // 正则表达式
 //手机号或者座机号
-const reg_tel_phone = /(^((\+86)|(86))?(1[3-9])\d{9}$)|(^(0\d{2,3})-?(\d{7,8})$)/;
+const reg_tel_phone =
+  /(^((\+86)|(86))?(1[3-9])\d{9}$)|(^(0\d{2,3})-?(\d{7,8})$)/;
 
 const reg_account_pass = ref(true);
 const validateAccount = (rule: any, value: any, callback: any) => {
@@ -241,7 +296,8 @@ const validateEmail = (rule: any, value: any, callback: any) => {
     reg_email_pass.value = false;
     callback(new Error('请输入邮箱'));
   } else {
-    const pass = /^([a-zA-Z\d][\w-]{2,})@(\w{2,})\.([a-z]{2,})(\.[a-z]{2,})?$/.test(value);
+    const pass =
+      /^([a-zA-Z\d][\w-]{2,})@(\w{2,})\.([a-z]{2,})(\.[a-z]{2,})?$/.test(value);
     if (!pass) {
       callback(new Error('邮箱格式不正确!'));
     }
@@ -284,7 +340,10 @@ const userLogin = () => {
     // console.log("已触发2");
     openElmessage('请输入完整!', 'error');
     return;
-  } else if (reg_password_pass.value == true && reg_account_pass.value == true) {
+  } else if (
+    reg_password_pass.value == true &&
+    reg_account_pass.value == true
+  ) {
     // console.log("已触发3");
     userLoginInfo.account = ruleForm.account;
     userLoginInfo.pass = ruleForm.pass;
@@ -295,11 +354,20 @@ const userLogin = () => {
 
 // 用户注册逻辑
 const userRegister = () => {
-  if (ruleForm.re_account == '' || ruleForm.re_email == '' || ruleForm.re_pass == '') {
+  if (
+    ruleForm.re_account == '' ||
+    ruleForm.re_email == '' ||
+    ruleForm.re_pass == ''
+  ) {
     console.log('已进入1');
     openElmessage('请将信息输入完整!', 'error');
     return;
-  } else if (reg_password_pass.value == true && reg_account_pass.value == true && reg_checkPassword_pass.value == true && reg_email_pass.value == true) {
+  } else if (
+    reg_password_pass.value == true &&
+    reg_account_pass.value == true &&
+    reg_checkPassword_pass.value == true &&
+    reg_email_pass.value == true
+  ) {
     userRregisterInfo.re_account = ruleForm.re_account;
     userRregisterInfo.re_email = ruleForm.re_email;
     userRregisterInfo.re_pass = ruleForm.re_pass;

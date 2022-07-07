@@ -13,12 +13,29 @@
       <el-card>
         <el-row :gutter="20">
           <el-col :md="6" :sm="8" :xs="10">
-            <el-select class="status-select" clearable v-model="statusSelect.active" placeholder="状态">
-              <el-option v-for="item in statusSelect.list" :key="item.value" :label="item.label" :value="item.value" />
+            <el-select
+              class="status-select"
+              clearable
+              v-model="statusSelect.active"
+              placeholder="状态"
+            >
+              <el-option
+                v-for="item in statusSelect.list"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              />
             </el-select>
           </el-col>
           <el-col :md="10" :sm="12" :xs="14">
-            <el-autocomplete class="title-select" v-model="titleSelect" :fetch-suggestions="titleQuerySearch" clearable placeholder="题目搜索" prefix-icon="Search" />
+            <el-autocomplete
+              class="title-select"
+              v-model="titleSelect"
+              :fetch-suggestions="titleQuerySearch"
+              clearable
+              placeholder="题目搜索"
+              prefix-icon="Search"
+            />
           </el-col>
         </el-row>
       </el-card>

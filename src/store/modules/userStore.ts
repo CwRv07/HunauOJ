@@ -39,7 +39,12 @@ export const userStore: Module<unknown, unknown> = {
     isUser: (states: any, getters: any): boolean => {
       const roleList = getters.userInfo.roleList;
       if (getters.isAuthenticated && roleList) {
-        return roleList.includes(USER_ROLE.USER) || roleList.includes(USER_ROLE.ADMIN) || roleList.includes(USER_ROLE.PROBLEM_ADMIN) || roleList.includes(USER_ROLE.SUPER_ADMIN);
+        return (
+          roleList.includes(USER_ROLE.USER) ||
+          roleList.includes(USER_ROLE.ADMIN) ||
+          roleList.includes(USER_ROLE.PROBLEM_ADMIN) ||
+          roleList.includes(USER_ROLE.SUPER_ADMIN)
+        );
       }
       return false;
     },
@@ -47,7 +52,11 @@ export const userStore: Module<unknown, unknown> = {
     isAdmin: (state: any, getters: any): boolean => {
       const roleList = getters.userInfo.roleList;
       if (getters.isAuthenticated && roleList) {
-        return roleList.includes(USER_ROLE.ADMIN) || roleList.includes(USER_ROLE.PROBLEM_ADMIN) || roleList.includes(USER_ROLE.SUPER_ADMIN);
+        return (
+          roleList.includes(USER_ROLE.ADMIN) ||
+          roleList.includes(USER_ROLE.PROBLEM_ADMIN) ||
+          roleList.includes(USER_ROLE.SUPER_ADMIN)
+        );
       }
       return false;
     },
@@ -55,7 +64,10 @@ export const userStore: Module<unknown, unknown> = {
     isProblemAdmin: (state: any, getters: any): boolean => {
       const roleList = getters.userInfo.roleList;
       if (getters.isAuthenticated && roleList) {
-        return roleList.includes(USER_ROLE.PROBLEM_ADMIN) || roleList.includes(USER_ROLE.SUPER_ADMIN);
+        return (
+          roleList.includes(USER_ROLE.PROBLEM_ADMIN) ||
+          roleList.includes(USER_ROLE.SUPER_ADMIN)
+        );
       }
       return false;
     },
