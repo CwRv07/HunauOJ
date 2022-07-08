@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-05-10 17:12:04
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-05-21 23:07:15
+ * @LastEditTime: 2022-07-07 23:24:15
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -19,7 +19,7 @@
       :on-save="codeSave"
       :preview-only="isPreviewOnly"
     />
-    <h1>{{ text }}</h1>
+    <!-- <h1>{{ text }}</h1> -->
   </div>
 </template>
 
@@ -207,6 +207,11 @@ export default defineComponent({
       type: Boolean,
       default: false, //设置默认值
       required: true, //是否必须传递
+    },
+    markdownStyle: {
+      type: String,
+      default: '',
+      required: false,
     },
   },
   methods: {
