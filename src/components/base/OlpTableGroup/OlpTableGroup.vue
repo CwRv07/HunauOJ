@@ -1,6 +1,11 @@
 <template>
   <div class="olp-table-group">
-    <el-table :data="data" stripe fit>
+    <el-table
+      :data="data"
+      stripe
+      fit
+      @row-click="(row, column, event) => $emit('row-click', row, column, event)"
+    >
       <el-table-column
         v-for="item in props"
         :key="item.prop"
@@ -27,6 +32,7 @@ defineProps<{
   data: tableDataType;
   props: tablePropsType;
 }>();
+defineEmits(['row-click']);
 </script>
 
 <style lang="scss" scoped>
