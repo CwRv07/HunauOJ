@@ -2,13 +2,18 @@
  * @Author: ND_LJQ
  * @Date: 2022-07-08 00:13:07
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-07-08 20:10:45
+ * @LastEditTime: 2022-07-08 21:53:12
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
 <template>
   <div class="olp-table-group">
-    <el-table :data="data" stripe fit :header-cell-style="{ textAlign: 'center' }">
+    <el-table
+      :data="data"
+      stripe
+      fit
+      @row-click="(row, column, event) => $emit('row-click', row, column, event)"
+    >
       <el-table-column
         v-for="item in props"
         :key="item.prop"
@@ -35,6 +40,7 @@ defineProps<{
   data: tableDataType;
   props: tablePropsType;
 }>();
+defineEmits(['row-click']);
 </script>
 
 <style lang="scss" scoped>
