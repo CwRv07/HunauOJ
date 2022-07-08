@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-07-04 11:19:47
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-07-08 00:14:17
+ * @LastEditTime: 2022-07-08 19:58:12
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -27,6 +27,9 @@
     </div>
 
     <!-- /TableGroup测试板块 -->
+    <div>
+      <olp-exercises-info />
+    </div>
   </div>
 </template>
 

@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-07-07 17:04:35
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-07-08 00:09:17
+ * @LastEditTime: 2022-07-08 21:50:26
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -36,10 +36,34 @@
       </template>
       <div class="submit-records tab-item">
         <div class="submit-records-content">
-          <div class="no-records" v-if="submitRecordsList.length == 0">
+          <div
+            class="no-records"
+            v-if="submitRecordsList.length == 0"
+            style="
+              width: 100%;
+              height: 100%;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+            "
+          >
             <div style="color: #b7b7b7">
               <h4>您还没有任何的提交记录</h4>
             </div>
+          </div>
+
+          <div class="submit-records-list" v-else>
+            <olp-table-group :data="submitRecordsList" :props="submitProps">
+              <template #submitRes="{ value }">
+                <el-tag effect="dark" v-if="value == 1" type="success"> Accepted </el-tag>
+                <el-tag effect="dark" v-if="value == 2" type="warning"> Compile Error </el-tag>
+              </template>
+              <template #runtime="{ value }">{{ value }} </template>
+              <template #consumption="{ value }">{{ value }} </template>
+              <template #language="{ value }">{{ value }} </template>
+              <template #submitTime="{ value }">{{ value }} </template>
+            </olp-table-group>
           </div>
         </div>
       </div>
@@ -78,7 +102,23 @@ const allInfo: exerciseInfo = reactive({
   exerciseMarkdown: '',
 });
 
-const submitRecordsList = reactive([]);
+const submitProps = [
+  { prop: 'submitRes', label: '提交结果', width: 100, align: 'center' as const },
+  { prop: 'runtime', label: '执行用时', width: 100, align: 'center' as const },
+  { prop: 'consumption', label: '内存消耗', width: 100, align: 'center' as const },
+  { prop: 'language', label: '语言', width: 100, align: 'center' as const },
+  { prop: 'submitTime', label: '提交时间', width: 200, align: 'center' as const },
+];
+
+const submitRecordsList = reactive([
+  {
+    submitRes: 1,
+    runtime: '8ms',
+    consumption: '10.78MB',
+    language: 'C++',
+    submitTime: '2022/07/07 21:06',
+  },
+]);
 const getExerciseInfo = () => {
   console.log('我被调用了');
   return;
@@ -120,11 +160,16 @@ onMounted(() => {
 .submit-records {
   display: flex;
   justify-content: center;
-  align-items: center;
+  // align-items: center;
+  width: 100%;
   .submit-records-content {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    .submit-records-list {
+      width: 100%;
+    }
   }
 }
 </style>
