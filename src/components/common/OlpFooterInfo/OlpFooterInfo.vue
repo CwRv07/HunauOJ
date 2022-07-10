@@ -1,8 +1,8 @@
 <!--
  * @Author: ND_LJQ
  * @Date: 2022-06-30 16:26:44
- * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-07-01 11:09:20
+ * @LastEditors: Rv_Jiang
+ * @LastEditTime: 2022-07-10 17:32:10
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -49,7 +49,11 @@
           <div class="main-footer-box">
             <a href="">备案号</a>
             <span style="margin-left: 5px">Powered by</span>
-            <a href="https://gitee.com/vegetable-dog-development-team/online-learning-platform" style="margin-left: 5px">HANUOI</a>
+            <a
+              href="https://gitee.com/vegetable-dog-development-team/online-learning-platform"
+              style="margin-left: 5px"
+              >HANUOI</a
+            >
           </div>
         </el-col>
       </el-row>
@@ -57,7 +61,7 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup lang="ts"></script>
 
 <style lang="scss" scoped>
 .main-footer {

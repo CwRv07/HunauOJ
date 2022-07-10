@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-04-28 10:19:32
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-07-02 11:47:59
+ * @LastEditTime: 2022-07-10 16:20:43
  * @Description:
  * @Email: Rv_Jiang@outlook.com
  */
@@ -16,8 +16,35 @@ createWebHashHistory hash 路由
 createWebHistory history 路由
 createMemoryHistory 带缓存 history 路由
 */
+import { RouteRecordRaw } from 'vue-router';
 const routerHistory = createWebHashHistory();
-const routes = [...stateRouter];
+const routes: Array<RouteRecordRaw> = [
+  /* 前台路由 */
+  {
+    path: '/',
+    redirect: '/oj',
+  },
+  {
+    path: '/oj',
+    component: () => import('@/views/frontEnd/index.vue'),
+    children: stateRouter,
+  },
+  /* /前台路由 */
+
+  /* 后台路由 */
+  {
+    path: '/admin',
+    component: () => import('@/views/backEnd/index.vue'),
+  },
+  /* /后台路由 */
+
+  /* 测试路由 */
+  {
+    path: '/test',
+    component: () => import('@/views/test/test.vue'),
+  },
+  /* /测试路由 */
+];
 
 const router = createRouter({
   history: routerHistory,

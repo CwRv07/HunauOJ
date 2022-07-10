@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-04-27 17:03:17
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-04-28 18:20:20
+ * @LastEditTime: 2022-07-10 17:12:26
  * @Description: 优化vite.config.ts在根目录创建结构
  * @Email: Rv_Jiang@outlook.com
  */
@@ -45,7 +45,7 @@ export function createVitePlugins(isBuild: boolean) {
     plugins.push(configImageminPlugin());
   }
   // vite-plugin-style-import
-  plugins.push(configStyleImportPlugin());
+  // plugins.push(configStyleImportPlugin());
   // unplugin-auto-import
   plugins.push(configAutoImportPlugin());
   // unplugin-vue-components

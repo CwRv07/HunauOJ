@@ -72,7 +72,7 @@
   </el-card>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const raceList = reactive([
   {
     raceName: '树状数组',
