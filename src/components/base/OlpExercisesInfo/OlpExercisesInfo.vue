@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-07-07 17:04:35
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-07-08 21:50:26
+ * @LastEditTime: 2022-07-09 10:34:45
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -118,6 +118,104 @@ const submitRecordsList = reactive([
     language: 'C++',
     submitTime: '2022/07/07 21:06',
   },
+  {
+    submitRes: 1,
+    runtime: '8ms',
+    consumption: '10.78MB',
+    language: 'C++',
+    submitTime: '2022/07/07 21:06',
+  },
+  {
+    submitRes: 1,
+    runtime: '8ms',
+    consumption: '10.78MB',
+    language: 'C++',
+    submitTime: '2022/07/07 21:06',
+  },
+  {
+    submitRes: 1,
+    runtime: '8ms',
+    consumption: '10.78MB',
+    language: 'C++',
+    submitTime: '2022/07/07 21:06',
+  },
+  {
+    submitRes: 1,
+    runtime: '8ms',
+    consumption: '10.78MB',
+    language: 'C++',
+    submitTime: '2022/07/07 21:06',
+  },
+  {
+    submitRes: 1,
+    runtime: '8ms',
+    consumption: '10.78MB',
+    language: 'C++',
+    submitTime: '2022/07/07 21:06',
+  },
+  {
+    submitRes: 1,
+    runtime: '8ms',
+    consumption: '10.78MB',
+    language: 'C++',
+    submitTime: '2022/07/07 21:06',
+  },
+  {
+    submitRes: 1,
+    runtime: '8ms',
+    consumption: '10.78MB',
+    language: 'C++',
+    submitTime: '2022/07/07 21:06',
+  },
+  {
+    submitRes: 1,
+    runtime: '8ms',
+    consumption: '10.78MB',
+    language: 'C++',
+    submitTime: '2022/07/07 21:06',
+  },
+  {
+    submitRes: 1,
+    runtime: '8ms',
+    consumption: '10.78MB',
+    language: 'C++',
+    submitTime: '2022/07/07 21:06',
+  },
+  {
+    submitRes: 1,
+    runtime: '8ms',
+    consumption: '10.78MB',
+    language: 'C++',
+    submitTime: '2022/07/07 21:06',
+  },
+  {
+    submitRes: 1,
+    runtime: '8ms',
+    consumption: '10.78MB',
+    language: 'C++',
+    submitTime: '2022/07/07 21:06',
+  },
+  {
+    submitRes: 1,
+    runtime: '8ms',
+    consumption: '10.78MB',
+    language: 'C++',
+    submitTime: '2022/07/07 21:06',
+  },
+  {
+    submitRes: 1,
+    runtime: '8ms',
+    consumption: '10.78MB',
+    language: 'C++',
+    submitTime: '2022/07/07 21:06',
+  },
+  {
+    submitRes: 1,
+    runtime: '8ms',
+    consumption: '10.78MB',
+    language: 'C++',
+    submitTime: '2022/07/07 21:06',
+  },
 ]);
 const getExerciseInfo = () => {
   console.log('我被调用了');
@@ -169,6 +267,7 @@ onMounted(() => {
     width: 100%;
     .submit-records-list {
       width: 100%;
+      height: 100%;
     }
   }
 }

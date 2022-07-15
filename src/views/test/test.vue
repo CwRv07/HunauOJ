@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-07-04 11:19:47
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-07-08 19:58:12
+ * @LastEditTime: 2022-07-09 10:47:16
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -18,19 +18,22 @@
 
     <!-- TableGroup测试板块 -->
 
-    <div class="table-group-container">
+    <!-- <div class="table-group-container">
       <olp-table-group :props="tableProps" :data="tableData">
         <template #name="{ value }"> 名字+{{ value }} </template>
         <template #date="{ value }"> 生日+{{ value }} </template>
         <template #address="{ value }"> 地址+{{ value }} </template>
       </olp-table-group>
-    </div>
+    </div> -->
 
     <!-- /TableGroup测试板块 -->
+
+    <!-- markdown测试板块 -->
     <div>
       <olp-exercises-info />
     </div>
   </div>
+  <!-- /markdown测试板块 -->
 </template>
 
 <script setup lang="ts" name="test">
