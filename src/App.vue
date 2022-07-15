@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-04-27 15:56:16
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-07-06 17:01:35
+ * @LastEditTime: 2022-07-10 17:23:34
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -11,18 +11,10 @@
 
 import {} from 'vue';
 import {} from '../node_modules/@element-plus/icons-vue';
-/* Rv_Jiang测试代码-start */
-// import { mapGetters, useStore } from 'vuex';
-// import storage from './utils/storage';
-
-/* Rv_Jiang测试代码-end */
 </script>
 
 <template>
-  <!-- Rv_Jiang测试代码-start -->
-  <olp-header-menu />
   <router-view />
-  <!-- Rv_Jiang测试代码-end -->
 </template>
 
 <style lang="scss">

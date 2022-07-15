@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-10 17:16:07
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-12 15:57:49
+ * @LastEditTime: 2022-07-10 17:38:05
  * @Description: CodeMirror二次封装
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -105,6 +105,7 @@
   </div>
 </template>
 <script lang="ts" setup name="code-mirror">
+import { ElMessageBox, ElMessage } from 'element-plus';
 import codemirror from 'codemirror-editor-vue3';
 // 核心设置文件
 import './settings';

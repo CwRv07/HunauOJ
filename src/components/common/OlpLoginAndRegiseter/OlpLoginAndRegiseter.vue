@@ -1,8 +1,8 @@
 <!--
  * @Author: ND_LJQ
  * @Date: 2022-05-19 09:33:22
- * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-06-29 10:20:19
+ * @LastEditors: Rv_Jiang
+ * @LastEditTime: 2022-07-10 17:38:34
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -138,6 +138,7 @@
 <script lang="ts" setup>
 import type { FormInstance } from 'element-plus';
 import { BuildPropType } from 'element-plus/es/utils';
+import { ElMessage } from 'element-plus';
 
 const userLoginInfo = reactive({
   account: '',

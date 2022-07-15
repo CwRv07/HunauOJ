@@ -1,8 +1,8 @@
 <!--
  * @Author: ND_LJQ
  * @Date: 2022-05-10 17:12:04
- * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-07-08 00:15:39
+ * @LastEditors: Rv_Jiang
+ * @LastEditTime: 2022-07-10 17:35:06
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -27,7 +27,7 @@
 import axios from 'axios';
 import { defineComponent, ref } from 'vue';
 import MdEditor from 'md-editor-v3';
-import { ElMessage } from 'element-plus/es';
+import { ElMessage, ElMessageBox } from 'element-plus';
 import 'md-editor-v3/lib/style.css';
 // import '../../utils/storage/index.ts';
 // 使用 sanitizeHtml 处理不安全的 html 防范xss攻击
@@ -164,10 +164,14 @@ export default defineComponent({
       // @ts-ignore
       shareCodeApi({ text: data.text }).then(res => {
         if (res.data.code === 200) {
-          ElMessageBox.alert(`你的访问链接为：<br /><a style="word-break:break-all;" target='_blank' href="${url}/getCodeShare/${res.data.data}">${url}/getCodeShare/${res.data.data}</a>`, '提示', {
-            confirmButtonText: 'OK',
-            dangerouslyUseHTMLString: true,
-          });
+          ElMessageBox.alert(
+            `你的访问链接为：<br /><a style="word-break:break-all;" target='_blank' href="${url}/getCodeShare/${res.data.data}">${url}/getCodeShare/${res.data.data}</a>`,
+            '提示',
+            {
+              confirmButtonText: 'OK',
+              dangerouslyUseHTMLString: true,
+            }
+          );
           localStorage.removeItem('codeSave');
         }
       });
