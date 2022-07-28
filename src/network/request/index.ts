@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-05-02 07:58:08
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-07-12 11:14:42
+ * @LastEditTime: 2022-07-28 18:37:13
  * @Description:封装请求方法
  * @Email: ndliujunqi@outlook.com
  */
@@ -20,7 +20,7 @@ interface OLPResponse<T> {
   data: T;
 }
 const request = new Request({
-  baseURL: import.meta.env.BASE_URL,
+  baseURL: import.meta.env.VITE_BASE_URL,
   timeout: 1000 * 60 * 5,
   interceptors: {
     // 请求拦截器

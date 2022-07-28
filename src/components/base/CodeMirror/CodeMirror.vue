@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-10 17:16:07
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-07-10 17:38:05
+ * @LastEditTime: 2022-07-28 18:14:58
  * @Description: CodeMirror二次封装
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -60,7 +60,7 @@
       <!-- 测试案例操作 -->
       <!-- 按钮组 -->
       <div class="button-group">
-        <el-button type="primary" @click="submitCodeMirror" :loading="isSubmitting">提交</el-button>
+        <el-button type="primary" @click="submitCodeMirror">提交</el-button>
       </div>
     </section>
     <!-- footer:submission-end -->
@@ -238,21 +238,8 @@ const initCodeMirror = (cm: any) => {
 /* CodeMirror-end */
 
 /* Submission-start */
-const isSubmitting = ref(false);
-const submitCodeMirror = () => {
-  if (!isSubmitting.value) {
-    isSubmitting.value = true;
-    // 模拟提交
-    setTimeout(() => {
-      isSubmitting.value = false;
-      ElMessage({
-        type: 'success',
-        message: '提交成功',
-        showClose: true,
-      });
-    }, 2000);
-  }
-};
+const emit = defineEmits(['submit']);
+const submitCodeMirror = () => emit('submit', mode.value, code.value);
 /* Submission-end */
 
 /* CodeMirrorSettingModal-start */

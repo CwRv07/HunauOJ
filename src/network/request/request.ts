@@ -1,8 +1,8 @@
 /*
  * @Author: ND_LJQ
  * @Date: 2022-05-02 07:58:08
- * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-05-02 11:46:39
+ * @LastEditors: Rv_Jiang
+ * @LastEditTime: 2022-07-28 18:24:40
  * @Description:对axios进行二次封装
  * @Email: ndliujunqi@outlook.com
  */
@@ -51,7 +51,6 @@ class Request {
     // 全局请求拦截器
     this.instance.interceptors.request.use(
       (res: AxiosRequestConfig) => {
-        console.log('全局请求拦截器');
         return res;
       },
       (err: any) => err
@@ -66,7 +65,6 @@ class Request {
     // 全局响应拦截器保证最后执行
     this.instance.interceptors.response.use(
       (res: AxiosResponse) => {
-        console.log('全局响应拦截器');
         //只返回响应中所需要的data数据
         return res.data;
       },
