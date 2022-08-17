@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-07-15 11:39:43
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-07-16 11:52:09
+ * @LastEditTime: 2022-08-17 11:02:09
  * @Description:用户登录
  * @Email: ndliujunqi@outlook.com
  */
@@ -17,7 +17,7 @@ interface loginParams {
 
 export const userLogin = (data: loginParams) => {
   return OLPRequest({
-    url: MODULE_URL,
+    url: MODULE_URL + '/login',
     method: 'POST',
     data,
   });

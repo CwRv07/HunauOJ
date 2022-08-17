@@ -1,15 +1,16 @@
 /*
  * @Author: ND_LJQ
- * @Date: 2022-07-15 18:29:33
+ * @Date: 2022-08-17 11:44:37
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-08-17 11:50:15
- * @Description:
+ * @LastEditTime: 2022-08-17 11:49:22
+ * @Description:更新用户
  * @Email: ndliujunqi@outlook.com
  */
+
 import { MODULE_URL } from '.';
 import OLPRequest from '@/network/request';
 
-interface insertUserInfoParams {
+interface updateUserParam {
   // 头像地址
   avatar: string;
   // 班级
@@ -30,10 +31,10 @@ interface insertUserInfoParams {
   username: string;
 }
 
-export const insertUser = (data: insertUserInfoParams) => {
+export const updateUserInfo = (data: updateUserParam) => {
   return OLPRequest({
     url: MODULE_URL,
-    method: 'POST',
+    method: 'PUT',
     data,
   });
 };
