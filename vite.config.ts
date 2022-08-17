@@ -2,26 +2,42 @@
  * @Author: Rv_Jiang
  * @Date: 2022-04-27 15:56:16
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-07-10 17:17:05
+ * @LastEditTime: 2022-08-17 11:48:48
  * @Description:
  * @Email: Rv_Jiang@outlook.com
  */
-import { UserConfig, ConfigEnv } from 'vite';
-import { createVitePlugins, createViteBuild } from './config';
+import { UserConfig, loadEnv, ConfigEnv } from 'vite';
+import { createVitePlugins, createViteServer, createViteBuild } from './config';
 // 路径别名
 const path = require('path');
-// https://vitejs.dev/config/
-export default ({ command }: ConfigEnv): UserConfig => {
+// 环境变量工具引入
+import { wrapperEnv } from './config/utils';
+
+export default ({ command, mode }: ConfigEnv): UserConfig => {
   const isBuild = command === 'build';
+  //环境变量-全局路径
+  const env = loadEnv(mode, process.cwd());
+  const viteEnv = wrapperEnv(env);
+  const { VITE_PUBLIC_PATH } = viteEnv;
   return {
-    base: './',
+    base: VITE_PUBLIC_PATH,
     plugins: createVitePlugins(isBuild),
+    // server: createViteServer(viteEnv),
     build: createViteBuild(isBuild),
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),
       },
     },
+    // server: {
+    //   proxy: {
+    //     '/api': {
+    //       target: 'server.xxpure.ren:9527',
+    //       changeOrigin: true,
+    //       rewrite: path => path.replace(/^\/api/, ''),
+    //     },
+    //   },
+    // },
     css: {
       preprocessorOptions: {
         scss: {
