@@ -1,9 +1,9 @@
-export const MODULE_URL = '/problem/problem';
+export const MODULE_URL = '/problem';
 
-import submitProblem from './submit';
+import list from './list';
 
 const ProblemAPI = {
-  submitProblem,
+  list,
 };
 
 export default ProblemAPI;
