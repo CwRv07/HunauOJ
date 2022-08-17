@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-07-17 09:41:37
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-08-17 11:10:41
+ * @LastEditTime: 2022-08-17 17:03:00
  * @Description:用户注销
  * @Email: ndliujunqi@outlook.com
  */
@@ -15,7 +15,7 @@ export const userLogout = (token: string) => {
     url: MODULE_URL + '/logout',
     method: 'POST',
     headers: {
-      Authorization: token,
+      token,
     },
   });
 };

@@ -2,11 +2,11 @@
  * @Author: ND_LJQ
  * @Date: 2022-07-16 11:53:10
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-07-16 12:00:12
- * @Description:
+ * @LastEditTime: 2022-08-17 17:42:35
+ * @Description:查询角色列表
  * @Email: ndliujunqi@outlook.com
  */
-import { MODULE_URL } from '.';
+import { BASE_URL } from '..';
 import OLPRequest from '@/network/request';
 
 interface selectListRoleParams {
@@ -17,7 +17,8 @@ interface selectListRoleParams {
 
 export const selectListRole = (data: selectListRoleParams) => {
   return OLPRequest({
-    url: MODULE_URL + `/roles/${data.pageNum}/${data.pageSize}`,
+    url: BASE_URL + `/roles`,
     method: 'GET',
+    data,
   });
 };
