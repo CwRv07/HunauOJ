@@ -1,9 +1,5 @@
-export const MODULE_URL = '/problem';
+import ProblemAPI from './problem';
+import ProblemLanguageAPI from './problemLanguage';
+import ProblemTagAPI from './problemTag';
 
-import list from './list';
-
-const ProblemAPI = {
-  list,
-};
-
-export default ProblemAPI;
+export { ProblemAPI, ProblemLanguageAPI, ProblemTagAPI };

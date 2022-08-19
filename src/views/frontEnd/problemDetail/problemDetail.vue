@@ -1,16 +1,26 @@
 <!--
  * @Author: Rv_Jiang
  * @Date: 2022-07-01 10:00:15
+<<<<<<< HEAD
  * @LastEditors: ND_LJQ
  * @LastEditTime: 2022-08-19 11:09:10
+=======
+ * @LastEditors: Rv_Jiang
+ * @LastEditTime: 2022-08-19 10:33:19
+>>>>>>> fcc5601aa8d9e3f318d78aee198b2d95afb9c789
  * @Description: 题目详情页
  * @Email: Rv_Jiang@outlook.com
 -->
 <template>
   <div id="problemDetail">
     <el-row>
+<<<<<<< HEAD
       <el-col :span="12"><olp-exercises-info /></el-col>
       <el-col :span="12"><code-mirror @submit="submitProblem" /></el-col>
+=======
+      <el-col :span="12" :xs="24" />
+      <el-col :span="12" :xs="24"><code-mirror @submit="submitProblem" /></el-col>
+>>>>>>> fcc5601aa8d9e3f318d78aee198b2d95afb9c789
     </el-row>
   </div>
 </template>
@@ -18,7 +28,7 @@
 <script setup lang="ts" name="problemDetail">
 import { useRoute } from 'vue-router';
 import { ElMessage } from 'element-plus';
-import ProblemAPI from '@/network/problem';
+import { ProblemAPI } from '@/network';
 
 const router = useRoute();
 
@@ -27,30 +37,7 @@ const problemId = Number(router.params.id);
 /* 初始化题目详情-end */
 
 /* 提交题目-start */
-const submitProblem = (mode: string, code: string) => {
-  ProblemAPI.submitProblem({
-    problemId: problemId,
-    language: mode,
-    contestId: 0,
-    code: code,
-  })
-    .then(data => {
-      console.log(data);
-      ElMessage({
-        type: 'success',
-        message: '题目提交成功',
-        showClose: true,
-      });
-    })
-    .catch(err => {
-      console.log(err);
-      ElMessage({
-        type: 'error',
-        message: '题目提交失败',
-        showClose: true,
-      });
-    });
-};
+const submitProblem = (mode: string, code: string) => {};
 /* 提交题目-end */
 </script>
 

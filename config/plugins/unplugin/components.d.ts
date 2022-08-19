@@ -15,6 +15,10 @@ declare module '@vue/runtime-core' {
     ElCarouselItem: typeof import('element-plus/es')['ElCarouselItem']
     ElCol: typeof import('element-plus/es')['ElCol']
     ElDialog: typeof import('element-plus/es')['ElDialog']
+<<<<<<< HEAD
+=======
+    ElEmpty: typeof import('element-plus/es')['ElEmpty']
+>>>>>>> fcc5601aa8d9e3f318d78aee198b2d95afb9c789
     ElForm: typeof import('element-plus/es')['ElForm']
     ElFormItem: typeof import('element-plus/es')['ElFormItem']
     ElIcon: typeof import('element-plus/es')['ElIcon']
@@ -26,7 +30,10 @@ declare module '@vue/runtime-core' {
     ElOption: typeof import('element-plus/es')['ElOption']
     ElPagination: typeof import('element-plus/es')['ElPagination']
     ElPopover: typeof import('element-plus/es')['ElPopover']
+<<<<<<< HEAD
     ElProgress: typeof import('element-plus/es')['ElProgress']
+=======
+>>>>>>> fcc5601aa8d9e3f318d78aee198b2d95afb9c789
     ElRadioButton: typeof import('element-plus/es')['ElRadioButton']
     ElRadioGroup: typeof import('element-plus/es')['ElRadioGroup']
     ElRow: typeof import('element-plus/es')['ElRow']

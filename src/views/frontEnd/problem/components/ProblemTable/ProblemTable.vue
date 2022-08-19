@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-03 08:11:33
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-07-01 10:21:07
+ * @LastEditTime: 2022-08-19 10:13:58
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -31,6 +31,7 @@
               clearable
               v-model="difficulty.active"
               placeholder="难度"
+              @change="difficultyChange"
             >
               <el-option
                 v-for="item in difficulty.list"
@@ -71,7 +72,7 @@
             />
             <!-- /题目名称 -->
           </aside>
-          <aside class="right">
+          <aside class="right hidden-xs-only">
             <!-- 随机一题 -->
             <el-button class="problem-random" round icon="MagicStick" size="large"
               >随机一题</el-button
@@ -85,17 +86,30 @@
 
     <!-- 题目展示栏 -->
     <main class="box-main">
-      <el-table :data="tableData" :highlight-current-row="false" stripe style="width: 100%">
-        <el-table-column prop="id" label="题目ID" min-width="100px" />
-        <el-table-column prop="name" label="题目" min-width="200px">
+      <el-table
+        :data="tableData"
+        :highlight-current-row="false"
+        stripe
+        style="width: 100%"
+        @row-click="jumpToProblemDetail"
+      >
+        <el-table-column prop="pId" label="题目ID" min-width="80px" align="center" />
+        <el-table-column prop="pName" label="题目" min-width="200px">
           <template #default="slotProps">
-            <p class="table-problem-title" :title="slotProps.row.name">
-              {{ slotProps.row.name }}
+            <p class="table-problem-title single-line" :title="slotProps.row.pName">
+              {{ slotProps.row.pName }}
             </p>
           </template>
         </el-table-column>
-        <el-table-column prop="difficulty" min-width="100px" label="难度" />
-        <el-table-column prop="total" label="提交总数" min-width="100px" />
+        <el-table-column
+          prop="pDifficulty"
+          min-width="100px"
+          label="难度"
+          :formatter="difficultyFormatter"
+        />
+        <template #empty> <el-empty /> </template>
+
+        <!-- <el-table-column prop="total" label="提交总数" min-width="100px" />
         <el-table-column prop="pass" label="AC通过率" min-width="150px">
           <template #default="slotProps">
             <el-progress
@@ -106,7 +120,7 @@
               :format="passFormatFunc"
             />
           </template>
-        </el-table-column>
+        </el-table-column> -->
       </el-table>
     </main>
     <!-- /题目展示栏 -->
@@ -127,12 +141,15 @@
 </template>
 
 <script setup lang="ts" name="problem-table">
+import { ProblemAPI } from '@/network';
+import { useRouter } from 'vue-router';
+const router = useRouter();
 /* 筛选栏 */
 
 // 标题语言
 const language = reactive({
   active: '全部语言',
-  list: ['全部语言', 'C', 'C++', 'Java', 'Python'],
+  list: ['全部语言', 'Java'],
 });
 // /标题语言
 
@@ -140,11 +157,21 @@ const language = reactive({
 const difficulty = reactive({
   active: '',
   list: [
-    { label: '简单', value: 'easy' },
-    { label: '普通', value: 'default' },
-    { label: '困难', value: 'hard' },
+    { label: '简单', value: '1' },
+    { label: '普通', value: '2' },
+    { label: '困难', value: '3' },
   ],
 });
+const difficultyChange = (val: string) => {
+  ProblemAPI.list({ pageNum: 1, pDifficulty: Number(val) })
+    .then(res => {
+      console.log(res);
+      tableData.value = res.data;
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
 // /题目难度
 
 // 题目标签
@@ -172,171 +199,59 @@ const title = reactive({
 /* /筛选栏 */
 
 /* 题目展示栏 */
-const passColorFunc = (num: number) => {
-  switch (Math.ceil(num / 10)) {
-    case 0:
-    case 1:
-    case 2:
-    case 3:
-      return '#f56c6c';
-    case 4:
-    case 5:
-    case 6:
-      return '#e6a23c';
-    case 7:
-    case 8:
-    case 9:
-    case 10:
-      return '#67c23a';
-    default:
-      return '#409eff';
-  }
+// 通过率列渲染函数
+// const passColorFunc = (num: number) => {
+//   switch (Math.ceil(num / 10)) {
+//     case 0:
+//     case 1:
+//     case 2:
+//     case 3:
+//       return '#f56c6c';
+//     case 4:
+//     case 5:
+//     case 6:
+//       return '#e6a23c';
+//     case 7:
+//     case 8:
+//     case 9:
+//     case 10:
+//       return '#67c23a';
+//     default:
+//       return '#409eff';
+//   }
+// };
+// const passFormatFunc = (num: number) => {
+//   return num.toFixed(2) + '%';
+// };
+// const idFormatter=(row: any, column: any, cellValue: any) => {
+//   return difficulty.list[cellValue - 1].label;
+// };
+// 路由跳转
+const jumpToProblemDetail = ({ pId }: any) => {
+  router.push(`/problem/${pId}`);
 };
-const passFormatFunc = (num: number) => {
-  return num.toFixed(2) + '%';
+// 困难value转label渲染
+const difficultyFormatter = (row: any, column: any, cellValue: any) => {
+  return difficulty.list[cellValue - 1].label;
 };
-const tableData = [
+// 题目数据
+const tableData = ref([
   {
-    id: 'A1000',
-    name: 'SPJ测试',
-    difficulty: '入门',
-    total: 205,
-    pass: 52.2,
+    pId: 'A1000',
+    pName: 'SPJ测试',
+    pDifficulty: 1,
   },
-  {
-    id: 'A1000',
-    name: 'SPJ测试',
-    difficulty: '入门',
-    total: 205,
-    pass: 52.2,
-  },
-  {
-    id: 'A1000',
-    name: 'SPJ测试',
-    difficulty: '入门',
-    total: 205,
-    pass: 52.2,
-  },
-  {
-    id: 'A1000',
-    name: 'SPJ测试',
-    difficulty: '入门',
-    total: 205,
-    pass: 52.2,
-  },
-  {
-    id: 'A1000',
-    name: 'SPJ测试',
-    difficulty: '入门',
-    total: 205,
-    pass: 52.2,
-  },
-  {
-    id: 'A1000',
-    name: 'SPJ测试',
-    difficulty: '入门',
-    total: 205,
-    pass: 52.2,
-  },
-  {
-    id: 'A1000',
-    name: 'SPJ测试',
-    difficulty: '入门',
-    total: 205,
-    pass: 52.2,
-  },
-  {
-    id: 'A1000',
-    name: 'SPJ测试',
-    difficulty: '入门',
-    total: 205,
-    pass: 52.2,
-  },
-  {
-    id: 'A1000',
-    name: 'SPJ测试',
-    difficulty: '入门',
-    total: 205,
-    pass: 52.2,
-  },
-  {
-    id: 'A1000',
-    name: 'SPJ测试',
-    difficulty: '入门',
-    total: 205,
-    pass: 52.2,
-  },
-  {
-    id: 'A1000',
-    name: 'SPJ测试',
-    difficulty: '入门',
-    total: 205,
-    pass: 52.2,
-  },
-  {
-    id: 'A1000',
-    name: 'SPJ测试',
-    difficulty: '入门',
-    total: 205,
-    pass: 52.2,
-  },
-  {
-    id: 'A1000',
-    name: 'SPJ测试',
-    difficulty: '入门',
-    total: 205,
-    pass: 52.2,
-  },
-  {
-    id: 'A1000',
-    name: 'SPJ测试',
-    difficulty: '入门',
-    total: 205,
-    pass: 52.2,
-  },
-  {
-    id: 'A1000',
-    name: 'SPJ测试',
-    difficulty: '入门',
-    total: 205,
-    pass: 52.2,
-  },
-  {
-    id: 'A1000',
-    name: 'SPJ测试',
-    difficulty: '入门',
-    total: 205,
-    pass: 52.2,
-  },
-  {
-    id: 'A1000',
-    name: 'SPJ测试',
-    difficulty: '入门',
-    total: 205,
-    pass: 52.2,
-  },
-  {
-    id: 'A1000',
-    name: 'SPJ测试',
-    difficulty: '入门',
-    total: 205,
-    pass: 52.2,
-  },
-  {
-    id: 'A1000',
-    name: 'SPJ测试',
-    difficulty: '入门',
-    total: 205,
-    pass: 52.2,
-  },
-  {
-    id: 'A1000',
-    name: 'SPJ测试',
-    difficulty: '入门',
-    total: 205,
-    pass: 52.2,
-  },
-];
+]);
+// 初始化题目数据
+onMounted(() => {
+  ProblemAPI.list({ pageNum: 1 })
+    .then(res => {
+      tableData.value = res.data;
+    })
+    .catch(err => {
+      console.log(err);
+    });
+});
 /* /题目展示栏 */
 
 /* 分页栏 */
@@ -355,9 +270,11 @@ const pagination = reactive({
 #problemTable {
   .box-header {
     margin-bottom: 15px;
+
     /* 题目语言 */
     .problem-language {
       margin-bottom: 15px;
+
       :deep(.language-item) {
         .el-radio-button__inner {
           margin-right: 10px;
@@ -367,11 +284,13 @@ const pagination = reactive({
           background: var(--el-border-color-extra-light);
           transition: none;
         }
+
         &.is-active .el-radio-button__inner {
           background: var(--el-color-primary);
         }
       }
     }
+
     /* /题目语言 */
 
     .problem-detail-condition {
@@ -383,9 +302,12 @@ const pagination = reactive({
       .left {
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
+
         > div {
-          margin-right: 10px;
+          margin: 8px 10px 8px 0;
         }
+
         :deep(.el-input__wrapper) {
           background-color: var(--el-border-color-extra-light);
           box-shadow: none !important;
@@ -402,6 +324,7 @@ const pagination = reactive({
         .problem-difficulty {
           width: 100px;
         }
+
         /* /题目难度 */
 
         /* 题目标签 */
@@ -413,20 +336,27 @@ const pagination = reactive({
             --el-border-color-extra-light: var(--el-border-color-light);
           }
         }
+
         /* /题目标签 */
 
         /* 题目名称 */
-        .problem-title {
+        :deep(.problem-title) {
+          flex: 1;
+          min-width: 120px;
+          max-width: 265px;
         }
+
         /* /题目名称 */
       }
 
       // 题目筛选项右侧按钮样式
       .right {
+        margin-left: 10px;
         .problem-random {
           font-weight: bold;
           border: 1px solid transparent;
           background: var(--el-border-color-extra-light);
+
           &:hover {
             background-color: var(--el-button-hover-bg-color);
           }

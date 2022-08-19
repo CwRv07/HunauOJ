@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-04-27 15:56:16
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-08-17 14:15:47
+ * @LastEditTime: 2022-08-18 16:08:32
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -33,6 +33,15 @@ import {} from 'vue';
       display: flex;
       align-items: center;
     }
+  }
+
+  .el-empty {
+    --el-empty-fill-color-1: var(--el-color-primary-light-9);
+    --el-empty-fill-color-2: var(--el-color-primary-light-9);
+    --el-empty-fill-color-5: var(--el-color-primary-light-8);
+    --el-empty-fill-color-7: var(--el-color-primary-light-7);
+    --el-empty-fill-color-8: var(--el-color-primary-light-7);
+    --el-empty-fill-color-9: var(--el-color-primary-light-5);
   }
 }
 

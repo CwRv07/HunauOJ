@@ -1,6 +1,4 @@
-import ProblemAPI from './problem';
-import ProblemLanguageAPI from './problemLanguage';
-import ProblemTagAPI from './problemTag';
+import { ProblemAPI, ProblemLanguageAPI, ProblemTagAPI } from './problem';
 import TagAPI from './tag';
 
 export { ProblemAPI, ProblemLanguageAPI, ProblemTagAPI, TagAPI };
