@@ -1,15 +1,15 @@
 <!--
  * @Author: Rv_Jiang
  * @Date: 2022-07-01 10:00:15
- * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-07-28 18:25:29
+ * @LastEditors: ND_LJQ
+ * @LastEditTime: 2022-08-19 11:09:10
  * @Description: 题目详情页
  * @Email: Rv_Jiang@outlook.com
 -->
 <template>
   <div id="problemDetail">
     <el-row>
-      <el-col :span="12" />
+      <el-col :span="12"><olp-exercises-info /></el-col>
       <el-col :span="12"><code-mirror @submit="submitProblem" /></el-col>
     </el-row>
   </div>

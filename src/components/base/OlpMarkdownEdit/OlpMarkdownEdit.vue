@@ -1,8 +1,8 @@
 <!--
  * @Author: ND_LJQ
  * @Date: 2022-05-10 17:12:04
- * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-07-10 17:35:06
+ * @LastEditors: ND_LJQ
+ * @LastEditTime: 2022-08-19 11:03:18
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -133,11 +133,13 @@ export default defineComponent({
       load: 0,
       isDis: false,
     });
+
     /**
      * @description:保存代码
      * @param {*} v
      * @return {*}
      */
+
     const codeSave = (v: string): void => {
       ElMessage.info('已保存');
       localStorage.setItem('codeSave', v);
@@ -205,7 +207,8 @@ export default defineComponent({
     //父组件传值
     isPreviewOnly: {
       type: Boolean,
-      default: false, //设置默认值
+      //设置默认值
+      default: false,
       required: true, //是否必须传递
     },
     markdownStyle: {
@@ -214,6 +217,7 @@ export default defineComponent({
       required: false,
     },
   },
+
   methods: {
     /**
      * @description: 图片上传

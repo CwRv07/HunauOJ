@@ -2,12 +2,12 @@
  * @Author: ND_LJQ
  * @Date: 2022-07-07 17:04:35
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-07-09 10:34:45
+ * @LastEditTime: 2022-08-19 11:43:45
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
 <template>
-  <el-tabs type="border-card" class="exercise-tabs" style="width: 50vw">
+  <el-tabs type="border-card" class="exercise-tabs" style="width: 50vw; height: 100vh; border: 0">
     <el-tab-pane>
       <template #label>
         <span class="custom-tabs-label">
@@ -22,7 +22,9 @@
               <h1>{{ allInfo.exerciseTitle }}</h1>
             </div>
           </div>
-          <div class="markdown-content"><olp-markdown-edit :is-preview-only="true" /></div>
+          <div class="markdown-content" style="height: 100%">
+            <olp-markdown-edit :is-preview-only="true" />
+          </div>
         </div>
       </div>
     </el-tab-pane>
@@ -230,6 +232,14 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
+:depp(.el-tabs--top) {
+  border: 0;
+}
+
+:deep(.el-tabs__header) {
+  background-color: rgb(247, 247, 247);
+  border: 0px;
+}
 .exercise-tabs > .el-tabs__content {
   padding: 32px;
   color: #6b778c;
@@ -251,7 +261,7 @@ onMounted(() => {
 }
 
 .tab-item {
-  height: 60vh;
+  height: 85vh;
   overflow: scroll;
 }
 
