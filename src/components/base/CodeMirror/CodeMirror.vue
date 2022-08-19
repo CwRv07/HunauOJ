@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-10 17:16:07
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-07-28 18:14:58
+ * @LastEditTime: 2022-08-19 10:30:24
  * @Description: CodeMirror二次封装
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -317,7 +317,11 @@ const settingModal: any = reactive({
     align-items: center;
 
     // 语言选择 & 主题选择
-    .mode-select,
+    .mode-select {
+      margin-left: 35px;
+      min-width: 120px;
+      max-width: 180px;
+    }
     .theme-select {
       width: 140px;
       :deep(.el-input__inner) {

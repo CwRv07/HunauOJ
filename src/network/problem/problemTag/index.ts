@@ -1,4 +1,4 @@
-export const MODULE_URL = '/problem';
+export const MODULE_URL = '/hunauojProblem/problem';
 
 import findById from './findById';
 
