@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-01 15:13:32
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-02 08:18:41
+ * @LastEditTime: 2022-08-19 16:43:06
  * @Description: 用户Store模块
  * @Email: Rv_Jiang@outlook.com
  */
@@ -10,24 +10,19 @@ import { USER_ROLE } from '@/utils/constants';
 import storage from '@/utils/storage';
 import { Module } from 'vuex';
 
+interface UserInfo {
+  uid: string;
+  token: string;
+}
+
 export const userStore: Module<unknown, unknown> = {
   namespaced: true,
   state: {
-    userInfo: storage.get('userInfo'),
+    userId: storage.get('userInfo'),
     token: storage.get('token'),
-    /* 
-    loginFailNum: 0,
-    unreadMessage:{
-      comment:0,
-      reply:0,
-      like:0,
-      sys:0,
-      mine:0,
-    }  
-    */
   },
   getters: {
-    userInfo: (state: any) => state.userInfo || {},
+    userId: (state: any) => state.userId || {},
     token: (state: any) => state.token || '',
 
     /* 权限判断-start */
@@ -35,68 +30,36 @@ export const userStore: Module<unknown, unknown> = {
     isAuthenticated: (state: any, getters: any): boolean => {
       return !!getters.token;
     },
-    // 判断当前用户是否具有普通用户权限
-    isUser: (states: any, getters: any): boolean => {
-      const roleList = getters.userInfo.roleList;
-      if (getters.isAuthenticated && roleList) {
-        return (
-          roleList.includes(USER_ROLE.USER) ||
-          roleList.includes(USER_ROLE.ADMIN) ||
-          roleList.includes(USER_ROLE.PROBLEM_ADMIN) ||
-          roleList.includes(USER_ROLE.SUPER_ADMIN)
-        );
-      }
-      return false;
-    },
-    // 判断当前用户是否具有管理员权限
-    isAdmin: (state: any, getters: any): boolean => {
-      const roleList = getters.userInfo.roleList;
-      if (getters.isAuthenticated && roleList) {
-        return (
-          roleList.includes(USER_ROLE.ADMIN) ||
-          roleList.includes(USER_ROLE.PROBLEM_ADMIN) ||
-          roleList.includes(USER_ROLE.SUPER_ADMIN)
-        );
-      }
-      return false;
-    },
-    // 判断当前用户是否具有问题管理员权限
-    isProblemAdmin: (state: any, getters: any): boolean => {
-      const roleList = getters.userInfo.roleList;
-      if (getters.isAuthenticated && roleList) {
-        return (
-          roleList.includes(USER_ROLE.PROBLEM_ADMIN) || roleList.includes(USER_ROLE.SUPER_ADMIN)
-        );
-      }
-      return false;
-    },
-    // 判断当前用户是否具有超级管理员权限
-    isSuperAdmin: (state: any, getters: any): boolean => {
-      const roleList = getters.userInfo.roleList;
-      if (getters.isAuthenticated && roleList) {
-        return roleList.includes(USER_ROLE.SUPER_ADMIN);
-      }
-      return false;
-    },
     /* 权限判断-end */
   },
   mutations: {
-    setToken(state: any, token) {
+    setUserInfo(state: any, userInfo: UserInfo) {
+      state.userId = userInfo.uid;
+      state.token = userInfo.token;
+    },
+    setToken(state: any, token: string) {
       state.token = token;
+    },
+    setUId(state: any, uId: string) {
+      state.userId = uId;
     },
   },
   actions: {
     /* 用户信息修改-start */
     // 修改用户信息
-    setUserInfo({ commit }, userInfo): void {
+    setUserInfo({ commit }, userInfo: UserInfo): void {
       commit('setUserInfo', userInfo);
     },
     // 清空用户信息和token
-    clearUserInfoAndToken({ commit }): void {
-      commit('clearUserInfoAndToken');
+    clearUserInfo({ commit }): void {
+      commit('clearUserInfo');
     },
-    setToken({ commit }, token): void {
+
+    setToken({ commit }, token: string): void {
       commit('setToken', token);
+    },
+    setUId({ commit }, uid: string): void {
+      commit('setToken', uid);
     },
     /* 用户信息修改-end */
   },

@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-10 17:16:07
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-08-19 10:30:24
+ * @LastEditTime: 2022-08-19 17:23:22
  * @Description: CodeMirror二次封装
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -36,7 +36,7 @@
         >
           <template #reference>
             <el-button type="text" size="default" @click="item.callback">
-              <el-icon :size="20" color="var(--el-text-color-primary)">
+              <el-icon :size="20" color="var(--el-text-color-secondary)">
                 <component :is="item.icon" />
               </el-icon>
             </el-button>
@@ -110,16 +110,24 @@ import codemirror from 'codemirror-editor-vue3';
 // 核心设置文件
 import './settings';
 
+const props = defineProps<{
+  language: string[];
+}>();
+
 /* Setting-start */
 // value
 const code = ref('');
 // modeOption
-const mode = ref('text/x-c++src');
-const modeOption = reactive([
-  { label: 'C++', value: 'text/x-c++src' },
-  { label: 'Java', value: 'text/x-java' },
-  { label: 'Python', value: 'text/x-python' },
-]);
+const mode = ref('text/x-java');
+const modeOption = computed(() => {
+  const allLanguage = [
+    { label: 'C++', value: 'text/x-c++src' },
+    { label: 'Java', value: 'text/x-java' },
+    { label: 'Python', value: 'text/x-python' },
+  ];
+  if (props.language.length === 0) return allLanguage;
+  else allLanguage.filter(currentValue => props.language.includes(currentValue.label));
+});
 // 缓存
 const modeCache: { [key: string]: string } = {};
 const changeMode = (val: string) => {
