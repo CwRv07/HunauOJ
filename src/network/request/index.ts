@@ -2,13 +2,14 @@
  * @Author: ND_LJQ
  * @Date: 2022-05-02 07:58:08
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-08-17 10:56:20
+ * @LastEditTime: 2022-08-19 18:14:26
  * @Description:封装请求方法
  * @Email: ndliujunqi@outlook.com
  */
 
 import Request from './request';
 import type { RequestConfig } from './type';
+import type { AxiosResponse } from 'axios';
 
 interface OLPRequestConfig<T> extends RequestConfig {
   data?: T;
@@ -27,6 +28,9 @@ const request = new Request({
     requestInterceptors: config => config,
     // 响应拦截器
     responseInterceptors: result => {
+      // if (result.status === 200 && result.data.code !== 200) {
+      //   return Promise.reject(result);
+      // }
       return result;
     },
   },

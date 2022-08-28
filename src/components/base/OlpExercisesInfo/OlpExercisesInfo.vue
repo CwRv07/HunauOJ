@@ -1,13 +1,13 @@
 <!--
  * @Author: ND_LJQ
  * @Date: 2022-07-07 17:04:35
- * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-08-19 11:43:45
+ * @LastEditors: Rv_Jiang
+ * @LastEditTime: 2022-08-19 16:03:20
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
 <template>
-  <el-tabs type="border-card" class="exercise-tabs" style="width: 50vw; height: 100vh; border: 0">
+  <el-tabs type="border-card" class="exercise-tabs" style="height: 100vh; border: 0">
     <el-tab-pane>
       <template #label>
         <span class="custom-tabs-label">
