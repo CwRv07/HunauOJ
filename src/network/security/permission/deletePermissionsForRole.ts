@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-08-17 19:38:46
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-08-17 19:42:20
+ * @LastEditTime: 2022-08-28 10:29:05
  * @Description:删除角色权限
  * @Email: ndliujunqi@outlook.com
  */
@@ -16,7 +16,7 @@ interface deletePermissionsForRoleParams {
   roleId: string;
 }
 
-export const addRolesForUserParams = (data: deletePermissionsForRoleParams) => {
+export const deletePermissionsForRole = (data: deletePermissionsForRoleParams) => {
   return OLPRequest({
     url: BASE_URL + `/permissionRole`,
     method: 'DELETE',

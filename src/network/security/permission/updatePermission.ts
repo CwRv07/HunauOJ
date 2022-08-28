@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-08-17 17:54:02
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-08-17 18:10:30
+ * @LastEditTime: 2022-08-28 10:31:48
  * @Description:根据id修改权限
  * @Email: ndliujunqi@outlook.com
  */
@@ -20,7 +20,7 @@ interface updatePermissionParams {
   url: string;
 }
 
-export const insertPermission = (data: updatePermissionParams) => {
+export const updatePermission = (data: updatePermissionParams) => {
   return OLPRequest({
     url: MODULE_URL,
     method: 'PUT',

@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-07-16 11:53:10
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-08-17 17:42:35
+ * @LastEditTime: 2022-08-28 10:46:58
  * @Description:查询角色列表
  * @Email: ndliujunqi@outlook.com
  */
@@ -15,7 +15,7 @@ interface selectListRoleParams {
   roleName?: string;
 }
 
-export const selectListRole = (data: selectListRoleParams) => {
+export const queryListRole = (data: selectListRoleParams) => {
   return OLPRequest({
     url: BASE_URL + `/roles`,
     method: 'GET',
