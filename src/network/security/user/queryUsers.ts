@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-08-17 12:28:10
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-08-17 17:16:36
+ * @LastEditTime: 2022-08-28 14:11:05
  * @Description:
  * @Email: ndliujunqi@outlook.com
  */
@@ -47,10 +47,12 @@ interface queryUsersParams {
   };
 }
 
-export const queryUsers = (data: queryUsersParams) => {
+const queryUsers = (data: queryUsersParams) => {
   return OLPRequest({
     url: BASE_URL + '/users',
     method: 'GET',
     data,
   });
 };
+
+export default queryUsers;

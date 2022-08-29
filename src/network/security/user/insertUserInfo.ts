@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-07-15 18:29:33
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-08-28 10:58:55
+ * @LastEditTime: 2022-08-28 14:48:22
  * @Description:增加用户
  * @Email: ndliujunqi@outlook.com
  */
@@ -19,13 +19,16 @@ interface insertUserInfoParams {
 }
 const headeradd = '';
 
-export const addUser = (data: insertUserInfoParams) => {
+const addUser = (data: insertUserInfoParams) => {
   return OLPRequest({
     url: BASE_URL + '/useradd',
     method: 'POST',
     data,
     headers: {
+      'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json',
     },
   });
 };
+
+export default addUser;

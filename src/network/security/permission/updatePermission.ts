@@ -2,11 +2,11 @@
  * @Author: ND_LJQ
  * @Date: 2022-08-17 17:54:02
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-08-28 10:31:48
+ * @LastEditTime: 2022-08-28 13:29:23
  * @Description:根据id修改权限
  * @Email: ndliujunqi@outlook.com
  */
-import { MODULE_URL } from '.';
+import MODULE_URL from '.';
 import OLPRequest from '@/network/request';
 
 interface updatePermissionParams {
@@ -20,9 +20,9 @@ interface updatePermissionParams {
   url: string;
 }
 
-export const updatePermission = (data: updatePermissionParams) => {
+export const updatePermissionById = (data: updatePermissionParams) => {
   return OLPRequest({
-    url: MODULE_URL,
+    url: MODULE_URL + '',
     method: 'PUT',
     data,
   });

@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-05-19 09:33:22
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-08-28 10:09:25
+ * @LastEditTime: 2022-08-28 14:43:57
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -139,8 +139,8 @@
 import type { FormInstance } from 'element-plus';
 import { BuildPropType } from 'element-plus/es/utils';
 import { ElMessage } from 'element-plus';
-import { insertUser } from '@/network/security/user/insertUserInfo';
-
+// import addUser from '@/network/security/user/insertUserInfo';
+import { SecurityAPI } from '@/network/index';
 const userLoginInfo = reactive({
   account: '',
   pass: '',
@@ -366,8 +366,9 @@ const userRegister = () => {
     userRregisterInfo.nickname = ruleForm.re_email;
     userRregisterInfo.password = ruleForm.re_pass;
     const jsonString = JSON.stringify(userRregisterInfo);
+    const result = SecurityAPI.User.UserAPI.addUser(jsonString);
     console.log(jsonString);
-    const result = insertUser(jsonString);
+    // const result = addUser(jsonString);
     console.log(result);
   }
 };

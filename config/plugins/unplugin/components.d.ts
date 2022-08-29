@@ -6,7 +6,6 @@ import '@vue/runtime-core'
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     CodeMirror: typeof import('./../../../src/components/base/CodeMirror/CodeMirror.vue')['default']
-<<<<<<< HEAD
     ElAutocomplete: typeof import('element-plus/es')['ElAutocomplete']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElButton: typeof import('element-plus/es')['ElButton']
@@ -28,8 +27,6 @@ declare module '@vue/runtime-core' {
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
-=======
->>>>>>> 7835ae52155903326c0c62015a7f6ce70f5121b3
     OlpBarChart: typeof import('./../../../src/components/base/OlpEcharts/OlpBarChart.vue')['default']
     OlpExercisesInfo: typeof import('./../../../src/components/base/OlpExercisesInfo/OlpExercisesInfo.vue')['default']
     OlpFooterInfo: typeof import('./../../../src/components/common/OlpFooterInfo/OlpFooterInfo.vue')['default']
