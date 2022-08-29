@@ -2,14 +2,14 @@
  * @Author: Rv_Jiang
  * @Date: 2022-04-27 15:56:16
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-08-18 16:08:32
+ * @LastEditTime: 2022-08-29 22:06:54
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
 <script setup lang="ts">
 // 处理一个Vuter报错，需要首行import/export
 import {} from 'vue';
-
+import {} from '@/network';
 /* 测试代码 */
 </script>
 

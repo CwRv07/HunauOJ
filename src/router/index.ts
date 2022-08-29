@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-04-28 10:19:32
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-07-10 16:20:43
+ * @LastEditTime: 2022-08-29 21:50:42
  * @Description:
  * @Email: Rv_Jiang@outlook.com
  */
@@ -89,7 +89,7 @@ const routerVariable: { [key: string]: any } = {
 };
 
 router.beforeEach((to: RouteLocationNormalized /* from: RouteLocationNormalized */) => {
-  console.log(to);
+  // console.log(to);
 
   /* 路由跳转动画 */
   routerVariable.loadingInstance = ElLoading.service();

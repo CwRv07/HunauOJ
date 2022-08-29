@@ -3,7 +3,7 @@
  * @Date: 2022-07-01 10:00:15
 <<<<<<< HEAD
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-08-19 18:45:47
+ * @LastEditTime: 2022-08-29 21:43:17
 =======
  * @LastEditors: Rv_Jiang
  * @LastEditTime: 2022-08-19 10:33:19
@@ -39,7 +39,7 @@ onMounted(() => {
   store.commit('userStore/setUserInfo', {
     pid: '1002',
     token:
-      'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI0ODJmYjE0NTYzNmU0ZWE5ODRjNzE4NDY5NzljYmZhZSIsInN1YiI6ImFkbWluIiwiaXNzIjoic2ciLCJpYXQiOjE2NjA5MDE4NTQsImV4cCI6MTY2MDkwNTQ1NH0.dkiZ_f-btgmEkhcJ1U8SZa0_e6lGsCxUR4y9yr77rMA',
+      'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJhNWFhYWFiY2FjYTI0MGI5ODY1M2M5NzkxNTljNGRjZiIsInN1YiI6ImFkbWluIiwiaXNzIjoic2ciLCJpYXQiOjE2NjE3ODA1ODQsImV4cCI6MTY2MTc4NDE4NH0.2Y1IAcY0E9-wrX73yMIyb6wVwscojmYnjFcWkWyC8UU',
   });
   /* 测试代码 */
 

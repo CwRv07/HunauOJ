@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-03 08:11:33
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-08-19 16:15:59
+ * @LastEditTime: 2022-08-29 21:50:53
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -166,7 +166,7 @@ const difficultyChange = (val: string) => {
   ProblemAPI.list({ pageNum: 1, pDifficulty: Number(val) })
     .then(res => {
       console.log(res);
-      tableData.value = res.data;
+      // tableData.value = res.data;
     })
     .catch(err => {
       console.log(err);
@@ -246,7 +246,8 @@ const tableData = ref([
 onMounted(() => {
   ProblemAPI.list({ pageNum: 1 })
     .then(res => {
-      tableData.value = res.data;
+      console.log(res);
+      // tableData.value = res.data;
     })
     .catch(err => {
       console.log(err);
