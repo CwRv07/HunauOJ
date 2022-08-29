@@ -1,8 +1,8 @@
 <!--
  * @Author: ND_LJQ
  * @Date: 2022-05-19 09:33:22
- * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-07-10 17:38:34
+ * @LastEditors: ND_LJQ
+ * @LastEditTime: 2022-08-28 14:43:57
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -38,7 +38,7 @@
                   type="text"
                   autocomplete="off"
                   style="height: 38px"
-                  placeholder="手机号/邮箱"
+                  placeholder="登录用账号"
                 />
               </el-form-item>
               <el-form-item prop="re_email" label-width="0">
@@ -47,7 +47,7 @@
                   type="email"
                   autocomplete="off"
                   style="height: 38px"
-                  placeholder="手机号/邮箱"
+                  placeholder="用户昵称"
                 />
               </el-form-item>
               <el-form-item prop="re_pass" label-width="0">
@@ -139,16 +139,17 @@
 import type { FormInstance } from 'element-plus';
 import { BuildPropType } from 'element-plus/es/utils';
 import { ElMessage } from 'element-plus';
-
+// import addUser from '@/network/security/user/insertUserInfo';
+import { SecurityAPI } from '@/network/index';
 const userLoginInfo = reactive({
   account: '',
   pass: '',
 });
 
 const userRregisterInfo = reactive({
-  re_pass: '',
-  re_email: '',
-  re_account: '',
+  password: '',
+  nickname: '',
+  username: '',
 });
 
 const ruleForm = reactive({
@@ -294,14 +295,15 @@ const validateEmail = (rule: any, value: any, callback: any) => {
   if (value === '') {
     // console.log('已进入');
     reg_email_pass.value = false;
-    callback(new Error('请输入邮箱'));
-  } else {
-    const pass = /^([a-zA-Z\d][\w-]{2,})@(\w{2,})\.([a-z]{2,})(\.[a-z]{2,})?$/.test(value);
-    if (!pass) {
-      callback(new Error('邮箱格式不正确!'));
-    }
-    callback();
+    callback(new Error('请输入用户昵称'));
   }
+  //  else {
+  //   const pass = /^([a-zA-Z\d][\w-]{2,})@(\w{2,})\.([a-z]{2,})(\.[a-z]{2,})?$/.test(value);
+  //   if (!pass) {
+  //     callback(new Error('邮箱格式不正确!'));
+  //   }
+  //   callback();
+  // }
 };
 
 const rules = reactive({
@@ -360,11 +362,14 @@ const userRegister = () => {
     reg_checkPassword_pass.value == true &&
     reg_email_pass.value == true
   ) {
-    userRregisterInfo.re_account = ruleForm.re_account;
-    userRregisterInfo.re_email = ruleForm.re_email;
-    userRregisterInfo.re_pass = ruleForm.re_pass;
+    userRregisterInfo.username = ruleForm.re_account;
+    userRregisterInfo.nickname = ruleForm.re_email;
+    userRregisterInfo.password = ruleForm.re_pass;
     const jsonString = JSON.stringify(userRregisterInfo);
+    const result = SecurityAPI.User.UserAPI.addUser(jsonString);
     console.log(jsonString);
+    // const result = addUser(jsonString);
+    console.log(result);
   }
 };
 </script>

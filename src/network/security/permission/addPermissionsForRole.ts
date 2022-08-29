@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-08-17 19:34:36
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-08-17 19:37:13
+ * @LastEditTime: 2022-08-28 10:28:00
  * @Description:为角色添加权限
  * @Email: ndliujunqi@outlook.com
  */
@@ -17,7 +17,7 @@ interface addPermissionsForRoleParams {
   roleId: string;
 }
 
-export const addRolesForUserParams = (data: addPermissionsForRoleParams) => {
+export const addPermissionsForRole = (data: addPermissionsForRoleParams) => {
   return OLPRequest({
     url: BASE_URL + `/permissionRole`,
     method: 'PUT',

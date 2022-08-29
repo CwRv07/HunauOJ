@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-08-17 18:04:26
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-08-17 18:17:33
+ * @LastEditTime: 2022-08-28 13:25:50
  * @Description:返回所有权限
  * @Email: ndliujunqi@outlook.com
  */
@@ -16,7 +16,7 @@ interface permissionsListParams {
   pageSize: number;
 }
 
-export const selectPermission = (data: permissionsListParams) => {
+export const queryPermissionList = (data: permissionsListParams) => {
   return OLPRequest({
     url: BASE_URL + `/permissions`,
     method: 'GET',
