@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-05-19 09:33:22
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-08-28 14:43:57
+ * @LastEditTime: 2022-08-29 22:22:14
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -106,7 +106,7 @@
                   type="text"
                   autocomplete="off"
                   style="height: 38px"
-                  placeholder="手机号/邮箱"
+                  placeholder="用户名"
                 />
               </el-form-item>
               <el-form-item prop="pass" label-width="0">
@@ -142,8 +142,8 @@ import { ElMessage } from 'element-plus';
 // import addUser from '@/network/security/user/insertUserInfo';
 import { SecurityAPI } from '@/network/index';
 const userLoginInfo = reactive({
-  account: '',
-  pass: '',
+  username: '',
+  password: '',
 });
 
 const userRregisterInfo = reactive({
@@ -268,10 +268,10 @@ const validatePass = (rule: any, value: any, callback: any) => {
     reg_password_pass.value = false;
     callback(new Error('请输入密码'));
   } else {
-    const pass = /^(?=.*[a-zA-Z])(?=.*\d).{1,9}$/.test(value);
+    const pass = /^(?=.*[a-zA-Z])(?=.*\d).{1,15}$/.test(value);
     if (!pass) {
       reg_password_pass.value = false;
-      callback(new Error('密码至少包含字母、数字，1-9位'));
+      callback(new Error('密码至少包含字母、数字，1-15位'));
     }
     callback();
   }
@@ -343,10 +343,14 @@ const userLogin = () => {
     return;
   } else if (reg_password_pass.value == true && reg_account_pass.value == true) {
     // console.log("已触发3");
-    userLoginInfo.account = ruleForm.account;
-    userLoginInfo.pass = ruleForm.pass;
-    const jsonString = JSON.stringify(userLoginInfo);
+    userLoginInfo.username = ruleForm.account;
+    userLoginInfo.password = ruleForm.pass;
+    // const jsonString = JSON.stringify(userLoginInfo);
+    const result = SecurityAPI.Login.LoginAPI.userLogin(userLoginInfo).then(res => {
+      console.log(res);
+    });
     // console.log(jsonString);
+    console.log(result);
   }
 };
 
@@ -365,11 +369,17 @@ const userRegister = () => {
     userRregisterInfo.username = ruleForm.re_account;
     userRregisterInfo.nickname = ruleForm.re_email;
     userRregisterInfo.password = ruleForm.re_pass;
-    const jsonString = JSON.stringify(userRregisterInfo);
-    const result = SecurityAPI.User.UserAPI.addUser(jsonString);
-    console.log(jsonString);
+    // const jsonString = JSON.stringify(userRregisterInfo);
+    SecurityAPI.User.UserAPI.addUser(userRregisterInfo)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    // console.log(jsonString);
     // const result = addUser(jsonString);
-    console.log(result);
+    // console.log(result);
   }
 };
 </script>
