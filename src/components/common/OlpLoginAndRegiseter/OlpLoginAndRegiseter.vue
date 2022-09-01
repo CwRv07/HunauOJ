@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-05-19 09:33:22
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-08-29 22:22:14
+ * @LastEditTime: 2022-09-01 22:58:07
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -27,7 +27,7 @@
               ref="ruleFormRef"
               :model="ruleForm"
               status-icon
-              :rules="rules"
+              :rules="regRules"
               label-width="120px"
               class="demo-ruleForm"
               size="large"
@@ -96,7 +96,7 @@
               ref="ruleFormRef"
               :model="ruleForm"
               status-icon
-              :rules="rules"
+              :rules="loginRules"
               label-width="120px"
               class="demo-ruleForm"
             >
@@ -137,10 +137,15 @@
 
 <script lang="ts" setup>
 import type { FormInstance } from 'element-plus';
-import { BuildPropType } from 'element-plus/es/utils';
 import { ElMessage } from 'element-plus';
-// import addUser from '@/network/security/user/insertUserInfo';
+import { useStore } from 'vuex';
 import { SecurityAPI } from '@/network/index';
+import { useGetters } from '@/utils/useMapper';
+import { text } from 'stream/consumers';
+
+const store = useStore();
+const userStore = useGetters('userStore', ['token', 'isAuthenticated']);
+
 const userLoginInfo = reactive({
   username: '',
   password: '',
@@ -206,6 +211,13 @@ const onCancel = () => {
   // console.log('我被点击了!');
   modelVisible.value = false;
   emit('handleCheck', false);
+  ruleForm.pass = '';
+  ruleForm.checkPass = '';
+  ruleForm.account = '';
+  ruleForm.email = '';
+  ruleForm.re_account = '';
+  ruleForm.re_pass = '';
+  ruleForm.re_email = '';
 };
 
 //监听单个对象
@@ -260,6 +272,7 @@ const validateAccount = (rule: any, value: any, callback: any) => {
     reg_account_pass.value = false;
     callback(new Error('请输入账号'));
   }
+  reg_account_pass.value = true;
 };
 
 const reg_password_pass = ref(true);
@@ -273,6 +286,7 @@ const validatePass = (rule: any, value: any, callback: any) => {
       reg_password_pass.value = false;
       callback(new Error('密码至少包含字母、数字，1-15位'));
     }
+    reg_password_pass.value = true;
     callback();
   }
 };
@@ -286,6 +300,7 @@ const validatePass2 = (rule: any, value: any, callback: any) => {
     reg_checkPassword_pass.value = false;
     callback(new Error('两次输入的密码不一致!'));
   } else {
+    reg_checkPassword_pass.value = true;
     callback();
   }
 };
@@ -304,13 +319,18 @@ const validateEmail = (rule: any, value: any, callback: any) => {
   //   }
   //   callback();
   // }
+  reg_email_pass.value = true;
+  callback();
 };
 
-const rules = reactive({
+const loginRules = reactive({
   pass: [{ validator: validatePass, trigger: 'blur' }],
   checkPass: [{ validator: validatePass2, trigger: 'blur' }],
   account: [{ validator: validateAccount, trigger: 'blur' }],
   email: [{ validator: validateEmail, trigger: 'blur' }],
+});
+
+const regRules = reactive({
   re_account: [{ validator: validateAccount, trigger: 'blur' }],
   re_pass: [{ validator: validatePass, trigger: 'blur' }],
   re_email: [{ validator: validateEmail, trigger: 'blur' }],
@@ -336,19 +356,43 @@ const resetForm = (formEl: FormInstance | undefined) => {
 
 // 用户登录逻辑
 const userLogin = () => {
-  // console.log("已触发");
+  console.log('已触发');
+  console.log(ruleForm.account);
+  console.log(ruleForm.pass);
+
   if (ruleForm.account == '' || ruleForm.pass == '') {
-    // console.log("已触发2");
-    openElmessage('请输入完整!', 'error');
+    console.log('已触发2');
+    ElMessage.error({
+      message: '请将账号密码信息输入完整!',
+      center: true,
+    });
     return;
   } else if (reg_password_pass.value == true && reg_account_pass.value == true) {
-    // console.log("已触发3");
+    console.log('已触发3');
     userLoginInfo.username = ruleForm.account;
     userLoginInfo.password = ruleForm.pass;
     // const jsonString = JSON.stringify(userLoginInfo);
-    const result = SecurityAPI.Login.LoginAPI.userLogin(userLoginInfo).then(res => {
-      console.log(res);
-    });
+    const result = SecurityAPI.Login.LoginAPI.userLogin(userLoginInfo)
+      .then(res => {
+        console.log(res);
+        if (res.code == 200) {
+          store.commit('userStore/setToken', res.data.token);
+          console.log('成功!');
+          ElMessage.success({
+            message: res.msg,
+            center: true,
+            onClose: () => {
+              onCancel();
+            },
+          });
+        }
+      })
+      .catch(err => {
+        ElMessage.error({
+          message: err.msg,
+          center: true,
+        });
+      });
     // console.log(jsonString);
     console.log(result);
   }
@@ -372,10 +416,19 @@ const userRegister = () => {
     // const jsonString = JSON.stringify(userRregisterInfo);
     SecurityAPI.User.UserAPI.addUser(userRregisterInfo)
       .then(res => {
-        console.log(res);
+        if (res.code == 200) {
+          ElMessage.success({
+            message: res.msg,
+            center: true,
+            onClose: () => {},
+          });
+        }
       })
       .catch(err => {
-        console.log(err);
+        ElMessage.error({
+          message: err.msg,
+          center: true,
+        });
       });
     // console.log(jsonString);
     // const result = addUser(jsonString);
