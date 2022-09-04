@@ -1,3 +1,3 @@
-import { ProblemListData, ProblemContentData, ProblemData } from './problem';
+import { ProblemListData, ProblemContentData, ProblemData, ProblemLanguageData } from './problem';
 
-export { ProblemListData, ProblemContentData, ProblemData };
+export { ProblemListData, ProblemContentData, ProblemData, ProblemLanguageData };

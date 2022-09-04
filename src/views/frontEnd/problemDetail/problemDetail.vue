@@ -1,13 +1,8 @@
 <!--
  * @Author: Rv_Jiang
  * @Date: 2022-07-01 10:00:15
-<<<<<<< HEAD
- * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-09-04 14:03:50
-=======
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-09-04 09:17:51
->>>>>>> 6e8cf054a18e32e157fe7a9fc0f16823de76833b
+ * @LastEditTime: 2022-09-04 14:48:48
  * @Description: 题目详情页
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -25,56 +20,33 @@
 </template>
 
 <script setup lang="ts" name="problemDetail">
-import { useRoute } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 import { ProblemAPI, ProblemLanguageAPI } from '@/network';
-import { useGetters } from '@/utils/useMapper';
-import { useStore } from 'vuex';
 import { ElMessageBox, ElMessage } from 'element-plus';
-const router = useRoute();
-const store = useStore();
-const userStore = useGetters('userStore', ['token', 'isAuthenticated']);
-/* 初始化题目详情-start */
-onMounted(() => {
-  /* 测试代码 */
-  store.commit('userStore/setUserInfo', {
-    pid: '1002',
-    token:
-      'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJhNWFhYWFiY2FjYTI0MGI5ODY1M2M5NzkxNTljNGRjZiIsInN1YiI6ImFkbWluIiwiaXNzIjoic2ciLCJpYXQiOjE2NjE3ODA1ODQsImV4cCI6MTY2MTc4NDE4NH0.2Y1IAcY0E9-wrX73yMIyb6wVwscojmYnjFcWkWyC8UU',
-  });
-  /* 测试代码 */
+import { ProblemData, ProblemLanguageData } from '@/utils/type/data';
 
-  const problemId = Number(router.params.id);
+const route = useRoute();
+/* 初始化题目详情-start */
+onMounted(async () => {
+  // 题目Id
+  const problemId = +route.params.id;
   // 题目数据
-  ProblemAPI.findById(problemId)
-    .then(res => {
-      problemData.value = res.data;
-    })
-    .catch(err => {
-      if (err.msg === '查询失败') {
-        ElMessageBox.alert('当前题目不存在或已删除', '正在返回上一步操作', { type: 'error' }).then(
-          history.back
-        );
-      } else ElMessage.error(err);
-    });
-  // 身份验证
-  if (!userStore.token.value) {
-    ElMessage.error('当前处于未登录状态，请先登录');
-    return;
-  }
+  const _problemData: ProblemData = await ProblemAPI.findById(problemId);
+  problemData.value = _problemData;
+
   // 题目支持语言数据
-  ProblemLanguageAPI.findById(problemId, userStore.token.value).then(res => {
-    console.log('problemLanguage', res);
-    language.value = res.data?.map(({ name }: any) => name) ?? [];
+  const _problemLanguageList: ProblemLanguageData[] = await ProblemLanguageAPI.findById(problemId);
+  language.length = 0;
+  _problemLanguageList.forEach(item => {
+    language.push(item.name);
   });
 });
 /* 初始化题目详情-end */
 
 /* 题目数据-start */
-const problemData = ref({});
+const problemData = ref<ProblemData | Record<string, never>>({});
 
-console.log(problemData);
-
-const language = ref([]);
+const language = reactive<string[]>([]);
 /* 题目数据-end */
 
 /* 提交题目-start */
