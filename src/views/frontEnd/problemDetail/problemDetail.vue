@@ -1,13 +1,8 @@
 <!--
  * @Author: Rv_Jiang
  * @Date: 2022-07-01 10:00:15
-<<<<<<< HEAD
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-08-29 21:43:17
-=======
- * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-08-19 10:33:19
->>>>>>> fcc5601aa8d9e3f318d78aee198b2d95afb9c789
+ * @LastEditTime: 2022-09-04 09:17:51
  * @Description: 题目详情页
  * @Email: Rv_Jiang@outlook.com
 -->

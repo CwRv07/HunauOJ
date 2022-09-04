@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-03 08:11:33
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-08-29 21:50:53
+ * @LastEditTime: 2022-09-04 12:57:48
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -107,7 +107,9 @@
           label="难度"
           :formatter="difficultyFormatter"
         />
-        <template #empty> <el-empty /> </template>
+        <template #empty>
+          <el-empty />
+        </template>
 
         <!-- <el-table-column prop="total" label="提交总数" min-width="100px" />
         <el-table-column prop="pass" label="AC通过率" min-width="150px">
@@ -142,8 +144,33 @@
 
 <script setup lang="ts" name="problem-table">
 import { ProblemAPI } from '@/network';
+import { ProblemListData, ProblemData } from '@/utils/type/data';
+import { ProblemListParam } from '@/utils/type/param';
 import { useRouter } from 'vue-router';
 const router = useRouter();
+
+/* 数据获取封装-start */
+const getProblemData = async (toPage: number) => {
+  // 参数处理
+  const params: ProblemListParam = {
+    pageNum: toPage,
+  };
+  // let languageParam = language.active; 题目语言条件暂不支持
+  // let tagParam = tag.active; 题目标签条件暂不支持
+  // let titleParam = title.active; 题目名称暂不支持同时查询
+  difficulty.active.length != 0 ? (params.pDifficulty = +difficulty.active) : null;
+
+  const problemData: ProblemListData = await ProblemAPI.list(params);
+  // 题目数据处理
+  tableData.length = 0;
+  tableData.push(...problemData.records);
+  // 分页器处理
+  pagination.currentPage = problemData.current;
+  pagination.pageSize = problemData.size;
+  pagination.total = problemData.total;
+};
+/* 数据获取封装-end */
+
 /* 筛选栏 */
 
 // 标题语言
@@ -163,14 +190,14 @@ const difficulty = reactive({
   ],
 });
 const difficultyChange = (val: string) => {
-  ProblemAPI.list({ pageNum: 1, pDifficulty: Number(val) })
-    .then(res => {
-      console.log(res);
-      // tableData.value = res.data;
-    })
-    .catch(err => {
-      console.log(err);
-    });
+  // ProblemAPI.list({ pageNum: 1, pDifficulty: Number(val) })
+  //   .then(res => {
+  //     console.log(res);
+  //     // tableData.value = res.data;
+  //   })
+  //   .catch(err => {
+  //     console.log(err);
+  //   });
 };
 // /题目难度
 
@@ -235,23 +262,10 @@ const difficultyFormatter = (row: any, column: any, cellValue: any) => {
   return difficulty.list[cellValue - 1].label;
 };
 // 题目数据
-const tableData = ref([
-  {
-    pId: 'A1000',
-    pName: 'SPJ测试',
-    pDifficulty: 1,
-  },
-]);
+const tableData = reactive<ProblemData[]>([]);
 // 初始化题目数据
 onMounted(() => {
-  ProblemAPI.list({ pageNum: 1 })
-    .then(res => {
-      console.log(res);
-      // tableData.value = res.data;
-    })
-    .catch(err => {
-      console.log(err);
-    });
+  getProblemData(1);
 });
 /* /题目展示栏 */
 
@@ -353,6 +367,7 @@ const pagination = reactive({
       // 题目筛选项右侧按钮样式
       .right {
         margin-left: 10px;
+
         .problem-random {
           font-weight: bold;
           border: 1px solid transparent;
@@ -370,6 +385,12 @@ const pagination = reactive({
     :deep(.el-table__inner-wrapper) {
       th.el-table__cell {
         color: var(--el-text-color-primary);
+      }
+      .el-table__body-wrapper {
+        min-height: 400px;
+      }
+      .el-table__row {
+        cursor: pointer;
       }
     }
 
