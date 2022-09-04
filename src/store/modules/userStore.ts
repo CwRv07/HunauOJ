@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-01 15:13:32
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-08-19 16:43:06
+ * @LastEditTime: 2022-09-04 14:03:22
  * @Description: 用户Store模块
  * @Email: Rv_Jiang@outlook.com
  */
@@ -18,11 +18,11 @@ interface UserInfo {
 export const userStore: Module<unknown, unknown> = {
   namespaced: true,
   state: {
-    userId: storage.get('userInfo'),
+    userId: storage.get('userId'),
     token: storage.get('token'),
   },
   getters: {
-    userId: (state: any) => state.userId || {},
+    userId: (state: any) => state.userId || '',
     token: (state: any) => state.token || '',
 
     /* 权限判断-start */
@@ -33,22 +33,21 @@ export const userStore: Module<unknown, unknown> = {
     /* 权限判断-end */
   },
   mutations: {
-    setUserInfo(state: any, userInfo: UserInfo) {
-      state.userId = userInfo.uid;
-      state.token = userInfo.token;
-    },
     setToken(state: any, token: string) {
       state.token = token;
+      storage.set('token', token);
     },
     setUId(state: any, uId: string) {
       state.userId = uId;
+      storage.set('userId', uId);
     },
   },
   actions: {
     /* 用户信息修改-start */
     // 修改用户信息
     setUserInfo({ commit }, userInfo: UserInfo): void {
-      commit('setUserInfo', userInfo);
+      commit('setToken', userInfo.token);
+      commit('setUId', userInfo.uid);
     },
     // 清空用户信息和token
     clearUserInfo({ commit }): void {
@@ -59,7 +58,7 @@ export const userStore: Module<unknown, unknown> = {
       commit('setToken', token);
     },
     setUId({ commit }, uid: string): void {
-      commit('setToken', uid);
+      commit('setUId', uid);
     },
     /* 用户信息修改-end */
   },

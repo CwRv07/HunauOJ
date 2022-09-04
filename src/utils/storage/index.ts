@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-01 15:27:46
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-01 17:37:55
+ * @LastEditTime: 2022-09-04 13:58:31
  * @Description: Storage工具封装类
  * @Email: Rv_Jiang@outlook.com
  */
@@ -24,7 +24,7 @@ export default {
    * @param {string} key
    * @return {*}
    */
-  get(key: string): unknown {
+  get(key: string): string {
     return JSON.parse(storage.getItem(key) || 'null');
   },
 

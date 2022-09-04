@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-05-02 07:58:08
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-09-04 11:15:20
+ * @LastEditTime: 2022-09-04 14:03:42
  * @Description:封装请求方法
  * @Email: ndliujunqi@outlook.com
  */
@@ -10,6 +10,8 @@
 import Request from './request';
 import type { RequestConfig } from './type';
 import type { AxiosResponse } from 'axios';
+import storage from '@/utils/storage';
+import { useGetters } from '@/utils/useMapper';
 
 interface OLPRequestConfig<T> extends RequestConfig {
   data?: T;
@@ -25,7 +27,17 @@ const request = new Request({
   timeout: 1000 * 60 * 5,
   interceptors: {
     // 请求拦截器
-    requestInterceptors: config => config,
+    requestInterceptors: config => {
+      const userStore = useGetters('userStore', ['token']);
+
+      if (config.headers) {
+        config.headers.token = userStore.token;
+      } else {
+        config.headers = { token: userStore.token };
+      }
+
+      return config;
+    },
     // 响应拦截器
     responseInterceptors: result => {
       // if (result.status === 200 && result.data.code !== 200) {
