@@ -1,8 +1,8 @@
 <!--
  * @Author: ND_LJQ
  * @Date: 2022-07-07 17:04:35
- * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-08-19 16:03:20
+ * @LastEditors: ND_LJQ
+ * @LastEditTime: 2022-09-04 12:07:37
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -23,7 +23,10 @@
             </div>
           </div>
           <div class="markdown-content" style="height: 100%">
-            <olp-markdown-edit :is-preview-only="true" />
+            <olp-markdown-edit
+              :is-preview-only="true"
+              v-model:content-text="allInfo.exerciseMarkdown"
+            />
           </div>
         </div>
       </div>
@@ -80,14 +83,14 @@
       </template>
     </el-tab-pane>
 
-    <!-- <el-tab-pane>
+    <el-tab-pane>
       <template #label>
         <span class="custom-tabs-label">
           <el-icon><calendar /></el-icon>
           <span>评论</span>
         </span>
       </template>
-    </el-tab-pane> -->
+    </el-tab-pane>
   </el-tabs>
 </template>
 
@@ -97,11 +100,18 @@ interface exerciseInfo {
   exerciseMarkdown: string;
 }
 
-const fatherInfo = defineProps({ exerciseID: { type: Number, required: true, default: 0 } });
+const fatherInfo = defineProps({
+  exerciseID: { type: Number, required: true, default: 0 },
+  contentText: {
+    type: String,
+    required: true,
+    default: '',
+  },
+});
 
 const allInfo: exerciseInfo = reactive({
   exerciseTitle: 'test',
-  exerciseMarkdown: '',
+  exerciseMarkdown: fatherInfo.contentText,
 });
 
 const submitProps = [
@@ -113,104 +123,6 @@ const submitProps = [
 ];
 
 const submitRecordsList = reactive([
-  {
-    submitRes: 1,
-    runtime: '8ms',
-    consumption: '10.78MB',
-    language: 'C++',
-    submitTime: '2022/07/07 21:06',
-  },
-  {
-    submitRes: 1,
-    runtime: '8ms',
-    consumption: '10.78MB',
-    language: 'C++',
-    submitTime: '2022/07/07 21:06',
-  },
-  {
-    submitRes: 1,
-    runtime: '8ms',
-    consumption: '10.78MB',
-    language: 'C++',
-    submitTime: '2022/07/07 21:06',
-  },
-  {
-    submitRes: 1,
-    runtime: '8ms',
-    consumption: '10.78MB',
-    language: 'C++',
-    submitTime: '2022/07/07 21:06',
-  },
-  {
-    submitRes: 1,
-    runtime: '8ms',
-    consumption: '10.78MB',
-    language: 'C++',
-    submitTime: '2022/07/07 21:06',
-  },
-  {
-    submitRes: 1,
-    runtime: '8ms',
-    consumption: '10.78MB',
-    language: 'C++',
-    submitTime: '2022/07/07 21:06',
-  },
-  {
-    submitRes: 1,
-    runtime: '8ms',
-    consumption: '10.78MB',
-    language: 'C++',
-    submitTime: '2022/07/07 21:06',
-  },
-  {
-    submitRes: 1,
-    runtime: '8ms',
-    consumption: '10.78MB',
-    language: 'C++',
-    submitTime: '2022/07/07 21:06',
-  },
-  {
-    submitRes: 1,
-    runtime: '8ms',
-    consumption: '10.78MB',
-    language: 'C++',
-    submitTime: '2022/07/07 21:06',
-  },
-  {
-    submitRes: 1,
-    runtime: '8ms',
-    consumption: '10.78MB',
-    language: 'C++',
-    submitTime: '2022/07/07 21:06',
-  },
-  {
-    submitRes: 1,
-    runtime: '8ms',
-    consumption: '10.78MB',
-    language: 'C++',
-    submitTime: '2022/07/07 21:06',
-  },
-  {
-    submitRes: 1,
-    runtime: '8ms',
-    consumption: '10.78MB',
-    language: 'C++',
-    submitTime: '2022/07/07 21:06',
-  },
-  {
-    submitRes: 1,
-    runtime: '8ms',
-    consumption: '10.78MB',
-    language: 'C++',
-    submitTime: '2022/07/07 21:06',
-  },
-  {
-    submitRes: 1,
-    runtime: '8ms',
-    consumption: '10.78MB',
-    language: 'C++',
-    submitTime: '2022/07/07 21:06',
-  },
   {
     submitRes: 1,
     runtime: '8ms',

@@ -1,8 +1,5 @@
 /*
  * @Author: ND_LJQ
- * @Date: 2022-05-02 07:58:08
- * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-09-04 14:03:42
  * @Description:封装请求方法
  * @Email: ndliujunqi@outlook.com
  */
@@ -21,6 +18,7 @@ export interface OLPResponse<T> {
   code: number;
   message: string;
   data: T;
+  msg?: string;
 }
 const request = new Request({
   baseURL: import.meta.env.VITE_BASE_URL,
@@ -29,13 +27,13 @@ const request = new Request({
     // 请求拦截器
     requestInterceptors: config => {
       const userStore = useGetters('userStore', ['token']);
-
+      console.log(userStore);
       if (config.headers) {
-        config.headers.token = userStore.token;
+        config.headers.token = userStore.token.value;
       } else {
-        config.headers = { token: userStore.token };
+        config.headers = { token: userStore.value };
       }
-
+      console.log(config);
       return config;
     },
     // 响应拦截器

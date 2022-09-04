@@ -1,20 +1,22 @@
 <!--
  * @Author: ND_LJQ
  * @Date: 2022-05-10 20:19:33
- * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-07-10 17:37:05
+ * @LastEditors: ND_LJQ
+ * @LastEditTime: 2022-09-04 11:12:10
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
 
 <template>
   <div>
-    <!-- <markdown-edit /> -->
+    <markdown-edit :is-preview-only="false" />
   </div>
 </template>
 
 <script setup lang="ts">
-// import markdownEdit from '@/components/base/OlpMarkdownEdit/OlpMarkdownEdit.vue';
+import markdownEdit from '@/components/base/OlpMarkdownEdit/OlpMarkdownEdit.vue';
+
+const string = 'awudhuiawhduiawhd';
 </script>
 
 <style lang="scss" scoped></style>

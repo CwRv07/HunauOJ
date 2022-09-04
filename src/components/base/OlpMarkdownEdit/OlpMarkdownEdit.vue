@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-05-10 17:12:04
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-08-19 11:03:18
+ * @LastEditTime: 2022-09-04 11:41:51
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -127,8 +127,8 @@ export default defineComponent({
       },
     };
   },
-  setup() {
-    const data = <shareData>reactive({
+  setup(props) {
+    const data: shareData = reactive({
       text: '',
       load: 0,
       isDis: false,
@@ -182,6 +182,9 @@ export default defineComponent({
     const box = ref(null);
 
     onMounted(() => {
+      if (props.contentText != '') {
+        data.text = props.contentText;
+      }
       if (localStorage.getItem('codeSave')) {
         data.text = localStorage.getItem('codeSave') || '';
       }
@@ -212,6 +215,11 @@ export default defineComponent({
       required: true, //是否必须传递
     },
     markdownStyle: {
+      type: String,
+      default: '',
+      required: false,
+    },
+    contentText: {
       type: String,
       default: '',
       required: false,

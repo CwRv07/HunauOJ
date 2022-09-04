@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-07-15 18:29:33
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-08-28 14:48:22
+ * @LastEditTime: 2022-09-04 13:52:35
  * @Description:增加用户
  * @Email: ndliujunqi@outlook.com
  */
@@ -17,7 +17,6 @@ interface insertUserInfoParams {
   // 用户名
   username: string;
 }
-const headeradd = '';
 
 const addUser = (data: insertUserInfoParams) => {
   return OLPRequest({

@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-05-19 09:33:22
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-09-01 22:58:07
+ * @LastEditTime: 2022-09-04 13:58:50
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -141,7 +141,6 @@ import { ElMessage } from 'element-plus';
 import { useStore } from 'vuex';
 import { SecurityAPI } from '@/network/index';
 import { useGetters } from '@/utils/useMapper';
-import { text } from 'stream/consumers';
 
 const store = useStore();
 const userStore = useGetters('userStore', ['token', 'isAuthenticated']);
@@ -169,10 +168,10 @@ const ruleForm = reactive({
 
 onMounted(() => {
   // console.log('Modal正在挂载.....');
-  let login = <HTMLElement>document.querySelector('.login');
-  let register = <HTMLElement>document.querySelector('.register');
-  let loginBtn = <HTMLElement>document.querySelector('.loginBtn');
-  let registerBtn = <HTMLElement>document.querySelector('.registerBtn');
+  let login = document.querySelector('.login') as HTMLElement;
+  let register = document.querySelector('.register') as HTMLElement;
+  let loginBtn = document.querySelector('.loginBtn') as HTMLElement;
+  let registerBtn = document.querySelector('.registerBtn') as HTMLElement;
 
   // console.log(loginBtn);
   // console.log(registerBtn);
@@ -414,13 +413,16 @@ const userRegister = () => {
     userRregisterInfo.nickname = ruleForm.re_email;
     userRregisterInfo.password = ruleForm.re_pass;
     // const jsonString = JSON.stringify(userRregisterInfo);
+
     SecurityAPI.User.UserAPI.addUser(userRregisterInfo)
       .then(res => {
         if (res.code == 200) {
           ElMessage.success({
             message: res.msg,
             center: true,
-            onClose: () => {},
+            onClose: () => {
+              console.log('自动登陆');
+            },
           });
         }
       })
