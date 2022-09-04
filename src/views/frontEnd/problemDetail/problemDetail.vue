@@ -1,13 +1,8 @@
 <!--
  * @Author: Rv_Jiang
  * @Date: 2022-07-01 10:00:15
-<<<<<<< HEAD
- * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-08-29 21:43:17
-=======
- * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-08-19 10:33:19
->>>>>>> fcc5601aa8d9e3f318d78aee198b2d95afb9c789
+ * @LastEditors: ND_LJQ
+ * @LastEditTime: 2022-09-04 14:03:50
  * @Description: 题目详情页
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -15,7 +10,7 @@
   <div id="problemDetail">
     <el-row>
       <el-col :span="12" :xs="24">
-        <!-- <olp-exercises-info :problem-data="problemData" /> -->
+        <olp-exercises-info :problem-data="problemData" />
       </el-col>
       <el-col :span="12" :xs="24">
         <code-mirror style="margin-left: 5px" @submit="submitProblem" :language="language" />
@@ -71,6 +66,9 @@ onMounted(() => {
 
 /* 题目数据-start */
 const problemData = ref({});
+
+console.log(problemData);
+
 const language = ref([]);
 /* 题目数据-end */
 
