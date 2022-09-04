@@ -27,7 +27,10 @@ declare module '@vue/runtime-core' {
     ElOption: typeof import('element-plus/es')['ElOption']
     ElPagination: typeof import('element-plus/es')['ElPagination']
     ElPopover: typeof import('element-plus/es')['ElPopover']
+<<<<<<< HEAD
     ElProgress: typeof import('element-plus/es')['ElProgress']
+=======
+>>>>>>> 6e8cf054a18e32e157fe7a9fc0f16823de76833b
     ElRadioButton: typeof import('element-plus/es')['ElRadioButton']
     ElRadioGroup: typeof import('element-plus/es')['ElRadioGroup']
     ElRow: typeof import('element-plus/es')['ElRow']
@@ -35,8 +38,11 @@ declare module '@vue/runtime-core' {
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
+<<<<<<< HEAD
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
+=======
+>>>>>>> 6e8cf054a18e32e157fe7a9fc0f16823de76833b
     ElTag: typeof import('element-plus/es')['ElTag']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
     OlpBarChart: typeof import('./../../../src/components/base/OlpEcharts/OlpBarChart.vue')['default']

@@ -1,8 +1,13 @@
 /*
  * @Author: ND_LJQ
  * @Date: 2022-05-02 07:58:08
+<<<<<<< HEAD
  * @LastEditors: ND_LJQ
  * @LastEditTime: 2022-09-04 10:10:31
+=======
+ * @LastEditors: Rv_Jiang
+ * @LastEditTime: 2022-09-04 11:15:20
+>>>>>>> 6e8cf054a18e32e157fe7a9fc0f16823de76833b
  * @Description:封装请求方法
  * @Email: ndliujunqi@outlook.com
  */
@@ -15,7 +20,7 @@ interface OLPRequestConfig<T> extends RequestConfig {
   data?: T;
 }
 
-interface OLPResponse<T> {
+export interface OLPResponse<T> {
   code: number;
   message: string;
   data: T;
