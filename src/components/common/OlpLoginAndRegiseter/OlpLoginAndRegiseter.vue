@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-05-19 09:33:22
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-09-04 13:58:50
+ * @LastEditTime: 2022-09-12 22:09:49
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -12,7 +12,7 @@
       <!-- 旋转体-start -->
       <div class="turn-body">
         <!-- 注册-start -->
-        <div class="modal-content register">
+        <!-- <div class="modal-content register">
           <div class="form-content">
             <div class="turn-off" @click="onCancel">
               <el-icon><Close /></el-icon>
@@ -77,7 +77,7 @@
               <div>联系管理员</div>
             </div>
           </div>
-        </div>
+        </div> -->
         <!-- 注册-end -->
 
         <!-- 登录-start -->
@@ -150,47 +150,45 @@ const userLoginInfo = reactive({
   password: '',
 });
 
-const userRregisterInfo = reactive({
-  password: '',
-  nickname: '',
-  username: '',
-});
+// const userRregisterInfo = reactive({
+//   password: '',
+//   nickname: '',
+//   username: '',
+// });
 
 const ruleForm = reactive({
   pass: '',
   checkPass: '',
   account: '',
   email: '',
-  re_account: '',
-  re_pass: '',
-  re_email: '',
+  // re_account: '',
+  // re_pass: '',
+  // re_email: '',
 });
 
 onMounted(() => {
   // console.log('Modal正在挂载.....');
-  let login = document.querySelector('.login') as HTMLElement;
-  let register = document.querySelector('.register') as HTMLElement;
-  let loginBtn = document.querySelector('.loginBtn') as HTMLElement;
-  let registerBtn = document.querySelector('.registerBtn') as HTMLElement;
-
+  // let login = document.querySelector('.login') as HTMLElement;
+  // let register = document.querySelector('.register') as HTMLElement;
+  // let loginBtn = document.querySelector('.loginBtn') as HTMLElement;
+  // let registerBtn = document.querySelector('.registerBtn') as HTMLElement;
   // console.log(loginBtn);
   // console.log(registerBtn);
   // console.log(modelVisible);
-
-  loginBtn?.addEventListener('click', () => {
-    // console.log('我被点击了!');
-    if (register != null) {
-      register.style.transform = 'rotateY(180deg)';
-      login.style.transform = 'rotateY(0)';
-    }
-  });
-  registerBtn?.addEventListener('click', () => {
-    // console.log('我被点击了!');
-    if (login != null) {
-      login.style.transform = 'rotateY(-180deg)';
-      register.style.transform = 'rotateY(0)';
-    }
-  });
+  // loginBtn?.addEventListener('click', () => {
+  //   // console.log('我被点击了!');
+  //   if (register != null) {
+  //     register.style.transform = 'rotateY(180deg)';
+  //     login.style.transform = 'rotateY(0)';
+  //   }
+  // });
+  // registerBtn?.addEventListener('click', () => {
+  //   // console.log('我被点击了!');
+  //   if (login != null) {
+  //     login.style.transform = 'rotateY(-180deg)';
+  //     register.style.transform = 'rotateY(0)';
+  //   }
+  // });
 });
 
 //
@@ -214,9 +212,9 @@ const onCancel = () => {
   ruleForm.checkPass = '';
   ruleForm.account = '';
   ruleForm.email = '';
-  ruleForm.re_account = '';
-  ruleForm.re_pass = '';
-  ruleForm.re_email = '';
+  // ruleForm.re_account = '';
+  // ruleForm.re_pass = '';
+  // ruleForm.re_email = '';
 };
 
 //监听单个对象
@@ -232,22 +230,22 @@ watch(
 // From表单校验
 const ruleFormRef = ref<FormInstance>();
 
-const checkAge = (rule: any, value: any, callback: any) => {
-  if (!value) {
-    return callback(new Error('Please input the age'));
-  }
-  setTimeout(() => {
-    if (!Number.isInteger(value)) {
-      callback(new Error('Please input digits'));
-    } else {
-      if (value < 18) {
-        callback(new Error('Age must be greater than 18'));
-      } else {
-        callback();
-      }
-    }
-  }, 1000);
-};
+// const checkAge = (rule: any, value: any, callback: any) => {
+//   if (!value) {
+//     return callback(new Error('Please input the age'));
+//   }
+//   setTimeout(() => {
+//     if (!Number.isInteger(value)) {
+//       callback(new Error('Please input digits'));
+//     } else {
+//       if (value < 18) {
+//         callback(new Error('Age must be greater than 18'));
+//       } else {
+//         callback();
+//       }
+//     }
+//   }, 1000);
+// };
 
 const openElmessage = (info: string, mType: any) => {
   console.log(info, mType);
@@ -290,19 +288,19 @@ const validatePass = (rule: any, value: any, callback: any) => {
   }
 };
 
-const reg_checkPassword_pass = ref(true);
-const validatePass2 = (rule: any, value: any, callback: any) => {
-  if (value === '') {
-    callback(new Error('请再次输入您的密码'));
-    reg_checkPassword_pass.value = false;
-  } else if (value !== ruleForm.re_pass) {
-    reg_checkPassword_pass.value = false;
-    callback(new Error('两次输入的密码不一致!'));
-  } else {
-    reg_checkPassword_pass.value = true;
-    callback();
-  }
-};
+// const reg_checkPassword_pass = ref(true);
+// const validatePass2 = (rule: any, value: any, callback: any) => {
+//   if (value === '') {
+//     callback(new Error('请再次输入您的密码'));
+//     reg_checkPassword_pass.value = false;
+//   } else if (value !== ruleForm.re_pass) {
+//     reg_checkPassword_pass.value = false;
+//     callback(new Error('两次输入的密码不一致!'));
+//   } else {
+//     reg_checkPassword_pass.value = true;
+//     callback();
+//   }
+// };
 
 const reg_email_pass = ref(true);
 const validateEmail = (rule: any, value: any, callback: any) => {
@@ -324,7 +322,7 @@ const validateEmail = (rule: any, value: any, callback: any) => {
 
 const loginRules = reactive({
   pass: [{ validator: validatePass, trigger: 'blur' }],
-  checkPass: [{ validator: validatePass2, trigger: 'blur' }],
+  // checkPass: [{ validator: validatePass2, trigger: 'blur' }],
   account: [{ validator: validateAccount, trigger: 'blur' }],
   email: [{ validator: validateEmail, trigger: 'blur' }],
 });
@@ -398,45 +396,45 @@ const userLogin = () => {
 };
 
 // 用户注册逻辑
-const userRegister = () => {
-  if (ruleForm.re_account == '' || ruleForm.re_email == '' || ruleForm.re_pass == '') {
-    console.log('已进入1');
-    openElmessage('请将信息输入完整!', 'error');
-    return;
-  } else if (
-    reg_password_pass.value == true &&
-    reg_account_pass.value == true &&
-    reg_checkPassword_pass.value == true &&
-    reg_email_pass.value == true
-  ) {
-    userRregisterInfo.username = ruleForm.re_account;
-    userRregisterInfo.nickname = ruleForm.re_email;
-    userRregisterInfo.password = ruleForm.re_pass;
-    // const jsonString = JSON.stringify(userRregisterInfo);
+// const userRegister = () => {
+//   if (ruleForm.re_account == '' || ruleForm.re_email == '' || ruleForm.re_pass == '') {
+//     console.log('已进入1');
+//     openElmessage('请将信息输入完整!', 'error');
+//     return;
+//   } else if (
+//     reg_password_pass.value == true &&
+//     reg_account_pass.value == true &&
+//     reg_checkPassword_pass.value == true &&
+//     reg_email_pass.value == true
+//   ) {
+//     userRregisterInfo.username = ruleForm.re_account;
+//     userRregisterInfo.nickname = ruleForm.re_email;
+//     userRregisterInfo.password = ruleForm.re_pass;
+//     // const jsonString = JSON.stringify(userRregisterInfo);
 
-    SecurityAPI.User.UserAPI.addUser(userRregisterInfo)
-      .then(res => {
-        if (res.code == 200) {
-          ElMessage.success({
-            message: res.msg,
-            center: true,
-            onClose: () => {
-              console.log('自动登陆');
-            },
-          });
-        }
-      })
-      .catch(err => {
-        ElMessage.error({
-          message: err.msg,
-          center: true,
-        });
-      });
-    // console.log(jsonString);
-    // const result = addUser(jsonString);
-    // console.log(result);
-  }
-};
+//     SecurityAPI.User.UserAPI.addUser(userRregisterInfo)
+//       .then(res => {
+//         if (res.code == 200) {
+//           ElMessage.success({
+//             message: res.msg,
+//             center: true,
+//             onClose: () => {
+//               console.log('自动登陆');
+//             },
+//           });
+//         }
+//       })
+//       .catch(err => {
+//         ElMessage.error({
+//           message: err.msg,
+//           center: true,
+//         });
+//       });
+//     // console.log(jsonString);
+//     // const result = addUser(jsonString);
+//     // console.log(result);
+//   }
+// };
 </script>
 
 <style lang="scss" scoped>

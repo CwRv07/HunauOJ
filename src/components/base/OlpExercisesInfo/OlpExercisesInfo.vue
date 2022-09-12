@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-07-07 17:04:35
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-09-04 12:07:37
+ * @LastEditTime: 2022-09-12 23:19:24
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -95,23 +95,69 @@
 </template>
 
 <script setup lang="ts">
+import { SecurityAPI } from '@/network/index';
+import ProblemData from '@/utils/type/data/problem/ProblemData';
 interface exerciseInfo {
   exerciseTitle: string;
   exerciseMarkdown: string;
 }
 
-const fatherInfo = defineProps({
-  exerciseID: { type: Number, required: true, default: 0 },
-  contentText: {
-    type: String,
-    required: true,
-    default: '',
-  },
+const fatherInfo = defineProps<{
+  problemData: ProblemData;
+}>();
+
+console.log(fatherInfo.problemData);
+
+let content = '';
+// const pAuth = SecurityAPI.User.UserAPI.queryUserByUserId(fatherInfo.problemData.content.);
+
+watch(fatherInfo.problemData, (newV, oldV) => {
+  const problemContext = `
+
+\`\`\`
+时间限制：${newV.content.timeLimit}  ms
+内存限制：${newV.content.memoryLimit} mb
+栈限制: ${newV.content.stackLimit} mb
+出题人：
+\`\`\`
+
+描述
+
+\`\`\`
+${newV.content.description}
+\`\`\`
+
+输入描述
+
+\`\`\`
+${newV.content.input}
+\`\`\`
+
+输出描述
+
+\`\`\`
+${newV.content.output}
+\`\`\`
+
+测试用例
+
+\`\`\`
+${newV.content.example}
+\`\`\`
+
+备注
+${newV.content.hint}
+`;
+
+  content = problemContext;
+  console.log(content);
 });
+
+// 模板字符串;
 
 const allInfo: exerciseInfo = reactive({
   exerciseTitle: 'test',
-  exerciseMarkdown: fatherInfo.contentText,
+  exerciseMarkdown: content,
 });
 
 const submitProps = [
@@ -132,14 +178,14 @@ const submitRecordsList = reactive([
   },
 ]);
 const getExerciseInfo = () => {
-  console.log('我被调用了');
+  // console.log('我被调用了');
   return;
 };
 
 onMounted(() => {
   getExerciseInfo();
-  console.log(submitRecordsList);
-  console.log(submitRecordsList.valueOf());
+  // console.log(submitRecordsList);
+  // console.log(submitRecordsList.valueOf());
 });
 </script>
 

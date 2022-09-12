@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-07-01 10:00:15
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-09-04 14:14:35
+ * @LastEditTime: 2022-09-12 23:23:00
  * @Description: 题目详情页
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -25,6 +25,7 @@ import { ProblemAPI, ProblemLanguageAPI } from '@/network';
 import { useGetters } from '@/utils/useMapper';
 import { useStore } from 'vuex';
 import { ElMessageBox, ElMessage } from 'element-plus';
+import { ProblemData } from '@/utils/type/data';
 const router = useRoute();
 const store = useStore();
 const userStore = useGetters('userStore', ['token', 'isAuthenticated']);
@@ -65,7 +66,7 @@ onMounted(() => {
 /* 初始化题目详情-end */
 
 /* 题目数据-start */
-const problemData = ref({});
+const problemData = ref<ProblemData>({});
 
 console.log(problemData);
 

@@ -1,8 +1,8 @@
 /*
  * @Author: Rv_Jiang
  * @Date: 2022-04-28 10:19:32
- * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-08-29 21:50:42
+ * @LastEditors: ND_LJQ
+ * @LastEditTime: 2022-09-07 18:48:49
  * @Description:
  * @Email: Rv_Jiang@outlook.com
  */
@@ -18,6 +18,7 @@ createMemoryHistory 带缓存 history 路由
 */
 import { RouteRecordRaw } from 'vue-router';
 const routerHistory = createWebHashHistory();
+
 const routes: Array<RouteRecordRaw> = [
   /* 前台路由 */
   {
