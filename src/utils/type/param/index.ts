@@ -1,3 +1,4 @@
 import { ProblemListParam } from './problem';
+import { TeamListParam } from './team';
 
-export { ProblemListParam };
+export { ProblemListParam, TeamListParam };

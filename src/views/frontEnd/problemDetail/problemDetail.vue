@@ -1,8 +1,13 @@
 <!--
  * @Author: Rv_Jiang
  * @Date: 2022-07-01 10:00:15
+<<<<<<< HEAD
  * @LastEditors: ND_LJQ
  * @LastEditTime: 2022-09-12 23:23:00
+=======
+ * @LastEditors: Rv_Jiang
+ * @LastEditTime: 2022-09-04 14:55:58
+>>>>>>> 681bfeeac3f395a6baca630686e9f0ce5fc448d2
  * @Description: 题目详情页
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -10,7 +15,7 @@
   <div id="problemDetail">
     <el-row>
       <el-col :span="12" :xs="24">
-        <olp-exercises-info :problem-data="problemData" />
+        <olp-exercises-info :problem-data="problemData" :problem-language="language" />
       </el-col>
       <el-col :span="12" :xs="24">
         <code-mirror style="margin-left: 5px" @submit="submitProblem" :language="language" />
@@ -20,11 +25,10 @@
 </template>
 
 <script setup lang="ts" name="problemDetail">
-import { useRoute } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 import { ProblemAPI, ProblemLanguageAPI } from '@/network';
-import { useGetters } from '@/utils/useMapper';
-import { useStore } from 'vuex';
 import { ElMessageBox, ElMessage } from 'element-plus';
+<<<<<<< HEAD
 import { ProblemData } from '@/utils/type/data';
 const router = useRoute();
 const store = useStore();
@@ -38,39 +42,36 @@ onMounted(() => {
       'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJhNWFhYWFiY2FjYTI0MGI5ODY1M2M5NzkxNTljNGRjZiIsInN1YiI6ImFkbWluIiwiaXNzIjoic2ciLCJpYXQiOjE2NjE3ODA1ODQsImV4cCI6MTY2MTc4NDE4NH0.2Y1IAcY0E9-wrX73yMIyb6wVwscojmYnjFcWkWyC8UU',
   });
   /* 测试代码 */
+=======
+import { ProblemData, ProblemLanguageData } from '@/utils/type/data';
+>>>>>>> 681bfeeac3f395a6baca630686e9f0ce5fc448d2
 
-  const problemId = Number(router.params.id);
+const route = useRoute();
+/* 初始化题目详情-start */
+onMounted(async () => {
+  // 题目Id
+  const problemId = +route.params.id;
   // 题目数据
-  ProblemAPI.findById(problemId)
-    .then(res => {
-      problemData.value = res.data;
-    })
-    .catch(err => {
-      if (err.msg === '查询失败') {
-        ElMessageBox.alert('当前题目不存在或已删除', '正在返回上一步操作', { type: 'error' }).then(
-          history.back
-        );
-      } else ElMessage.error(err);
-    });
-  // 身份验证
-  if (!userStore.token.value) {
-    ElMessage.error('当前处于未登录状态，请先登录');
-    return;
-  }
+  const _problemData: ProblemData = await ProblemAPI.findById(problemId);
+  problemData.value = _problemData;
+
   // 题目支持语言数据
-  ProblemLanguageAPI.findById(problemId, userStore.token.value).then(res => {
-    console.log('problemLanguage', res);
-    language.value = res.data?.map(({ name }: any) => name) ?? [];
+  const _problemLanguageList: ProblemLanguageData[] = await ProblemLanguageAPI.findById(problemId);
+  language.length = 0;
+  _problemLanguageList.forEach(item => {
+    language.push(item.name);
   });
 });
 /* 初始化题目详情-end */
 
 /* 题目数据-start */
+<<<<<<< HEAD
 const problemData = ref<ProblemData>({});
+=======
+const problemData = ref<ProblemData | Record<string, never>>({});
+>>>>>>> 681bfeeac3f395a6baca630686e9f0ce5fc448d2
 
-console.log(problemData);
-
-const language = ref([]);
+const language = reactive<string[]>([]);
 /* 题目数据-end */
 
 /* 提交题目-start */
