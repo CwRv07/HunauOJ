@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-07-01 10:00:15
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-09-04 14:48:48
+ * @LastEditTime: 2022-09-04 14:55:58
  * @Description: 题目详情页
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -10,7 +10,7 @@
   <div id="problemDetail">
     <el-row>
       <el-col :span="12" :xs="24">
-        <olp-exercises-info :problem-data="problemData" />
+        <olp-exercises-info :problem-data="problemData" :problem-language="language" />
       </el-col>
       <el-col :span="12" :xs="24">
         <code-mirror style="margin-left: 5px" @submit="submitProblem" :language="language" />

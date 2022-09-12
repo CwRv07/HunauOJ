@@ -1,1 +1,3 @@
-export const MODULE_URL = '';
+import TeamAPI from './team';
+
+export { TeamAPI };
