@@ -1,13 +1,8 @@
 <!--
  * @Author: Rv_Jiang
  * @Date: 2022-07-01 10:00:15
-<<<<<<< HEAD
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-09-12 23:23:00
-=======
- * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-09-04 14:55:58
->>>>>>> 681bfeeac3f395a6baca630686e9f0ce5fc448d2
+ * @LastEditTime: 2022-09-13 20:54:50
  * @Description: 题目详情页
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -28,23 +23,8 @@
 import { useRouter, useRoute } from 'vue-router';
 import { ProblemAPI, ProblemLanguageAPI } from '@/network';
 import { ElMessageBox, ElMessage } from 'element-plus';
-<<<<<<< HEAD
-import { ProblemData } from '@/utils/type/data';
-const router = useRoute();
-const store = useStore();
-const userStore = useGetters('userStore', ['token', 'isAuthenticated']);
-/* 初始化题目详情-start */
-onMounted(() => {
-  /* 测试代码 */
-  store.commit('userStore/setUserInfo', {
-    pid: '1002',
-    token:
-      'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJhNWFhYWFiY2FjYTI0MGI5ODY1M2M5NzkxNTljNGRjZiIsInN1YiI6ImFkbWluIiwiaXNzIjoic2ciLCJpYXQiOjE2NjE3ODA1ODQsImV4cCI6MTY2MTc4NDE4NH0.2Y1IAcY0E9-wrX73yMIyb6wVwscojmYnjFcWkWyC8UU',
-  });
-  /* 测试代码 */
-=======
+
 import { ProblemData, ProblemLanguageData } from '@/utils/type/data';
->>>>>>> 681bfeeac3f395a6baca630686e9f0ce5fc448d2
 
 const route = useRoute();
 /* 初始化题目详情-start */
@@ -65,11 +45,8 @@ onMounted(async () => {
 /* 初始化题目详情-end */
 
 /* 题目数据-start */
-<<<<<<< HEAD
-const problemData = ref<ProblemData>({});
-=======
+
 const problemData = ref<ProblemData | Record<string, never>>({});
->>>>>>> 681bfeeac3f395a6baca630686e9f0ce5fc448d2
 
 const language = reactive<string[]>([]);
 /* 题目数据-end */

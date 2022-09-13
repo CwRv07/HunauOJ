@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-05-10 17:12:04
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-09-12 22:59:49
+ * @LastEditTime: 2022-09-13 22:55:30
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -19,7 +19,6 @@
       :on-save="codeSave"
       :preview-only="isPreviewOnly"
     />
-    <!-- <h1>{{ text }}</h1> -->
   </div>
 </template>
 
@@ -29,6 +28,7 @@ import { defineComponent, ref } from 'vue';
 import MdEditor from 'md-editor-v3';
 import { ElMessage, ElMessageBox } from 'element-plus';
 import 'md-editor-v3/lib/style.css';
+import { ProblemData } from '@/utils/type/data';
 // import '../../utils/storage/index.ts';
 // 使用 sanitizeHtml 处理不安全的 html 防范xss攻击
 //使用后会导致代码提示不高亮;
@@ -127,12 +127,34 @@ export default defineComponent({
       },
     };
   },
+  // inject: ['problemContent'],
+  // created() {
+  //   console.log(this.problemContent);
+  // },
   setup(props) {
+    const problemContent = inject<string>('problemContent');
+
     const data: shareData = reactive({
-      text: '',
+      text: problemContent || '',
       load: 0,
       isDis: false,
     });
+
+    // const pContent = computed(() => {
+    //   return problemContext;
+    // });
+
+    // watch(
+    //   pContent,
+    //   (newV, oldV) => {
+    //     console.log(newV);
+    //     data.text = pContent;
+    //   },
+    //   {
+    //     deep: true,
+    //   }
+    // );
+    // console.log(props);
 
     /**
      * @description:保存代码

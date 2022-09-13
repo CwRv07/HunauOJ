@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-07-07 17:04:35
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-09-12 23:19:24
+ * @LastEditTime: 2022-09-13 23:01:52
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -97,28 +97,33 @@
 <script setup lang="ts">
 import { SecurityAPI } from '@/network/index';
 import ProblemData from '@/utils/type/data/problem/ProblemData';
+import { Watch } from '@element-plus/icons-vue/dist/types';
 interface exerciseInfo {
   exerciseTitle: string;
   exerciseMarkdown: string;
 }
 
 const fatherInfo = defineProps<{
-  problemData: ProblemData;
+  problemData: ProblemData | Record<string, never>;
 }>();
 
-console.log(fatherInfo.problemData);
+// console.log(fatherInfo.problemData);
 
-let content = '';
+const content = ref('');
 // const pAuth = SecurityAPI.User.UserAPI.queryUserByUserId(fatherInfo.problemData.content.);
+const pData = computed(() => {
+  // console.log(fatherInfo.problemData);
+  return fatherInfo.problemData;
+});
 
-watch(fatherInfo.problemData, (newV, oldV) => {
+watch(pData, (newV, oldVal) => {
   const problemContext = `
 
 \`\`\`
-时间限制：${newV.content.timeLimit}  ms
-内存限制：${newV.content.memoryLimit} mb
-栈限制: ${newV.content.stackLimit} mb
-出题人：
+时间限制：${newV.content.timeLimit}ms
+内存限制：${newV.content.memoryLimit}mb
+栈限制: ${newV.content.stackLimit}mb
+出题人：${newV.pAuth}
 \`\`\`
 
 描述
@@ -148,16 +153,15 @@ ${newV.content.example}
 备注
 ${newV.content.hint}
 `;
-
-  content = problemContext;
-  console.log(content);
+  allInfo.exerciseTitle = newV.pName;
+  content.value = problemContext;
 });
-
+provide('problemContent', content);
 // 模板字符串;
 
 const allInfo: exerciseInfo = reactive({
-  exerciseTitle: 'test',
-  exerciseMarkdown: content,
+  exerciseTitle: '',
+  exerciseMarkdown: content.value,
 });
 
 const submitProps = [
