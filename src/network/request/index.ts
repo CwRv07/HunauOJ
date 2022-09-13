@@ -27,13 +27,12 @@ const request = new Request({
     // 请求拦截器
     requestInterceptors: config => {
       const userStore = useGetters('userStore', ['token']);
-      console.log(userStore);
+      // console.log(userStore);
       if (config.headers) {
         config.headers.token = userStore.token.value;
       } else {
         config.headers = { token: userStore.value };
       }
-      console.log(config);
       return config;
     },
     // 响应拦截器

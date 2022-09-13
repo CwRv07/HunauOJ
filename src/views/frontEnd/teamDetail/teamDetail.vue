@@ -63,6 +63,23 @@
 </template>
 
 <script setup lang="ts" name="teamDetail">
+import { useRoute } from 'vue-router';
+import { TeamAPI } from '@/network';
+import { TeamData } from '@/utils/type/data';
+
+const route = useRoute();
+
+onMounted(async () => {
+  const teamId = +route.params.id;
+  const data = await TeamAPI.findById(teamId);
+  // 团队数据
+  teamData.value = data;
+
+  // 介绍板块渲染
+  teamInfo[0].content = data.tName;
+  teamInfo[4].content = String(data.tId);
+});
+
 /* 标签页 */
 
 const currentTab = ref('index');
@@ -73,7 +90,8 @@ const changeTag = () => {
 /* /标签页 */
 
 /* 团队信息 */
-
+const teamData = ref<TeamData | Record<string, number>>({});
+provide('teamData', teamData);
 const teamInfo = reactive([
   { title: '团队名称', content: '测试测试测试测试测试测试测试测试测试' },
   { title: '团队队长', content: 'TEST' },
@@ -118,8 +136,10 @@ const leaveTeam = () => {
   }
 
   /* 团队板块 */
-  .team-section {
+  .el-card {
+    height: 100%;
   }
+
   /* 介绍板块 */
   .team-introduction {
     > * {
