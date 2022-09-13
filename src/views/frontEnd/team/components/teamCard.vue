@@ -1,5 +1,5 @@
 <template>
-  <el-card class="team-card">
+  <el-card class="team-card" @click="jumpToProblemDetail(teamData.tId)">
     <!-- 图片板块 -->
     <aside class="card-image">
       <el-image
@@ -7,19 +7,15 @@
         fit="cover"
         :lazy="true"
       />
-      <p class="team-leader" title="队长名称">队长名称</p>
+      <!-- <p class="team-leader" title="队长名称">队长名称</p> -->
     </aside>
     <!-- 详情板块 -->
     <aside class="card-detail">
-      <header class="team-name">队伍名称</header>
+      <header class="team-name">{{ teamData.tName }}</header>
       <main class="team-introduction">
-        <span class="text"
-          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde tempore quod sequi ducimus,
-          architecto perspiciatis, fuga sit quasi ratione illum sapiente laborum, ipsa mollitia.
-          Quas accusantium consectetur vitae beatae iure.</span
-        >
+        <span class="text">{{ teamData.tDescription }}</span>
       </main>
-      <footer class="team-tag">
+      <!-- <footer class="team-tag">
         <el-tag type="info" effect="plain">
           <el-icon size="1rem"><User /></el-icon>
           <span>17</span>
@@ -28,12 +24,29 @@
           <el-icon size="1rem"><Clock /></el-icon>
           <span>22-07-02</span>
         </el-tag>
-      </footer>
+      </footer> -->
     </aside>
   </el-card>
 </template>
 
-<script setup lang="ts" name="team-card"></script>
+<script setup lang="ts" name="team-card">
+import { useRouter } from 'vue-router';
+import { TeamAPI } from '@/network';
+import { TeamData } from '@/utils/type/data';
+import { p } from '@antfu/utils';
+const router = useRouter();
+
+/* 参数-start */
+const props = defineProps<{
+  teamData: TeamData;
+}>();
+/* 参数-end */
+
+/* 跳转函数 */
+const jumpToProblemDetail = (tId: any) => {
+  router.push(`/team/${tId}`);
+};
+</script>
 
 <style lang="scss" scoped>
 .team-card {
@@ -52,10 +65,10 @@
   }
   /* 图片板块 */
   .card-image {
-    width: 100px;
+    width: 80px;
     .el-image {
-      width: 100px;
-      height: 100px;
+      width: 80px;
+      height: 80px;
       border-radius: var(--el-border-radius-base);
       overflow: hidden;
       transition: transform 0.3s;

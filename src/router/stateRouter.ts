@@ -2,11 +2,13 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-01 18:56:23
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-07-28 18:01:25
+ * @LastEditTime: 2022-09-13 22:03:13
  * @Description: 公开路由表
  * @Email: Rv_Jiang@outlook.com
  */
 import { RouteRecordRaw } from 'vue-router';
+import teamRouter from './teanRouter';
+
 const stateRouter: RouteRecordRaw[] = [
   /* 首页-start */
   {
@@ -58,7 +60,7 @@ const stateRouter: RouteRecordRaw[] = [
     path: '/team/:id',
     component: () => import('@/views/frontEnd/teamDetail/teamDetail.vue'),
     meta: { title: 'teamDetail' },
-    children: [],
+    children: teamRouter,
   },
   /* team-end */
   /* competition-start */

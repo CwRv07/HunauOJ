@@ -38,7 +38,10 @@ declare module '@vue/runtime-core' {
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
     ElTag: typeof import('element-plus/es')['ElTag']
+<<<<<<< HEAD
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
+=======
+>>>>>>> fd8380b90bce813d9fe0b76118da77083a3dc742
     OlpBarChart: typeof import('./../../../src/components/base/OlpEcharts/OlpBarChart.vue')['default']
     OlpExercisesInfo: typeof import('./../../../src/components/base/OlpExercisesInfo/OlpExercisesInfo.vue')['default']
     OlpFooterInfo: typeof import('./../../../src/components/common/OlpFooterInfo/OlpFooterInfo.vue')['default']

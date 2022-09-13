@@ -1,8 +1,13 @@
 <!--
  * @Author: Rv_Jiang
  * @Date: 2022-07-01 10:00:15
+<<<<<<< HEAD
  * @LastEditors: ND_LJQ
  * @LastEditTime: 2022-09-13 20:54:50
+=======
+ * @LastEditors: Rv_Jiang
+ * @LastEditTime: 2022-09-13 20:32:54
+>>>>>>> fd8380b90bce813d9fe0b76118da77083a3dc742
  * @Description: 题目详情页
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -20,6 +25,7 @@
 </template>
 
 <script setup lang="ts" name="problemDetail">
+import { toRaw } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { ProblemAPI, ProblemLanguageAPI } from '@/network';
 import { ElMessageBox, ElMessage } from 'element-plus';
