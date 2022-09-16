@@ -1,8 +1,8 @@
 <!--
  * @Author: ND_LJQ
  * @Date: 2022-07-08 00:13:07
- * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-07-08 21:53:12
+ * @LastEditors: Rv_Jiang
+ * @LastEditTime: 2022-09-16 11:31:09
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -26,7 +26,7 @@
         :formatter="item.formatter"
       >
         <template #default="{ row }">
-          <slot :name="item.prop" :value="row[item.prop]">{{ row[item.prop] }}</slot>
+          <slot :name="item.prop" :value="row[item.prop]" :row="row">{{ row[item.prop] }}</slot>
         </template>
       </el-table-column>
     </el-table>
