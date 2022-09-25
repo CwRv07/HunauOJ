@@ -1,8 +1,8 @@
 <!--
  * @Author: ND_LJQ
  * @Date: 2022-06-30 16:26:44
- * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-07-10 17:32:10
+ * @LastEditors: ND_LJQ
+ * @LastEditTime: 2022-09-25 21:11:25
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -68,7 +68,7 @@
   width: 100%;
   text-align: center;
   margin-top: 30px;
-  background-color: #fff;
+  // background-color: #fff;
   /*去除a标签下划线*/
   a {
     text-decoration: none;

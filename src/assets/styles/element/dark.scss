@@ -1,1 +1,14 @@
-@use 'element-plus/theme-chalk/src/dark/var.scss';
+/* Element - 暗黑主题 */
+
+@use 'element-plus/theme-chalk/src/dark/css-vars.scss';
+html.dark {
+    --gl-sidebar-background-color: var(--el-bg-color);
+    --gl-headbar-background-color: var(--el-bg-color);
+    --gl-tabsbar-background-color: var(--el-bg-color);
+    --gl-content-background-color: #222222;
+    --gl-content-panel-background-color: var(--el-bg-color);
+    // --el-menu-text-color: var(--el-text-color-primary);
+    .el-table .el-table__body-wrapper .el-card {
+        background: var(--el-bg-color);
+    }
+}

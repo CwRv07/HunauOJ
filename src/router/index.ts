@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-04-28 10:19:32
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-09-07 18:48:49
+ * @LastEditTime: 2022-09-25 17:06:11
  * @Description:
  * @Email: Rv_Jiang@outlook.com
  */
@@ -44,6 +44,7 @@ const routes: Array<RouteRecordRaw> = [
     path: '/test',
     component: () => import('@/views/test/test.vue'),
   },
+
   /* /测试路由 */
 ];
 

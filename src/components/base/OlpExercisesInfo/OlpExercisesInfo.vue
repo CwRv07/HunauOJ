@@ -2,7 +2,7 @@
  * @Author: ND_LJQ
  * @Date: 2022-07-07 17:04:35
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-09-13 23:01:52
+ * @LastEditTime: 2022-09-16 16:48:44
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -116,8 +116,10 @@ const pData = computed(() => {
   return fatherInfo.problemData;
 });
 
-watch(pData, (newV, oldVal) => {
-  const problemContext = `
+watch(
+  pData,
+  (newV, oldVal) => {
+    const problemContext = `
 
 \`\`\`
 时间限制：${newV.content.timeLimit}ms
@@ -153,9 +155,13 @@ ${newV.content.example}
 备注
 ${newV.content.hint}
 `;
-  allInfo.exerciseTitle = newV.pName;
-  content.value = problemContext;
-});
+    allInfo.exerciseTitle = newV.pName;
+    content.value = problemContext;
+  },
+  {
+    immediate: true,
+  }
+);
 provide('problemContent', content);
 // 模板字符串;
 

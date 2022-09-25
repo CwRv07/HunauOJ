@@ -1,8 +1,8 @@
 /*
  * @Author: Rv_Jiang
  * @Date: 2022-05-01 18:56:23
- * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-09-13 22:03:13
+ * @LastEditors: ND_LJQ
+ * @LastEditTime: 2022-09-25 17:37:40
  * @Description: 公开路由表
  * @Email: Rv_Jiang@outlook.com
  */
@@ -81,6 +81,10 @@ const stateRouter: RouteRecordRaw[] = [
   {
     path: '/markdownTest',
     component: () => import('@/views/frontEnd/markdownTest/markdownTest.vue'),
+  },
+  {
+    path: '/user',
+    component: () => import('@/views/frontEnd/userHome/userHome.vue'),
   },
 ];
 

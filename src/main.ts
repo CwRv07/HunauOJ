@@ -1,8 +1,8 @@
 /*
  * @Author: Rv_Jiang
  * @Date: 2022-04-27 15:56:16
- * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-07-10 16:54:15
+ * @LastEditors: ND_LJQ
+ * @LastEditTime: 2022-09-25 20:45:58
  * @Description:
  * @Email: Rv_Jiang@outlook.com
  */
@@ -22,7 +22,6 @@ import * as Elicons from '@element-plus/icons-vue';
 import 'element-plus/theme-chalk/display.css';
 // 自定义主题
 import '@/assets/styles/element/index.scss';
-// import '@/assets/styles/element/dark.scss';
 
 const app = createApp(App);
 //全局注册elementplus icon

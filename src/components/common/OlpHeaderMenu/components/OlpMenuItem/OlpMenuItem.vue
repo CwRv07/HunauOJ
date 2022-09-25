@@ -1,8 +1,8 @@
 <!--
  * @Author: ND_LJQ
  * @Date: 2022-04-30 18:37:50
- * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-07-07 10:31:47
+ * @LastEditors: ND_LJQ
+ * @LastEditTime: 2022-09-25 10:44:12
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
@@ -15,7 +15,7 @@
         <el-icon>
           <component :is="item.icon" v-if="item.icon" />
         </el-icon>
-        {{ item.name }}
+        <span> {{ item.name }}</span>
       </template>
       <olp-menu-item :item-arr="item.children" />
     </el-sub-menu>
@@ -24,7 +24,7 @@
       <el-icon>
         <component :is="item.icon" v-if="item.icon" />
       </el-icon>
-      {{ item.name }}
+      <span> {{ item.name }}</span>
     </el-menu-item>
   </template>
 </template>

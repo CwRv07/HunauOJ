@@ -2,23 +2,41 @@
  * @Author: ND_LJQ
  * @Date: 2022-04-30 18:36:59
  * @LastEditors: ND_LJQ
- * @LastEditTime: 2022-09-13 23:28:03
+ * @LastEditTime: 2022-09-25 21:56:17
  * @Description: 
  * @Email: ndliujunqi@outlook.com
 -->
 <template>
-  <el-menu
-    :default-active="activeIndex"
-    class="el-menu-header"
-    mode="horizontal"
-    text-color="black"
-    @select="handleSelect"
-    active-text-color="#47b686"
-  >
-    <!-- 递归动态菜单 -->
-    <olp-menu-item :item-arr="itemArr" />
-    <olp-menu-button />
-  </el-menu>
+  <el-row :gutter="10">
+    <el-col :span="5">
+      <div class="logo-box">
+        <!-- 选择logo位置是左?中?右? -->
+        <div class="content-left">
+          <img src="../../../../public/favicon.ico" alt="" />
+        </div>
+        <div class="content-center"></div>
+        <div class="content-right"></div>
+      </div>
+    </el-col>
+    <el-col :span="16">
+      <div class="menu-content" ref="menuContent">
+        <el-menu
+          :default-active="activeIndex"
+          class="el-menu-header"
+          mode="horizontal"
+          @select="handleSelect"
+          active-text-color="#47b686"
+        >
+          <div class="flex-grow" />
+          <!-- 递归动态菜单 -->
+          <olp-menu-item :item-arr="itemArr" />
+        </el-menu>
+      </div>
+    </el-col>
+    <el-col :span="3">
+      <olp-menu-button />
+    </el-col>
+  </el-row>
 </template>
 
 <script lang="ts" setup>
@@ -138,15 +156,98 @@ watch(
 const handleSelect = (key: string, keyPath: string[]) => {
   router.push({ path: key });
 };
+
+const isCollapse = ref(true);
+const handleOpen = () => {
+  isCollapse.value = false;
+};
+const handleClose = () => {
+  isCollapse.value = true;
+};
+
+const menuContent = ref();
+
+const findC = (arr1: Array<any>) => {
+  if (
+    itemArr.filter(() => {
+      return arr1.forEach(item => {
+        if (
+          itemArr.find(function (items: any) {
+            return items.icon === item.icon;
+          }) != undefined
+        ) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+    }).length == arr1.length
+  ) {
+    return true;
+  }
+
+  return false;
+};
+
+const isHas = (newWidth: number, popItem: any, popArr: any, omit: any) => {
+  if (
+    itemArr.find(function (popArr: any) {
+      return popArr.icon === 'MoreFilled';
+    }) != undefined
+  ) {
+    if (newWidth == 1000) {
+      console.log('我怕被触发了');
+    }
+  } else {
+    popItem = itemArr.pop();
+    omit.children.unshift(popItem);
+    popArr.push(popItem);
+    itemArr.push(omit);
+  }
+};
+
+const getWidth = () => {
+  nextTick(() => {
+    if (menuContent.value) {
+      //div容器获取tableBox.value.clientWidth
+      let newWidth = menuContent.value.clientWidth;
+      // width.value = (newWidth - 450) / 2;
+
+      if (newWidth <= 1100) {
+        const omit: any = {
+          name: '',
+          sort: '10',
+          icon: 'MoreFilled',
+          children: [],
+        };
+
+        let popItem = null;
+        const popArr = [];
+      }
+    }
+  });
+};
+
+onMounted(() => {
+  getWidth();
+  window.addEventListener('resize', getWidth);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('resize', getWidth);
+});
 </script>
 
 <style lang="scss" scoped>
-.el-menu-header {
-  justify-content: flex-end;
-  //字体无法被简单的鼠标拖动复制
-  user-select: none;
-}
 ul {
   border-bottom: 0;
+}
+
+.logo-box {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 </style>

@@ -1,8 +1,8 @@
 <!--
  * @Author: Rv_Jiang
  * @Date: 2022-04-27 15:56:16
- * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-09-12 22:49:17
+ * @LastEditors: ND_LJQ
+ * @LastEditTime: 2022-09-25 21:07:47
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -19,7 +19,7 @@ import {} from 'vue';
 <style lang="scss">
 #app {
   color: var(--el-text-color-primary);
-  background-color: $bg-color;
+  // background-color: $bg-color;
 
   /* 全局修改el-card样式 */
   .el-card {
