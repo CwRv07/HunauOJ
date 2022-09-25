@@ -5,12 +5,12 @@
       <el-card :body-style="{ padding: '1px 20px' }">
         <el-tabs v-model="currentTab" @tab-click="changeTag">
           <el-tab-pane label="主页" name="index" />
-          <el-tab-pane label="题目" name="problem" />
-          <el-tab-pane label=" 比赛" name="competition" />
-          <el-tab-pane label="评测" name="evaluating" />
-          <el-tab-pane label="讨论" name=" discussion " />
+          <!-- <el-tab-pane label="题目" name="problem" /> -->
+          <el-tab-pane label=" 比赛" name="contest" />
+          <!-- <el-tab-pane label="评测" name="evaluating" /> -->
+          <!-- <el-tab-pane label="讨论" name=" discussion " /> -->
           <el-tab-pane label="成员" name="member" />
-          <el-tab-pane label="排名" name="rank" />
+          <!-- <el-tab-pane label="排名" name="rank" /> -->
         </el-tabs>
       </el-card>
     </header>
@@ -63,11 +63,12 @@
 </template>
 
 <script setup lang="ts" name="teamDetail">
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { TeamAPI } from '@/network';
 import { TeamData } from '@/utils/type/data';
 
 const route = useRoute();
+const router = useRouter();
 
 onMounted(async () => {
   const teamId = +route.params.id;
@@ -83,8 +84,17 @@ onMounted(async () => {
 /* 标签页 */
 
 const currentTab = ref('index');
-const changeTag = () => {
-  return;
+onMounted(() => {
+  let pathArr = route.path.split('/');
+  currentTab.value = pathArr[pathArr.length - 1] || 'index';
+});
+const changeTag = (pane: any) => {
+  let pathArr = route.path.split('/');
+  if (pathArr[pathArr.length - 1] !== pane.props.name) {
+    pathArr[pathArr.length - 1] = pane.props.name;
+    let toPath = pathArr.join('/');
+    router.push(toPath);
+  }
 };
 
 /* /标签页 */

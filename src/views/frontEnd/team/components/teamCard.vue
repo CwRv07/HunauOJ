@@ -44,7 +44,7 @@ const props = defineProps<{
 
 /* 跳转函数 */
 const jumpToProblemDetail = (tId: any) => {
-  router.push(`/team/${tId}`);
+  router.push(`/team/${tId}/index`);
 };
 </script>
 

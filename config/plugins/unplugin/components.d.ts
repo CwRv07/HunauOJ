@@ -14,9 +14,13 @@ declare module '@vue/runtime-core' {
     ElCarousel: typeof import('element-plus/es')['ElCarousel']
     ElCarouselItem: typeof import('element-plus/es')['ElCarouselItem']
     ElCol: typeof import('element-plus/es')['ElCol']
+<<<<<<< HEAD
     ElDropdown: typeof import('element-plus/es')['ElDropdown']
     ElDropdownItem: typeof import('element-plus/es')['ElDropdownItem']
     ElDropdownMenu: typeof import('element-plus/es')['ElDropdownMenu']
+=======
+    ElEmpty: typeof import('element-plus/es')['ElEmpty']
+>>>>>>> f9cb8eb67be8b743821f9e0eebddaf71e152ffcc
     ElForm: typeof import('element-plus/es')['ElForm']
     ElFormItem: typeof import('element-plus/es')['ElFormItem']
     ElIcon: typeof import('element-plus/es')['ElIcon']
@@ -25,14 +29,26 @@ declare module '@vue/runtime-core' {
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElPopover: typeof import('element-plus/es')['ElPopover']
+<<<<<<< HEAD
+=======
+    ElRadioButton: typeof import('element-plus/es')['ElRadioButton']
+    ElRadioGroup: typeof import('element-plus/es')['ElRadioGroup']
+>>>>>>> f9cb8eb67be8b743821f9e0eebddaf71e152ffcc
     ElRow: typeof import('element-plus/es')['ElRow']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     ElSwitch: typeof import('element-plus/es')['ElSwitch']
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
+<<<<<<< HEAD
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
     MyMoon: typeof import('./../../../src/components/common/OlpHeaderMenu/components/OlpMenuButton/components/MyMoon.vue')['default']
     MySun: typeof import('./../../../src/components/common/OlpHeaderMenu/components/OlpMenuButton/components/MySun.vue')['default']
+=======
+    ElTabPane: typeof import('element-plus/es')['ElTabPane']
+    ElTabs: typeof import('element-plus/es')['ElTabs']
+    ElTag: typeof import('element-plus/es')['ElTag']
+    ElTooltip: typeof import('element-plus/es')['ElTooltip']
+>>>>>>> f9cb8eb67be8b743821f9e0eebddaf71e152ffcc
     OlpBarChart: typeof import('./../../../src/components/base/OlpEcharts/OlpBarChart.vue')['default']
     OlpExercisesInfo: typeof import('./../../../src/components/base/OlpExercisesInfo/OlpExercisesInfo.vue')['default']
     OlpFooterInfo: typeof import('./../../../src/components/common/OlpFooterInfo/OlpFooterInfo.vue')['default']
